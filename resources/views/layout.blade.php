@@ -35,7 +35,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header" style="background-image: url('assets/img/header.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="footer__top__logo">
-                            <a href="#"><img src="{{asset('assets/img/logo_transparent.png')}}" alt="" width="40%" height="40%"></a>
+                            <a href="#"><img src="{{asset('assets/img/logo_transparent.png')}}" alt="" width="20%" height="20%"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
