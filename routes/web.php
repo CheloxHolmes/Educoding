@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,18 @@ Route::get('/perfil', function () {
     return view('perfil');
 });
 
+
+Auth::routes();
+
+//Authentication
+
+Auth::routes(['verify' => true]);
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+
+Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/');
+})->name("logout");
