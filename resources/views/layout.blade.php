@@ -59,7 +59,7 @@
                             </ul>
                         </nav>
                         <div class="header__nav__social" style="color:aliceblue;">
-                            <a class="btn btn-info" href="#">Iniciar sesión</a>
+                            <a class="btn btn-info" href="/login">Iniciar sesión</a>
                             <a class="btn btn-info" href="#">Registrarse</a>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="footer__top__logo">
-                            <a href="#"><img src="{{asset('assets/img/logo.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('assets/img/logo_transparent.png')}}" alt="" width="40%" height="40%"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
