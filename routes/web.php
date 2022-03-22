@@ -27,6 +27,10 @@ Route::get('/perfil', function () {
     return view('perfil');
 });
 
+Route::get('/contacto', function () {
+    return view('contacto');
+});
+
 
 Auth::routes();
 
