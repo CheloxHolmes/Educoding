@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <!--<a href="/"><img src="{{asset('assets/img/logo_transparent.png')}}" alt=""></a>-->
+                        <a href="/"><img src="{{asset('assets/img/logo_transparent2.png')}}" alt="" height="80%" width="80%"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -83,16 +83,13 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="footer__top__logo">
-                            <a href="#"><img src="{{asset('assets/img/logo_transparent.png')}}" alt="" width="20%" height="20%"></a>
+                            <a href="#"><img src="{{asset('assets/img/logo_transparent2.png')}}" alt="" height="40%" width="40%"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="footer__top__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
                         </div>
                     </div>
                 </div>
