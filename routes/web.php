@@ -35,6 +35,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/aprende', function () {
+    return view('aprende');
+});
+
 
 Auth::routes();
 

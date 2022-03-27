@@ -22,7 +22,7 @@
 <section class="services-page spad">
     <div class="container">
         <div class="row" style="margin-bottom:2%;">
-            <h2 style="color:white">Bienvenido Marcelo <img src="{{asset('assets/img/avatar/default.png')}}" height="80px" width="80px"></h2>
+            <h2>Bienvenido Marcelo <img src="{{asset('assets/img/avatar/default.png')}}" height="80px" width="80px"></h2>
         </div>
         <div class="row">
             <div class="card" style="margin:1.5%;width:45%">
