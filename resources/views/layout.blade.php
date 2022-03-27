@@ -49,7 +49,7 @@
                         <nav class="header__nav__menu mobile-menu">
                             <ul>
                                 <li><a href="/about"><i class="fa-solid fa-user"></i> Nosotros</a></li>
-                                <li><a href="/Aprende"><i class="fa-solid fa-book-open"></i> Aprende</a></li>
+                                <li><a href="/aprende"><i class="fa-solid fa-book-open"></i> Aprende</a></li>
                                 <li><a href="#"><i class="fa-solid fa-building-columns"></i> Comunidades</a>
                                     <ul class="dropdown">
                                         <li><a href="#">Escuelas</a></li>
@@ -86,7 +86,7 @@
                         <nav class="header__nav__menu mobile-menu">
                             <ul>
                                 <li><a href="/about"><i class="fa-solid fa-user"></i> Nosotros</a></li>
-                                <li><a href="/Aprende"><i class="fa-solid fa-book-open"></i> Aprende</a></li>
+                                <li><a href="/aprende"><i class="fa-solid fa-book-open"></i> Aprende</a></li>
                                 <li><a href="#"><i class="fa-solid fa-building-columns"></i> Comunidades</a>
                                     <ul class="dropdown">
                                         <li><a href="#">Escuelas</a></li>
@@ -99,9 +99,9 @@
                         <div class="header__nav__social" style="color:aliceblue;">
                             <div class="nav-item dropdown">
                                 @if(Auth::user()->username==NULL)
-                                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                    <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                                 @else
-                                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
+                                    <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
                                 @endif
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a>
@@ -109,6 +109,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Example single danger button -->
                     </div>
                 </div>
             </div>
@@ -202,14 +203,16 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+
     <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.slicknav.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/mixitup.min.js')}}"></script>
     <script src="{{asset('assets/js/masonry.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
+
 </body>
 
 </html>

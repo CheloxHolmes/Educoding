@@ -19,7 +19,7 @@
     <!-- Breadcrumb End -->
 
 <!-- Contact Widget Section Begin -->
-<section class="contact-widget spad">
+<!--<section class="contact-widget spad">
     <div class="container" style="margin-top:5%;">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-md-6 col-md-3">
@@ -57,27 +57,26 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <!-- Contact Widget Section End -->
 
 <!-- Call To Action Section Begin -->
-<section class="contact spad">
+<section class="contact spad" style="margin-top:5%;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="contact__map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2798902705!2d-74.25986790365917!3d40.697670067823786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1596152431947!5m2!1sen!2sbd" height="450" style="border:0;"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425998.14892663143!2d-70.9100195384674!3d-33.472472762753654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1648414068137!5m2!1ses!2scl" height="450" style="border:0;"></iframe>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <h3>Get in touch</h3>
+                    <h3>Contáctenos</h3>
                     <form action="#">
-                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Nombre">
                         <input type="text" placeholder="Email">
-                        <input type="text" placeholder="Website">
-                        <textarea placeholder="Message"></textarea>
-                        <button type="submit" class="site-btn">Send Message</button>
+                        <textarea placeholder="Mensaje"></textarea>
+                        <button type="submit" class="site-btn">Enviar mensaje</button>
                     </form>
                 </div>
             </div>
