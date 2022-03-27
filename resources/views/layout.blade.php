@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="/"><img src="{{asset('assets/img/logo_transparent2.png')}}" alt="" height="80%" width="80%"></a>
+                        <a href="/"><img src="{{asset('assets/img/logo2/logo_transparent.png')}}" alt="" height="70%" width="70%"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -60,7 +60,7 @@
                         </nav>
                         <div class="header__nav__social" style="color:aliceblue;">
                             <a class="btn btn-info" href="/login">Iniciar sesión</a>
-                            <a class="btn btn-info" href="#">Registrarse</a>
+                            <a class="btn btn-info" href="/register">Registrarse</a>
                         </div>
                     </div>
                 </div>
@@ -69,13 +69,13 @@
         </div>
     </header>
     <!-- Header End -->
+    <center>
+        <main class="services spad">
 
-    <main>
+            @yield('content')
 
-       @yield('content') 
-
-    </main>
-    
+        </main>
+    </center>
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="footer__top__logo">
-                            <a href="#"><img src="{{asset('assets/img/logo_transparent2.png')}}" alt="" height="40%" width="40%"></a>
+                            <a href="/"><img src="{{asset('assets/img/logo2/logo_transparent.png')}}" alt="" height="100px" width="100px"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -96,26 +96,25 @@
             </div>
             <div class="footer__option">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="footer__option__item">
-                            <h5>About us</h5>
-                            <p>Formed in 2006 by Matt Hobbs and Cael Jones, Videoprah is an award-winning, full-service
-                                production company specializing.</p>
-                            <a href="#" class="read__more">Read more <span class="arrow_right"></span></a>
+                            <h5>Sobre nosotros</h5>
+                            <p>Educoding es una iniciativa creada por Marcelo Carreño en conjunto con Ulearnet el año 2022.</p>
+                            <!--<p>La iniciativa tiene como principal fin apoyar a las comunidades de aprendizaje, tomando foco tanto en alumnos y alumnas como profesores y profesoras.</p>-->
+                            <a href="/about" class="read__more">Leer más <span class="arrow_right"></span></a>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-3">
                         <div class="footer__option__item">
-                            <h5>Who we are</h5>
+                            <h5>Colaboraciones</h5>
                             <ul>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Carrers</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Locations</a></li>
+                                <li><a href="http://www.unab.cl/">Unab</a></li>
+                                <li><a href="https://www.uchile.cl/">Universidad de Chile</a></li>
+                                <li><a href="http://ulearnet.org/">Ulearnet</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-3">
+                    <!-- Si se agrega este, cambiar col-lg-6 por 4<div class="col-lg-2 col-md-3 col-sm-3">
                         <div class="footer__option__item">
                             <h5>Our work</h5>
                             <ul>
@@ -125,15 +124,13 @@
                                 <li><a href="#">Video for web</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-lg-4 col-md-12">
                         <div class="footer__option__item">
-                            <h5>Newsletter</h5>
-                            <p>Videoprah is an award-winning, full-service production company specializing.</p>
-                            <form action="#">
-                                <input type="text" placeholder="Email">
-                                <button type="submit"><i class="fa fa-send"></i></button>
-                            </form>
+                            <h5>REIM</h5>
+                            <ul>
+                                <li><a href="http://ulearnet.org/nuestros-reim/" target="blank">Aprende más acerca de los REIM.</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -146,7 +143,7 @@
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
-                            All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            Educoding, todos los derechos reservados <i class="fa fa-heart-o" aria-hidden="true"></i> <a href="http://ulearnet.org/nuestros-reim/" target="_blank">Ulearnet</a>
                         </p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
