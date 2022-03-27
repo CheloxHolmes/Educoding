@@ -43,9 +43,9 @@ body {
 }
 
 main {
-    width: 85%;
     box-shadow: 10px 10px 10px 10px#000000d5;
     opacity: 1;
+    background-color: white;
 }
 
 h1,
@@ -136,7 +136,7 @@ ol {
 }
 
 .section-title span {
-    color: #ffffff;
+    color: #000000;
     display: block;
     font-size: 16px;
     letter-spacing: 2px;
@@ -145,7 +145,7 @@ ol {
 }
 
 .section-title h2 {
-    color: #ffffff;
+    color: #000000;
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
@@ -183,7 +183,7 @@ ol {
 .text-white span,
 .text-white li,
 .text-white a {
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -471,6 +471,21 @@ ol {
 
 
 /*---------------------
+  Modulos
+-----------------------*/
+
+.card-deck {
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+.star-rating {
+    size: 20px;
+    color: #F39C12;
+}
+
+
+/*---------------------
   Hero
 -----------------------*/
 
@@ -509,7 +524,7 @@ ol {
 }
 
 .hero__slider.owl-carousel .owl-dots button.active {
-    color: #ffffff;
+    color: #000000;
 }
 
 .hero__slider.owl-carousel .owl-dots button.active:after {
@@ -582,7 +597,7 @@ ol {
 
 .work {
     overflow: hidden;
-    background: #100028;
+    background: #ffffff;
 }
 
 .work__gallery {
@@ -652,7 +667,7 @@ ol {
 
 .work__item__hover h4 {
     font-size: 22px;
-    color: #ffffff;
+    color: #000000;
     font-weight: 700;
 }
 
@@ -686,7 +701,7 @@ ol {
 -----------------------*/
 
 .counter {
-    background: #100028;
+    background: #ffffff;
     height: 840px;
     padding-top: 380px;
     overflow: hidden;
@@ -768,14 +783,14 @@ ol {
 
 .counter__item__text h2 {
     font-size: 60px;
-    color: #ffffff;
+    color: #000000;
     font-weight: 700;
     margin-bottom: 6px;
     margin-top: 18px;
 }
 
 .counter__item__text p {
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 0;
 }
 
@@ -875,7 +890,7 @@ ol {
 -----------------------*/
 
 .latest {
-    background: #100028;
+    background: #ffffff;
     padding-bottom: 80px;
 }
 
@@ -925,7 +940,7 @@ ol {
 
 .callto.sp__callto {
     padding-top: 0;
-    background: #100028;
+    background: #ffffff;
 }
 
 .callto__text h2 {
@@ -1153,7 +1168,7 @@ ol {
 -----------------------*/
 
 .about {
-    background: #100028;
+    background: #ffffff;
     padding-bottom: 150px;
 }
 
@@ -1268,9 +1283,14 @@ ol {
 -----------------------*/
 
 .services {
-    background: #100028;
+    background: #ffffff;
     padding-bottom: 60px;
     padding-top: 110px;
+    color: #000;
+}
+
+.services .primary-btn {
+    color: black;
 }
 
 .services__title p {
@@ -1288,7 +1308,7 @@ ol {
 }
 
 .services__item h4 {
-    color: #ffffff;
+    color: #000000;
     font-size: 22px;
     font-weight: 700;
     margin-top: 26px;
@@ -1326,7 +1346,7 @@ ol {
 -----------------------*/
 
 .services-page {
-    background: #100028;
+    background: #ffffff;
     padding-bottom: 50px;
 }
 
@@ -1336,7 +1356,7 @@ ol {
 -----------------------*/
 
 .logo {
-    background: #100028;
+    background: #ffffff;
     padding: 100px 20px;
 }
 
@@ -1351,7 +1371,7 @@ ol {
 -----------------------*/
 
 .portfolio {
-    background: #100028;
+    background: #ffffff;
 }
 
 .portfolio__filter {
@@ -1897,7 +1917,7 @@ ol {
 -----------------------*/
 
 .contact-widget {
-    background: #100028;
+    background: #ffffff;
     padding-bottom: 70px;
 }
 
@@ -1918,7 +1938,7 @@ ol {
 
 .contact__widget__item__icon i {
     font-size: 30px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .contact__widget__item__text {
@@ -1928,7 +1948,7 @@ ol {
 
 .contact__widget__item__text h4 {
     font-size: 22px;
-    color: #ffffff;
+    color: #000000;
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -1943,7 +1963,7 @@ ol {
 -----------------------*/
 
 .contact {
-    background: #100028;
+    background: #ffffff;
     padding-top: 0;
     overflow: hidden;
 }
@@ -1957,7 +1977,7 @@ ol {
 }
 
 .contact__form h3 {
-    color: #ffffff;
+    color: #000000;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 35px;

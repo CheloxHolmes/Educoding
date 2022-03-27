@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Educoding</title>
+    <link rel="icon" href="{{asset('assets/img/logo2/favicon.png')}}">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
+    @guest
     <!-- Header Section Begin -->
     <header class="header" style="background-image: url('assets/img/header.jpg')">
         <div class="container">
@@ -69,6 +70,53 @@
         </div>
     </header>
     <!-- Header End -->
+    @endguest
+    @auth
+    <!-- Header Section Begin -->
+    <header class="header" style="background-image: url('assets/img/header.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="/"><img src="{{asset('assets/img/logo2/logo_transparent.png')}}" alt="" height="70%" width="70%"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            <ul>
+                                <li><a href="/about"><i class="fa-solid fa-user"></i> Nosotros</a></li>
+                                <li><a href="/Aprende"><i class="fa-solid fa-book-open"></i> Aprende</a></li>
+                                <li><a href="#"><i class="fa-solid fa-building-columns"></i> Comunidades</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Escuelas</a></li>
+                                        <li><a href="#">Universidades</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/contacto"><i class="fa-solid fa-envelope"></i> Contacto</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__nav__social" style="color:aliceblue;">
+                            <div class="nav-item dropdown">
+                                @if(Auth::user()->username==NULL)
+                                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                @else
+                                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
+                                @endif
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+    @endauth
     <center>
         <main class="services spad">
 
