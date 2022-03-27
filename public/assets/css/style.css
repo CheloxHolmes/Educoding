@@ -39,6 +39,13 @@ body {
     height: 100%;
     font-family: "Josefin Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
+    background-color: rgba(225, 225, 225, 0.8);
+}
+
+main {
+    width: 85%;
+    box-shadow: 10px 10px 10px 10px#000000d5;
+    opacity: 1;
 }
 
 h1,
@@ -326,10 +333,6 @@ ol {
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 9;
-}
-
-.header__logo {
-    padding: 30px 0;
 }
 
 .header__logo a {
@@ -965,10 +968,6 @@ ol {
 .footer__top {
     padding: 30px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer__top__logo {
-    line-height: 40px;
 }
 
 .footer__top__logo a {
