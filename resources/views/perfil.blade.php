@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Breadcrumb Begin -->
-<div class="breadcrumb-option spad set-bg" data-setbg="assets/img/header.jpg">
+<div class="breadcrumb-option spad set-bg" data-setbg="{{asset('assets/img/header.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -21,8 +21,14 @@
 <!-- Services Section Begin -->
 <section class="services-page spad">
     <div class="container">
+        @foreach($usuario as $user)
         <div class="row" style="margin-bottom:2%;">
-            <h2>Bienvenido Marcelo <img src="{{asset('assets/img/avatar/default.png')}}" height="80px" width="80px"></h2>
+            @if($user->username==NULL)
+            <h2>Bienvenido {{ $user->name }} <img src="{{asset('assets/img/avatar/default.png')}}" height="80px" width="80px"></h2>
+            @else
+            <h2>Bienvenido {{ $user->username }} <img src="{{asset('assets/img/avatar/default.png')}}" height="80px" width="80px"></h2>
+            @endif
+        @endforeach
         </div>
         <div class="row">
             <div class="card" style="margin:1.5%;width:45%">

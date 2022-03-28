@@ -96,7 +96,7 @@
                                 <div class="star-rating">
                                     <a>★</a>
                                 </div>
-                                <a class="card-text"><small class="text-muted">Ver más</small></a>
+                                <a href="#" class="card-text"><small class="text-muted">Ver más</small></a>
                             </div>
                         </div>
                     </div>

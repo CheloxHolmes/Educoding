@@ -12,7 +12,7 @@
                             <div class="hero__text">
                                 <span>La mejor manera de aprender es haciendo. Completa desafíos para conseguir recompensas</span>
                                 <h2>Educoding</h2>
-                                <a href="#" class="primary-btn" style="color:white;">Ver los módulos disponibles</a>
+                                <a href="/aprende" class="primary-btn" style="color:white;">Ver los módulos disponibles</a>
                             </div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Services Section Begin -->
+    <!-- Aprende Section Begin -->
     <section class="services spad">
         <div class="container">
             <div class="row">
@@ -34,7 +34,7 @@
                             <br>
                             <span>Aprende a tu ritmo y aplica tus conocimientos</span>
                             <br>
-                            <a href="#" class="primary-btn">Ver más</a>
+                            <a href="/aprende" class="primary-btn">Ver más</a>
                         </div>
                     </div>
                 </div>

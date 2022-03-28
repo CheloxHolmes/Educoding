@@ -23,9 +23,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/perfil', function () {
-    return view('perfil');
-});
+//Perfil
+
+Route::get('/perfil/{id}', [App\Http\Controllers\UsersController::class, 'profile'])->middleware('auth');
+Route::get('/perfil/{id}/{newAvatar}', [App\Http\Controllers\UsersController::class, 'editAvatar'])->middleware('auth');
+Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editProfile'])->middleware('auth');
+Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsersController::class, 'updateProfile'])->middleware('auth');
 
 Route::get('/contacto', function () {
     return view('contacto');

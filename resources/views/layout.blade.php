@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="/"><img src="{{asset('assets/img/logo2/logo_transparent.png')}}" alt="" height="70%" width="70%"></a>
+                        <a href="/"><img src="{{asset('../assets/img/logo2/logo_transparent.png')}}" alt="" height="70%" width="70%"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -73,7 +73,7 @@
     @endguest
     @auth
     <!-- Header Section Begin -->
-    <header class="header" style="background-image: url('assets/img/header.jpg')">
+    <header class="header" style="background-image: url('../assets/img/header.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -97,19 +97,18 @@
                             </ul>
                         </nav>
                         <div class="header__nav__social" style="color:aliceblue;">
-                            <div class="nav-item dropdown">
+                            <div class="dropdown">
                                 @if(Auth::user()->username==NULL)
-                                    <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                                 @else
-                                    <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
+                                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
                                 @endif
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
-                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a style="color:black;" class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></li>
+                                    <li><a style="color:black;" class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <!-- Example single danger button -->
                     </div>
                 </div>
             </div>
@@ -207,11 +206,14 @@
     <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.slicknav.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/mixitup.min.js')}}"></script>
     <script src="{{asset('assets/js/masonry.pkgd.min.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('assets/js/pagination.min.js')}}"></script>
+    <script src="{{asset('assets/js/pagination.js')}}"></script>
 
 </body>
 
