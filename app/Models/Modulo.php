@@ -11,10 +11,14 @@ class Modulo extends Model
 
     protected $fillable = [
 
-        'name',
+        'title',
+        'image',
+        'description',
         'difficulty',
         'area',
         'category',
+        'certificado',
+        'insignia'
 
     ];
 

@@ -15,10 +15,14 @@ class CreateModulosTable extends Migration
     {
         Schema::create('modulos', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
+            $table->string('image')->default("Programacion.jpg");
+            $table->string('description')->nullable();
             $table->string('difficulty')->nullable();
             $table->string('area')->nullable();
             $table->string('category')->nullable();
+            $table->string('certificado')->nullable();
+            $table->string('insignia')->nullable();
             $table->timestamps();
         });
     }

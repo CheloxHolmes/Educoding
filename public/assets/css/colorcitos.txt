@@ -1,0 +1,9 @@
+gris: rgb(228, 228, 230)
+
+boton: rgb(168, 168, 175)
+
+boton hover: rgb(62, 137, 207);
+
+azul: rgb(0, 75, 147)
+
+#f09359

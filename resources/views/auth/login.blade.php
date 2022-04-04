@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('content')
-    <div class="container" style="margin-top:5%">
+    <div class="container" style="margin-top:10%;margin-bottom:10%">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" style="background-color:rgb(23,162,184, 0.8);color:white;">{{ __('Iniciar sesión') }}</div>
+                    <div class="card-header" style="background-color:rgb(0, 75, 147);color:white;">{{ __('Iniciar sesión') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
