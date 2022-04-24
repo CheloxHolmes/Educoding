@@ -67,7 +67,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="courses.html">Módulos</a></li>
+                                                <li><a href="courses.html">Actividades</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
@@ -118,7 +118,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="courses.html">Módulos</a></li>
+                                                <li><a href="courses.html">Actividades</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
