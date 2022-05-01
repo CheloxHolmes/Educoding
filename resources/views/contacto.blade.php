@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Breadcrumb Begin -->
-<div class="breadcrumb-option spad set-bg" data-setbg="assets/img/header.jpg">
+<div class="breadcrumb-option spad set-bg" data-setbg="{{asset('assets/img/header.jpg')}}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
