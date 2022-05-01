@@ -38,10 +38,17 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/aprende', function () {
-    return view('aprende');
+Route::get('/explorar', function () {
+    return view('explorar');
 });
 
+Route::get('/actividad/{title}/{difficulty}', function () {
+    return view('actividad');
+});
+
+Route::get('/tienda/{id}', function () {
+    return view('tienda');
+});
 
 Auth::routes();
 

@@ -13,7 +13,7 @@
                             <div class="hero__caption">
                                 <h1 data-animation="fadeInLeft" data-delay="0.2s"><br>Educoding</h1>
                                 <p data-animation="fadeInLeft" data-delay="0.4s">La mejor manera de aprender es haciendo. Completa actividades para conseguir recompensas</p>
-                                <a href="#" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Explorar la ciudad</a>
+                                <a href="/explorar" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Explorar la ciudad</a>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                         <p>Finalmente el mago abrumado por la actitud de los habitantes, ha hechizado la ciudad de Educoding convirtiéndola en un tablero de juego con sus habitantes atrapados en ella.</p>
 
                         <p>La misión del estudiante es completar módulos y comprar artefactos en la tienda para devolver a la realidad a los habitantes de Educoding.</p>
-                        <a href="#" class="btn">Explora la ciudad</a>
+                        <a href="/explorar" class="btn">Explora la ciudad</a>
                     </div>
                 </div>
             </div>

@@ -67,7 +67,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="courses.html">Actividades</a></li>
+                                                <li><a href="/explorar">Actividades</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
@@ -76,7 +76,7 @@
                                                         <li><a href="elements.html">Element</a></li>
                                                     </ul>-->
                                                 </li>
-                                                <li><a href="contact.html">Contacto</a></li>
+                                                <li><a href="/contacto">Contacto</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Registrarse</a></li>
                                                 <li class="button-header"><a href="/login" class="btn btn3">Iniciar sesión</a></li>
@@ -118,7 +118,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="courses.html">Actividades</a></li>
+                                                <li><a href="/explorar">Actividades</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
@@ -127,7 +127,7 @@
                                                         <li><a href="elements.html">Element</a></li>
                                                     </ul>-->
                                                 </li>
-                                                <li><a href="contact.html">Contacto</a></li>
+                                                <li><a href="/contacto">Contacto</a></li>
                                                 <!-- Button -->
                                                 <li class="dropdown">
                                                     @if(Auth::user()->username==NULL)
@@ -235,11 +235,7 @@
             <!-- Footer End-->
         </div>
     </footer>
-    <!-- Scroll Up -->
-    <div id="back-top">
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-    </div>
-
+    
     <!-- JS here -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{{asset('../assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>

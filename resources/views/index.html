@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUCODING</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <script>
+        function showPreview(casilla) {
+            $("#opcionUsuarioPreview").html("Casilla: " + casilla);
+        }
+        function hidePreview(casilla) {
+            $("#opcionUsuarioPreview").html("");
+        }
+    </script>
+
+
+    <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 40%;">
+        <button style="position: inherit;background-color: aqua;">Puntos: 30</button>
+        <button style="position: inherit;background-color: aqua;">Módulos completados: 0/3</button>
+    </div>
+
+    <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 40%;">
+
+        <!--PLAY ESCUELA-->
+        <img src="./play.png" alt="" class="inner-image"
+            style="cursor:pointer;width: 40px;position: inherit;top: 310px;right: -655px" onclick="alert('Escuela')"
+            onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
+
+        <!--PLAY CIRCO-->
+        <img src="./play.png" alt="" class="inner-image"
+            style="cursor:pointer;width: 40px;position: inherit;top: 310px;right: -265px" onclick="alert('Circo')"
+            onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
+
+        <!--ESTRELLA-->
+        <img src="./star.png" alt="" class="inner-image"
+            style="cursor:pointer;width: 40px;position: inherit;top: 555px;right: 67px;" onclick="alert('Inicio')"
+            onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+
+        <!--CIUDAD-->
+        <img src="./city.jpg">
+
+        <h3 style="text-align: center;">Ciudad EDUCODING</h3>
+        <h4 id="opcionUsuarioPreview" style="text-align: center;"></h4>
+    </div>
+
+</body>
+
+</html>
