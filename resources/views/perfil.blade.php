@@ -69,8 +69,8 @@
             <div>
                 <a href="/perfil/{{Auth::user()->id}}/user-(1).png"><img src="{{asset('assets/img/avatar/user-(1).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
                 <a href="/perfil/{{Auth::user()->id}}/user-(2).png"><img src="{{asset('assets/img/avatar/user-(2).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(3).png"><img src="{{asset('assets/img/avatar/user-(3).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(4).png"><img src="{{asset('assets/img/avatar/user-(4).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/{{Auth::user()->id}}/user-(3).png"><img src="{{asset('assets/img/avatar/user-3.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/{{Auth::user()->id}}/user-(4).png"><img src="{{asset('assets/img/avatar/user-7.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
                 <a href="/perfil/{{Auth::user()->id}}/user-(5).png"><img src="{{asset('assets/img/avatar/user-(5).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
                 <a href="/perfil/{{Auth::user()->id}}/user-(6).png"><img src="{{asset('assets/img/avatar/user-(6).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
                 <a href="/perfil/{{Auth::user()->id}}/user-(7).png"><img src="{{asset('assets/img/avatar/user-(7).png')}}" alt="Admin" class="rounded-circle" width="150"></a>

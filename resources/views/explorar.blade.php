@@ -34,7 +34,7 @@
         <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 230px;right: 70px" onclick="linkActividad('/actividad/historia')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
 
         <!--MATEMATICAS-->
-        <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1100px;right: 160px;" onclick="linkActividad('/actividad/matematicas')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1100px;right: 160px;" onclick="linkActividad('/actividad/matematicas/{id}')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--TIENDA-->
         <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 900px;right: 10px;" onclick="linkActividad('/tienda/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
