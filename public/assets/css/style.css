@@ -60,6 +60,13 @@
 }
 
 
+/*Acordeón actividades */
+
+#accordion-button {
+    width: 100%;
+}
+
+
 /* The popup chat - hidden by default */
 
 .chat-popup {

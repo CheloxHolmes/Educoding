@@ -40,7 +40,7 @@ Route::get('/about', function () {
 
 Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
-Route::get('/actividad/{title}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
+Route::get('/actividad/{title}/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
 
 Route::get('/tienda/{id}', function () {
     return view('tienda');
