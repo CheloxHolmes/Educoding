@@ -22,6 +22,18 @@ class UsersController extends Controller
         ]);
     }
 
+    public function explore($id)
+    {
+
+        $usuario = User::where('id', $id)->get();
+
+        return view('explorar', [
+
+            'usuario' => $usuario,
+
+        ]);
+    }
+
     public function editProfile($id)
     {
 

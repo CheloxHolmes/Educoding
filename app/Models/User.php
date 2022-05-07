@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'telefono',
         'direccion',
+        'coins',
+        'ModulosCompletados',
         'password',
         'rol',
         'avatar'
