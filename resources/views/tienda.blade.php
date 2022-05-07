@@ -29,29 +29,25 @@
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; margin-bottom:3%;">
 
         <!--PELOTA-->
-        <img src="{{asset('assets/img/pelota.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 400px;right: -100px;" onclick="linkActividad('/actividad/ingles/1')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/pelota.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 380px;right: -150px;" onclick="linkActividad('/actividad/ingles/1')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
 
         <!--RAQUETA-->
-        <img src="{{asset('assets/img/raquet.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 400px;right: 120px;" onclick="linkActividad('/actividad/historia/1')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/raquet.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 380px;right: -1060px;" onclick="linkActividad('/actividad/historia/1')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
 
         <!--RELOJ-->
-        <img src="{{asset('assets/img/reloj.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 400px;right: 70px;" onclick="linkActividad('/actividad/matematica/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/reloj.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 400px;right: -60px;" onclick="linkActividad('/actividad/matematica/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--ALARMA-->
         <img src="{{asset('assets/img/alarma.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 400px;right: 30px;" onclick="linkActividad('/tienda/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--BOX-->
-        <img src="{{asset('assets/img/box.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 210px;right: 180px;" onclick="linkActividad('/actividad/artes/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/box.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 230px;right: 140px;" onclick="linkActividad('/actividad/artes/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--BATE-->
-        <img src="{{asset('assets/img/bate.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 600px;right: 100px;" onclick="linkActividad('/actividad/artes/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/bate.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 150px;height: 150px;position: inherit;top: 540px;right: -450px;" onclick="linkActividad('/actividad/artes/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--ESTANTE1-->
-        <img style="border-radius:20px;" src="{{asset('assets/img/TIENDA2.webp')}}">
-
-        <!--ESTANTE2-->
-        <img style="border-radius:20px;" src="{{asset('assets/img/TIENDA2.webp')}}">
-
+        <img style="border-radius:20px;" src="{{asset('assets/img/FondoTienda.jpg')}}" width="100%">
 
         <h4 id="opcionUsuarioPreview" style="text-align: center;"></h4>
     </div>

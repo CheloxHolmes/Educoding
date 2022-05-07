@@ -38,13 +38,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/explorar', function () {
-    return view('explorar');
-});
+Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
-Route::get('/actividad/{title}/{difficulty}', function () {
-    return view('actividad');
-});
+Route::get('/actividad/{title}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
 
 Route::get('/tienda/{id}', function () {
     return view('tienda');

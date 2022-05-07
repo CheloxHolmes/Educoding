@@ -67,7 +67,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="/explorar">Actividades</a></li>
+                                                <li><a href="/explorar/{id}">Explora la ciudad</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
@@ -118,7 +118,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="/explorar">Actividades</a></li>
+                                                <li><a href="/explorar/{id}">Explora la ciudad</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
