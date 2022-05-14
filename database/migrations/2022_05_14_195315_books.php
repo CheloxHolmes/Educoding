@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Activities extends Migration
+class Books extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class Activities extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->nullable();
-            $table->string('nivel')->nullable();
-            $table->string('textoInicial')->nullable();
-            $table->string('codigo')->nullable();
             $table->string('asignatura')->nullable();
+            $table->string('actividad')->nullable();
+            $table->string('respuesta')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class Activities extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('books');
     }
 }

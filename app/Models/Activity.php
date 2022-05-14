@@ -11,12 +11,11 @@ class Activity extends Model
 
     protected $fillable = [
 
-        'title',
-        'image',
-        'description',
-        'difficulty',
-        'materia',
-        'codigo'
+        'nombre',
+        'nivel',
+        'textoInicial',
+        'codigo',
+        'asignatura'
 
     ];
 

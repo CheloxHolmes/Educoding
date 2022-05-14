@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ActivitiesController extends Controller
 {
-    public function actividad($title)
+    public function actividad($nombre)
     {
 
-        $actividad = Activity::where('title', $title)->get();
+        $actividad = Activity::where('nombre', $nombre)->get();
 
         return view('actividad', [
 
