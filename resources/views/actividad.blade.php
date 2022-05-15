@@ -2,25 +2,170 @@
 
 @section('content')
 
-<script>
-    function openForm() {
-        document.getElementById("myForm").style.display = "block";
-    }
+<input id="actividadObj" value='{{$actividadString}}' />
+<input id="booksObjArray" value='{{$booksArrayString}}' />
 
-    function closeForm() {
-        document.getElementById("myForm").style.display = "none";
+<script>
+    let actividad = undefined;
+    let libros = undefined;
+    window.addEventListener("load", function() {
+        actividad = JSON.parse($("#actividadObj").val());
+        console.log("ACTIVIDAD:", actividad);
+        libros = JSON.parse($("#booksObjArray").val());
+        console.log("LIBROS:", libros);
+    });
+    let currentBook = -1;
+    let currentPage = -1;
+    function loadCurrentPageContent(pageN) {
+        if (libros[currentBook].pages[pageN].tipo == "texto") {
+            $("#topImageImg").attr('src', libros[currentBook].pages[pageN].imagen);
+            $("#leftTextP").html(libros[currentBook].pages[pageN].texto);
+        }
+        if (libros[currentBook].pages[pageN].tipo == "adjunta") {
+            $("#topImageImg").attr('src', libros[currentBook].pages[pageN].imagen);
+            $("#leftTextP").html(libros[currentBook].pages[pageN].texto);
+        }
+        if (libros[currentBook].pages[pageN].tipo == "pregunta") {
+            $("#topImageImg").attr('src', libros[currentBook].pages[pageN].imagen);
+            $("#leftTextP").html(libros[currentBook].pages[pageN].texto);
+            $("#inputSimpleAnswer").css("display", "block");
+            $("#submitSimpleAnswer").css("display", "block");
+        }
+        if (libros[currentBook].pages[pageN].tipo == "alternativas") {
+            $("#topImageImg").attr('src', libros[currentBook].pages[pageN].imagen);
+            $("#leftTextP").html(libros[currentBook].pages[pageN].texto);
+
+            $("#submitAlternativesAnswer").css("display", "block");
+        }
+
+        if (pageN < libros[currentBook].pages.length - 1) {
+            $("#arrowPagesImg").css("display", "block");
+        } else {
+            $("#arrowPagesImg").css("display", "none");
+        }
+    }
+    function linkBook(num) {
+
+        if (num >= libros.length) {
+            alert("Libro no encontrado");
+            return false;
+        }
+
+        currentPage = 0;
+        currentBook = num - 1;
+        $("#pagesImg").css("display", "block");
+        $("#closePagesImg").css("display", "block");
+        $("#pageContent").css("display", "block");
+        loadCurrentPageContent(currentPage);
+    }
+    function nextPage() {
+        ++currentPage;
+        loadCurrentPageContent(currentPage);
+    }
+    function answerPage() {
+        if ($("#inputSimpleAnswer").val() != "") {
+            if ($("#inputSimpleAnswer").val() == libros[currentBook].respuesta) {
+                alert("¡Respuesta correcta!");
+                $("#finisContent").css("display", "block");
+            } else {
+                alert("¡Respuesta incorrecta!");
+            }
+            closeBook();
+        } else {
+            alert("Debes dar una respuesta!");
+        }
+    }
+    function closeBook() {
+        $("#pagesImg").css("display", "none");
+        $("#closePagesImg").css("display", "none");
+        $("#pageContent").css("display", "none");
+        $("#submitSimpleAnswer").css("display", "none");
+        $("#submitAlternativesAnswer").css("display", "none");
+        $("#inputSimpleAnswer").css("display", "none");
+        $("#inputSimpleAnswer").val("");
+        currentPage = -1;
+        currentBook = -1;
+    }
+    function closeFinish() {
+        $("#finisContent").css("display", "none");
+    }
+    function Scenario1() {
+        closeBook();
+        $("#booksContainer1").css("display", "block");
+        $("#prevScenarioImg").css("display", "none");
+        $("#nextScenarioImg").css("display", "block");
+        $("#booksContainer2").css("display", "none");
+        $("#background").attr("src", "https://i.imgur.com/JOPNIdE.jpg");
+    }
+    function Scenario2() {
+        closeBook();
+        $("#booksContainer1").css("display", "none");
+        $("#prevScenarioImg").css("display", "block");
+        $("#nextScenarioImg").css("display", "none");
+        $("#background").attr("src", "https://i.imgur.com/XRsBB5h.jpg");
+        $("#booksContainer2").css("display", "block");
     }
 </script>
 
 <div class="container" style="margin-top:8%;margin-bottom:10%">
-    <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
-        <h1>Actividad MA01 OA 09 Matemáticas - Adición y sustracción de números</h1>
+
+    <div style="position: relative;display: block;">
+
+        <!--INGLES-->
+        <div id="booksContainer1">
+            <img id="bookLink-1" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 365px;right: 530px;" onclick="linkBook(1)" />
+            <img id="bookLink-2" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 265px;right: 430px;" onclick="linkBook(2)" />
+            <img id="bookLink-3" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 165px;right: 330px;" onclick="linkBook(3)" />
+        </div>
+
+        <div id="booksContainer2" style="display:none;">
+            <img id="bookLink-4" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 165px;right: 330px;" onclick="linkBook(4)" />
+            <img id="bookLink-5" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 415px;right: 510px;" onclick="linkBook(5)" />
+            <img id="bookLink-6" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 265px;right: 600px;" onclick="linkBook(6)" />
+        </div>
+
+        <!--CASA-->
+        <img id="background" style="border-radius:20px;" src="{{asset('casa1.jpg')}}">
+
+        <!--
+        <img id="background2" style="display: none;border-radius:20px;position: absolute;top: 0px;" src="{{asset('casa2.jpg')}}">-->
+
+        <img id="pagesImg" src="{{asset('pages.png')}}" class="inner-image" style="display:none;position: absolute;top: 55px;right: 130px" />
+        <img id="closePagesImg" src="{{asset('close.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 529px;right: 799px;" onclick="closeBook()" />
+
+        <img id="prevScenarioImg" src="{{asset('arrow-left.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 296px;right: 1084px;" onclick="Scenario1()" />
+
+        <img id="nextScenarioImg" src="{{asset('arrow.png')}}" class="inner-image" style="cursor:pointer;display:block;position: absolute;top: 296px;right: -98px;" onclick="Scenario2()" />
+
+        <div id="pageContent">
+            <img id="topImageImg" src="" class="inner-image" style="display:block;position: absolute;top: 148px;right: 625px;width: 130px;" />
+            <p id="leftTextP" style="font-family: 'Brush Script MT', cursive;display: block;position: absolute;top: 305px;    right: 530px;width: 298px;font-size: 35px;"></p>
+            <img id="arrowPagesImg" src="{{asset('arrow.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 495px;right: 213px;" onclick="nextPage()" />
+            <img id="submitSimpleAnswer" src="{{asset('play.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 333px;right: 213px;" onclick="answerPage()" />
+            <img id="submitAlternativesAnswer" src="{{asset('play.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 333px;right: 213px;" onclick="answerAlternativesPage()" />
+            <input id="inputSimpleAnswer" class="form-control" style="display: none;position: absolute;top: 339px;right: 293px;width: 213px;font-size: 20px;height: 53px;background: url();border: 1px solid;font-family: 'Brush Script MT', cursive;" />
+        </div>
+
+        <div id="finisContent" style="display:none">
+            <img id="topImageImg" src="{{asset('finish.png')}}" class="inner-image" style="display: block;position: absolute;top: 106px;right: 360px;" />
+            <p id="finishTextP" style="font-family: 'Brush Script MT', cursive;display: block;position: absolute;top: 236px;right: 347px;width: 298px;font-size: 34px;">Actividad completada</p>
+            <img id="finishEmoji" src="{{asset('cool.png')}}" class="inner-image" style="display:block;position: absolute;top: 379px;right: 483px;" />
+            <img id="finishClose" src="{{asset('close.png')}}" class="inner-image" style="cursor:pointer;display:block;position: absolute;top: 453px;right: 368px;" onclick="closeFinish()" />
+        </div>
+
+
+    </div>
+
+    <div style="margin-top:-3%;margin-bottom:3%;text-align:center;">
+        <h1>Actividad {{$actividad->codigo}} {{$actividad->nombre}}</h1>
     </div>
     <div class="progress" style="height:20px;">
         <div class="progress-bar bg-success" role="progressbar" style="width: 25%; font-size:15px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
     </div>
+
+    <!--
     <div class="accordion" id="accordionExample">
-        <!-- MODULO 1 -->
+        <!-- MODULO 1 --
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
@@ -59,7 +204,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 2 -->
+        <!-- MODULO 2 --
         <div class="card">
             <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
@@ -99,7 +244,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 3 -->
+        <!-- MODULO 3 --
         <div class="card">
             <div class="card-header" id="headingThree">
                 <h2 class="mb-0">
@@ -137,7 +282,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 4 -->
+        <!-- MODULO 4 --
         <div class="card">
             <div class="card-header" id="headingFour">
                 <h2 class="mb-0">
@@ -152,7 +297,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 5 -->
+        <!-- MODULO 5 --
         <div class="card">
             <div class="card-header" id="headingFive">
                 <h2 class="mb-0">
@@ -167,7 +312,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 6 -->
+        <!-- MODULO 6 --
         <div class="card">
             <div class="card-header" id="headingSix">
                 <h2 class="mb-0">
@@ -182,7 +327,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 7 -->
+        <!-- MODULO 7 --
         <div class="card">
             <div class="card-header" id="headingSeven">
                 <h2 class="mb-0">
@@ -197,7 +342,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODULO 8 -->
+        <!-- MODULO 8 --
         <div class="card">
             <div class="card-header" id="headingEight">
                 <h2 class="mb-0">
@@ -213,7 +358,7 @@
             </div>
         </div>
         <!-- MODULO 9 -->
-        <!--<div class="card">
+    <!--<div class="card">
             <div class="card-header" id="headingNine">
                 <h2 class="mb-0">
                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseThree" style="background-color: rgb(62, 137, 207);">
@@ -227,8 +372,8 @@
                 </div>
             </div>
         </div>-->
-        <!-- MODULO 10 -->
-        <!--<div class="card">
+    <!-- MODULO 10 -->
+    <!--<div class="card">
             <div class="card-header" id="headingTen">
                 <h2 class="mb-0">
                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseThree" style="background-color: rgb(62, 137, 207);">
@@ -241,8 +386,9 @@
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                 </div>
             </div>
-        </div>-->
+        </div>--
     </div>
+    -->
 </div>
 
 <button class="open-button" onclick="openForm()">Estado</button>

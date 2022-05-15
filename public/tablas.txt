@@ -1,0 +1,13 @@
+'1', 'Matemáticas - Adición y sustranción', '1', 'Bienvenido a la mama de la mama', '616', '1', NULL, NULL
+
+'1', 'Book1', '1', '1', '3', NULL, NULL
+'2', 'Book2', '1', '1', 'rojo', NULL, NULL
+'3', 'Book3', '1', '1', '2', NULL, NULL
+
+'1', 'texto', '1', '\"Las manzanas son dulces, jugosas y brillosas. Si cuidamos el medio ambiente podremos seguir teniendo más de ellas. ¿Cuantas quedan en la caja?\"', 'https://cdn-icons-png.flaticon.com/512/234/234464.png', NULL, NULL
+'2', 'adjunta', '1', 'Una canasta mágica', 'https://4.bp.blogspot.com/-Qr8T-129z3k/UiRXZ_Py1LI/AAAAAAAAAts/mOveosbWhIE/s1600/manzanas,+frutos+rojos+y+uva+contra+la+diabetes.jpg', NULL, NULL
+'3', 'pregunta', '1', '¿Cuantas manzanas podemos ver en la canasta?', 'https://4.bp.blogspot.com/-Qr8T-129z3k/UiRXZ_Py1LI/AAAAAAAAAts/mOveosbWhIE/s1600/manzanas,+frutos+rojos+y+uva+contra+la+diabetes.jpg', NULL, NULL
+'4', 'adjunta', '2', 'Frutas... SIGAN VIENDO', 'https://img.freepik.com/vector-gratis/conjunto-frutas-ninos-aprendiendo-palabras-vocabulario_34141-239.jpg', NULL, NULL
+'5', 'pregunta', '2', '¿Color de la frutilla?', 'https://img.freepik.com/vector-gratis/conjunto-frutas-ninos-aprendiendo-palabras-vocabulario_34141-239.jpg', NULL, NULL
+'6', 'adjunta', '3', 'Bonitos números', 'https://st.depositphotos.com/1007989/2764/i/950/depositphotos_27647955-stock-photo-colorful-numbers.jpg', NULL, NULL
+'7', 'alternativas', '3', '¿Cuál es el resultado de sumar 2 + 2?', 'https://definicion.de/wp-content/uploads/2009/06/signo-mas.png', NULL, NULL
