@@ -76,6 +76,30 @@
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
                 $("#finisContent").css("display", "block");
+
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '/actividad/'+libros[currentBook].id+'/sumar',
+                    data: {
+                        __id: "0"
+                    },
+                    success: function(data) {
+                        alert("PUNTOS SUMADOS");
+
+                        let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
+                        modulosActual = modulosActual + 1;
+                        $("#modulosValue").html("Módulos: " + modulosActual + "/30");
+
+                        let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
+                        coinsActual = coinsActual + 3;
+                        $("#coinsValue").html("uNearlet Coins: " + coinsActual + "/30");
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert("ERROR");
+                    }
+                });
+
             } else {
                 alert("¡Respuesta incorrecta!");
             }
@@ -120,7 +144,7 @@
     }
 
     /*Función para barra de estados*/
-    
+
     function openForm() {
         document.getElementById("myForm").style.display = "block";
     }
@@ -128,7 +152,6 @@
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
     }
-
 </script>
 
 <div class="container" style="margin-top:8%;margin-bottom:10%">
@@ -426,8 +449,8 @@
             <img src="{{asset('assets/img/avatar/'.Auth::user()->avatar)}}" style="width: 100%;height:100%;">
         </div>
         @endif
-        <button type="button" class="btn btn-lg btn-primary" disabled>Módulos: {{ Auth::user()->ModulosCompletados }}/30</button>
-        <button type="button" class="btn btn-lg btn-primary" disabled>uNearlet Coins: {{ Auth::user()->coins }}</button>
+        <button id="modulosValue" type="button" class="btn btn-lg btn-primary" disabled>Módulos: {{ Auth::user()->ModulosCompletados }}/30</button>
+        <button id="coinsValue" type="button" class="btn btn-lg btn-primary" disabled>uNearlet Coins: {{ Auth::user()->coins }}</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Cerrar</button>
     </form>
 </div>

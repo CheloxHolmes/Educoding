@@ -45,6 +45,8 @@ Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'expl
 
 Route::get('/actividad/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
 
+Route::get('/actividad/{id}/sumar', [App\Http\Controllers\ActivitiesController::class, 'sumarCoins']);
+
 Route::get('/tienda/{id}', function () {
     return view('tienda');
 });
