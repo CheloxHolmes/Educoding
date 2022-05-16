@@ -27,4 +27,13 @@ class ActivitiesController extends Controller
             'usuario' => $usuario,
         ]);
     }
+
+    public function sumarCoins($id)
+    {
+        $usuario = User::find(Auth::id());
+        $usuario->coins = $usuario->coins + 3;
+        $usuario->ModulosCompletados = $usuario->ModulosCompletados + 1;
+        $usuario->save();
+        return response()->json("{'resultado':'true'}");
+    }
 }
