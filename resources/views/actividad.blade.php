@@ -4,18 +4,23 @@
 
 <input id="actividadObj" value='{{$actividadString}}' />
 <input id="booksObjArray" value='{{$booksArrayString}}' />
+<input id="userObj" value='{{$usuario}}' />
 
 <script>
     let actividad = undefined;
     let libros = undefined;
+    let usuario = undefined;
     window.addEventListener("load", function() {
         actividad = JSON.parse($("#actividadObj").val());
         console.log("ACTIVIDAD:", actividad);
         libros = JSON.parse($("#booksObjArray").val());
         console.log("LIBROS:", libros);
+        usuario = JSON.parse($("#userObj").val());
+        console.log("USUARIOS:", usuario);
     });
     let currentBook = -1;
     let currentPage = -1;
+
     function loadCurrentPageContent(pageN) {
         if (libros[currentBook].pages[pageN].tipo == "texto") {
             $("#topImageImg").attr('src', libros[currentBook].pages[pageN].imagen);
@@ -44,6 +49,7 @@
             $("#arrowPagesImg").css("display", "none");
         }
     }
+
     function linkBook(num) {
 
         if (num >= libros.length) {
@@ -58,13 +64,16 @@
         $("#pageContent").css("display", "block");
         loadCurrentPageContent(currentPage);
     }
+
     function nextPage() {
         ++currentPage;
         loadCurrentPageContent(currentPage);
     }
+
     function answerPage() {
         if ($("#inputSimpleAnswer").val() != "") {
             if ($("#inputSimpleAnswer").val() == libros[currentBook].respuesta) {
+                /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
                 $("#finisContent").css("display", "block");
             } else {
@@ -75,6 +84,7 @@
             alert("Debes dar una respuesta!");
         }
     }
+
     function closeBook() {
         $("#pagesImg").css("display", "none");
         $("#closePagesImg").css("display", "none");
@@ -86,9 +96,11 @@
         currentPage = -1;
         currentBook = -1;
     }
+
     function closeFinish() {
         $("#finisContent").css("display", "none");
     }
+
     function Scenario1() {
         closeBook();
         $("#booksContainer1").css("display", "block");
@@ -97,6 +109,7 @@
         $("#booksContainer2").css("display", "none");
         $("#background").attr("src", "https://i.imgur.com/JOPNIdE.jpg");
     }
+
     function Scenario2() {
         closeBook();
         $("#booksContainer1").css("display", "none");
@@ -105,23 +118,34 @@
         $("#background").attr("src", "https://i.imgur.com/XRsBB5h.jpg");
         $("#booksContainer2").css("display", "block");
     }
+
+    /*Función para barra de estados*/
+    
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
 </script>
 
 <div class="container" style="margin-top:8%;margin-bottom:10%">
 
     <div style="position: relative;display: block;">
 
-        <!--INGLES-->
+        <!--ESCENARIO 1-->
         <div id="booksContainer1">
-            <img id="bookLink-1" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 365px;right: 530px;" onclick="linkBook(1)" />
-            <img id="bookLink-2" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 265px;right: 430px;" onclick="linkBook(2)" />
-            <img id="bookLink-3" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 165px;right: 330px;" onclick="linkBook(3)" />
+            <img id="bookLink-1" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 355px;right: 545px;" onclick="linkBook(1)" />
+            <img id="bookLink-2" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 390px;right: 780px;" onclick="linkBook(2)" />
+            <img id="bookLink-3" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 555px;right: 545px;" onclick="linkBook(3)" />
         </div>
 
         <div id="booksContainer2" style="display:none;">
-            <img id="bookLink-4" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 165px;right: 330px;" onclick="linkBook(4)" />
-            <img id="bookLink-5" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 415px;right: 510px;" onclick="linkBook(5)" />
-            <img id="bookLink-6" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 265px;right: 600px;" onclick="linkBook(6)" />
+            <img id="bookLink-4" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 525px;right: 100px;" onclick="linkBook(4)" />
+            <img id="bookLink-5" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 470px;right: 680px;" onclick="linkBook(5)" />
+            <img id="bookLink-6" src="{{asset('magicBook0.png')}}" class="inner-image" style="cursor:pointer;position: absolute;top: 400px;right: 220px;" onclick="linkBook(6)" />
         </div>
 
         <!--CASA-->
@@ -156,12 +180,12 @@
 
     </div>
 
-    <div style="margin-top:-3%;margin-bottom:3%;text-align:center;">
+    <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
         <h1>Actividad {{$actividad->codigo}} {{$actividad->nombre}}</h1>
     </div>
-    <div class="progress" style="height:20px;">
+    <!--<div class="progress" style="height:20px;">
         <div class="progress-bar bg-success" role="progressbar" style="width: 25%; font-size:15px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-    </div>
+    </div>-->
 
     <!--
     <div class="accordion" id="accordionExample">
@@ -390,6 +414,7 @@
     </div>
     -->
 </div>
+
 
 <button class="open-button" onclick="openForm()">Estado</button>
 
