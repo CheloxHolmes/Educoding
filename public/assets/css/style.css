@@ -494,7 +494,7 @@ hr {
     top: 0;
     width: 101%;
     height: 101%;
-    background: rgb(62, 137, 207);
+    background: rgba(255, 255, 255, 0.048);
     z-index: 1;
     border-radius: 5px;
     transition: transform 0.5s;

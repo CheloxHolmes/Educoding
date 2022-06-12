@@ -19,9 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
 
 //Perfil
 
