@@ -22,6 +22,18 @@ class UsersController extends Controller
         ]);
     }
 
+    public function dashboard($id)
+    {
+
+        $usuario = User::where('id', $id)->get();
+
+        return view('dashboard', [
+
+            'usuario' => $usuario,
+
+        ]);
+    }
+
     public function explore($id)
     {
 

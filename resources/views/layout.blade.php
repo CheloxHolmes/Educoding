@@ -137,6 +137,9 @@
                                                     @endif
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a style="color:black;" class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></li>
+                                                        @if(Auth::user()->rol=="profesor")
+                                                        <li><a style="color:black;" class="dropdown-item" href="/dashboard/{{ Auth::user()->id }}">Dashboard</a></li>
+                                                        @endif
                                                         <li><a style="color:black;" class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>
                                                     </ul>
                                                 </li>
