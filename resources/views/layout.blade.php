@@ -79,7 +79,7 @@
                                                 <li><a href="/contacto">Contacto</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Registrarse</a></li>
-                                                <li class="button-header"><a href="/login" class="btn btn3">Iniciar sesión</a></li>
+                                                <li class="button-header"><a href="/login" class="btn">Iniciar sesión</a></li>
                                             </ul>
                                         </nav>
                                     </div>

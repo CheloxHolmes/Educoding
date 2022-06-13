@@ -28,25 +28,25 @@
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; margin-bottom:3%;margin-top:3%;">
 
         <!--INGLES-->
-        <img src="{{asset('assets/img/INGLES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 430px;right: -1150px" onclick="linkActividad('/actividad/ingles')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/INGLES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 470px;right: -1150px" onclick="linkActividad('/actividad/ingles')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
 
         <!--HISTORIA-->
-        <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 230px;right: 70px" onclick="linkActividad('/actividad/historia')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 260px;right: 120px" onclick="linkActividad('/actividad/historia')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
 
         <!--MATEMATICAS-->
-        <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1100px;right: 160px;" onclick="linkActividad('/actividad/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1200px;right: 190px;" onclick="linkActividad('/actividad/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--TIENDA-->
-        <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 900px;right: 10px;" onclick="linkActividad('/tienda/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1000px;right: 10px;" onclick="linkActividad('/tienda/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
-        <!--ARTES-->
-        <img src="{{asset('assets/img/ARTES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1100px;right: 170px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <!--LENGUAJE-->
+        <img src="{{asset('assets/img/ARTES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1220px;right: 170px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--CAMBIO MAPA-->
-        <img src="{{asset('assets/img/map.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 100px;height: 100px;position: inherit;top: 600px;right: -725px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <!--<img src="{{asset('assets/img/map.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 100px;height: 100px;position: inherit;top: 600px;right: -725px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />-->
 
         <!--CIUDAD-->
-        <img style="border-radius:20px;" src="{{asset('assets/img/mapa4.png')}}">
+        <img style="border-radius:20px; width: 100%; height: 100%;" src="{{asset('assets/img/mapa4.png')}}">
 
 
         <h4 id="opcionUsuarioPreview" style="text-align: center;"></h4>
