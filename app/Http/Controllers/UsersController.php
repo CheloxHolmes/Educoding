@@ -35,13 +35,17 @@ class UsersController extends Controller
         for($i = 0; $i < count($alumnos); ++$i) {
             $sumaModulos = $alumnos[$i]->ModulosCompletados+$sumaModulos;
         }
+
+        $cantidadesModulosCompletadosMes = [3,7,8,1,2,3,9];
+
         return view('dashboard', [
 
             'alumnos' => $alumnos,
             'cant' => $cant,
             'usuario' => $usuario,
             'sumaCoins' => $sumaCoins,
-            'sumaModulos' => $sumaModulos
+            'sumaModulos' => $sumaModulos,
+            'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
             
         ]);
     }

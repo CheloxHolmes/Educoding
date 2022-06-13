@@ -374,10 +374,21 @@
             <!-- Mensajes -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
-                    <i class="bi bi-envelope"></i>
-                    <span>Mensajes</span>
+                <a class="nav-link collapsed" data-bs-target="#mensajes-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-envelope"></i><span>Mensajes</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
+                <ul id="mensajes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="/mensajes/{id}">
+                            <i class="bi bi-circle"></i><span>Ver mensajes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/EnviarMensaje">
+                            <i class="bi bi-circle"></i><span>Enviar mensaje</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
         </ul>
@@ -402,6 +413,9 @@
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{asset('../assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 
     <!-- Vendor JS Files -->
     <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
@@ -415,6 +429,8 @@
 
     <!-- Template Main JS File -->
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
+
+
 
 </body>
 
