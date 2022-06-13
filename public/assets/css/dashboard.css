@@ -751,6 +751,33 @@ h6 {
     transition: transform 0.2s ease-in-out;
 }
 
+.btn {
+    background: rgb(168, 168, 175);
+    font-family: "Josefin Sans", sans-serif;
+    text-transform: capitalize;
+    padding: 25px 38px !important;
+    color: #fff;
+    cursor: pointer;
+    display: inline-blockc !important;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    line-height: 1;
+    -moz-user-select: none;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0;
+    display: inline-block !important;
+    border: 1px solid #fff;
+}
+
 .sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
     transform: rotate(180deg);
 }
@@ -858,13 +885,13 @@ h6 {
 }
 
 .dashboard .sales-card .card-icon {
-    color: #4154f1;
-    background: #f6f6fe;
+    color: #41f16d;
+    background: #f6fef6;
 }
 
 .dashboard .revenue-card .card-icon {
-    color: #2eca6a;
-    background: #e0f8e9;
+    color: #cbff3c;
+    background: #f0f8e0;
 }
 
 .dashboard .customers-card .card-icon {

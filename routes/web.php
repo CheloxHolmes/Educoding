@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
+
 
 //Perfil
 
@@ -36,17 +36,15 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/dashmain', function () {
-    return view('dashmain');
-});
+//Profesores
+
+Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
 
 //Insignias
 
 Route::get('/insignias',[App\Http\Controllers\InsigniasController::class, 'insignias'])->middleware('auth');
 
-Route::get('/EnviarInsignia', function () {
-    return view('EnviarInsignia');
-});
+Route::get('/EnviarInsignia', [App\Http\Controllers\InsigniasController::class, 'listaAlumnos'])->middleware('auth');
 
 Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
