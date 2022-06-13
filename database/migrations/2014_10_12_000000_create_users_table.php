@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('coins')->default(0);
             $table->integer('ModulosCompletados')->default(0);;
             $table->string('avatar')->default("default.png");
-            $table->string('rol')->default('usuario');
+            $table->string('rol')->default('alumno');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

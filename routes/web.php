@@ -36,6 +36,18 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/dashmain', function () {
+    return view('dashmain');
+});
+
+//Insignias
+
+Route::get('/insignias',[App\Http\Controllers\InsigniasController::class, 'insignias'])->middleware('auth');
+
+Route::get('/EnviarInsignia', function () {
+    return view('EnviarInsignia');
+});
+
 Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
 //Route::get('/actividad/{nombre}/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
