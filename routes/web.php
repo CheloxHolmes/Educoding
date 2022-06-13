@@ -19,8 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 //Perfil
 
 Route::get('/perfil/{id}', [App\Http\Controllers\UsersController::class, 'profile'])->middleware('auth');
@@ -40,6 +38,10 @@ Route::get('/about', function () {
 
 Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
 
+//Mensajes
+
+Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
+
 //Insignias
 
 Route::get('/insignias',[App\Http\Controllers\InsigniasController::class, 'insignias'])->middleware('auth');
@@ -49,7 +51,6 @@ Route::get('/EnviarInsignia', [App\Http\Controllers\InsigniasController::class, 
 Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
 //Route::get('/actividad/{nombre}/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
-
 
 Route::get('/actividad/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
 

@@ -2,11 +2,14 @@
 
 @section('dash')
 
+<input type="hidden" id="modulosCompletadosMes" value="@foreach($cantidadesModulosCompletadosMes as $cantidad){{$cantidad}},@endforeach" />
+
+
 <div class="pagetitle">
   <h1>Dashboard</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+      <li class="breadcrumb-item"><a href="/">Inicio (el que lo dice lo es)</a></li>
       <li class="breadcrumb-item active">Dashboard</li>
     </ol>
   </nav>
@@ -117,17 +120,22 @@
             </div>-->
 
             <div class="card-body">
-              <h5 class="card-title">Reports <span>/Today</span></h5>
+              <h5 class="card-title">Alumnos <span>/Diario</span></h5>
 
               <!-- Line Chart -->
               <div id="reportsChart"></div>
 
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
+
+                  listadoCantidadModulos = $("#modulosCompletadosMes").val().split(",");
+                  listadoCantidadModulos.pop();
+                  console.log("listadoCantidadModulos:", listadoCantidadModulos);
+
                   new ApexCharts(document.querySelector("#reportsChart"), {
                     series: [{
-                      name: 'Sales',
-                      data: [31, 40, 28, 51, 42, 82, 56],
+                      name: 'Módulos completados',
+                      data: listadoCantidadModulos,
                     }, {
                       name: 'Revenue',
                       data: [11, 32, 45, 32, 34, 52, 41]
