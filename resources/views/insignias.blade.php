@@ -1,7 +1,7 @@
 @extends('dashmain')
 
 @section('dash')
-
+@if(Auth::user()->rol=="profesor")
 <div class="pagetitle">
     <h1>Dashboard</h1>
     <nav>
@@ -25,4 +25,5 @@
     @endforeach
     </div>
 </section>
+@endif
 @endsection

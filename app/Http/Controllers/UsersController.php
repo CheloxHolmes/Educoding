@@ -24,13 +24,25 @@ class UsersController extends Controller
 
     public function dashboard($id)
     {
-
         $usuario = User::where('id', $id)->get();
-
+        $alumnos = User::where('rol', 'alumno')->get();
+        $cant = count($alumnos);
+        $sumaCoins = 0;
+        for($i = 0; $i < count($alumnos); ++$i) {
+            $sumaCoins = $alumnos[$i]->coins+$sumaCoins;
+        }
+        $sumaModulos = 0;
+        for($i = 0; $i < count($alumnos); ++$i) {
+            $sumaModulos = $alumnos[$i]->ModulosCompletados+$sumaModulos;
+        }
         return view('dashboard', [
 
+            'alumnos' => $alumnos,
+            'cant' => $cant,
             'usuario' => $usuario,
-
+            'sumaCoins' => $sumaCoins,
+            'sumaModulos' => $sumaModulos
+            
         ]);
     }
 
