@@ -487,6 +487,23 @@ hr {
     border: 1px solid #fff;
 }
 
+.card-header {
+    background-color: rgb(0, 75, 147);
+    padding: 1%;
+}
+
+.card-header h1 {
+    color: white;
+}
+
+.card-footer {
+    background-color: rgb(0, 75, 147);
+}
+
+.card-footer p {
+    color: white;
+}
+
 .btn::before {
     content: "";
     position: absolute;

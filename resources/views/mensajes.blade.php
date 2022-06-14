@@ -9,19 +9,19 @@
     @foreach($mensajes as $mensaje)
 
     <br>
-    <div class="card text-left" style="margin-bottom:2%;">
+    <div class="card border-dark mb-3 text-left" style="margin-bottom:2%;border-radius:5px;">
 
         @foreach($todoUsuarios as $todos)
         @if($mensaje->id_creador==$todos->id)
         <div class="card-header">
-            <p><strong>Título: </strong>{{$mensaje->titulo}}</p>
+            <h1><strong>Título: </strong>{{$mensaje->titulo}}</h1>
         </div>
         <div class="card-body">
-            <h5 class="card-title"><strong>Por: </strong> {{$todos->name}}</h5>
+            <h2 class="card-title"><strong>Por: </strong> {{$todos->name}}</h2>
             <p class="card-text">{{$mensaje->descripcion_mensaje}}</p>
         </div>
-        <div class="card-footer text-muted" style="text-align: right;">
-            2 days ago
+        <div class="card-footer text-muted" style="text-align: right;height:45px;">
+            <p>2 days ago</p>
         </div>
         @endif
         @endforeach
