@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Models\Mensaje;
 
 class UsersController extends Controller
 {
@@ -26,6 +27,10 @@ class UsersController extends Controller
     {
         $usuario = User::where('id', $id)->get();
         $alumnos = User::where('rol', 'alumno')->get();
+        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
+        $countMensajes = count($mensajes);
+        $todoUsuarios = User::all();
+
         $cant = count($alumnos);
         $sumaCoins = 0;
         for($i = 0; $i < count($alumnos); ++$i) {
@@ -46,7 +51,9 @@ class UsersController extends Controller
             'sumaCoins' => $sumaCoins,
             'sumaModulos' => $sumaModulos,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
-            
+            'mensajes' => $mensajes,
+            'todosUsuarios' => $todoUsuarios,
+            'countMensajes' => $countMensajes
         ]);
     }
 

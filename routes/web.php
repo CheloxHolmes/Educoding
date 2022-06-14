@@ -41,6 +41,8 @@ Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'das
 //Mensajes
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
+Route::get('/crearMensaje/{id}', [App\Http\Controllers\MensajesController::class, 'crearMensaje'])->middleware('auth');
+Route::post('/mensaje/crear', [App\Http\Controllers\MensajesController::class, 'guardarMensaje'])->middleware('auth');
 
 //Insignias
 

@@ -71,14 +71,14 @@
                     </a>
                 </li><!-- End Search Icon-->
 
-                <li class="nav-item dropdown">
+                <!--<li class="nav-item dropdown">
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-bell"></i>
                         <span class="badge bg-primary badge-number">4</span>
-                    </a><!-- End Notification Icon -->
+                    </a>--><!-- End Notification Icon -->
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                         <li class="dropdown-header">
                             You have 4 new notifications
                             <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
@@ -142,7 +142,7 @@
                             <a href="#">Show all notifications</a>
                         </li>
 
-                    </ul><!-- End Notification Dropdown Items -->
+                    </ul>--><!-- End Notification Dropdown Items -->
 
                 </li><!-- End Notification Nav -->
 
@@ -150,13 +150,13 @@
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number">3</span>
+                        <span class="badge bg-success badge-number">{{$countMensajes}}</span>
                     </a><!-- End Messages Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                         <li class="dropdown-header">
-                            You have 3 new messages
-                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                            Tienes {{$countMensajes}} mensajes
+                            <a href="/mensajes/{id}"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todos</span></a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -166,46 +166,23 @@
                             <a href="#">
                                 <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
                                 <div>
-                                    <h4>Maria Hudson</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    @foreach($mensajes as $mensaje)
+                                    @foreach($todosUsuarios as $todos)
+                                    @if($mensaje->id_creador==$todos->id)
+                                    <h4>{{$todos->name}}</h4>
+                                    <p>{{$mensaje->titulo}}</p>
                                     <p>4 hrs. ago</p>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
                                 </div>
                             </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                                <div>
-                                    <h4>Anna Nelson</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>6 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li class="message-item">
-                            <a href="#">
-                                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                                <div>
-                                    <h4>David Muldon</h4>
-                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                    <p>8 hrs. ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
                         <li class="dropdown-footer">
-                            <a href="#">Show all messages</a>
+                            <a href="/mensajes/{id}">Ver todos los mensajes</a>
                         </li>
 
                     </ul><!-- End Messages Dropdown Items -->
@@ -380,12 +357,12 @@
                 <ul id="mensajes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="/mensajes/{id}">
-                            <i class="bi bi-circle"></i><span>Ver mensajes</span>
+                            <i class="bi bi-circle"></i><span>Ver Mensajes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/EnviarMensaje">
-                            <i class="bi bi-circle"></i><span>Enviar mensaje</span>
+                        <a href="/crearMensaje/{id}">
+                            <i class="bi bi-circle"></i><span>Crear Mensaje</span>
                         </a>
                     </li>
                 </ul>
@@ -413,7 +390,7 @@
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    
+
     <!-- Jquery, Popper, Bootstrap -->
     <script src="{{asset('../assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 
