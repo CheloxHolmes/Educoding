@@ -18,12 +18,14 @@ class MensajesController extends Controller
         $usuario = User::find(Auth::id());
         $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
         $todoUsuarios = User::all();
+        $countMensajes = count($mensajes);
 
         return view('mensajes', [
 
             'usuario' => $usuario,
             'mensajes' => $mensajes,
-            'todoUsuarios' => $todoUsuarios
+            'todoUsuarios' => $todoUsuarios,
+            'countMensajes' => $countMensajes
 
         ]);
     }
