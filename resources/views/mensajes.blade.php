@@ -6,8 +6,8 @@
     <div>
         <h1>Mensajes</h1>
     </div>
+    @if($countMensajes>0)
     @foreach($mensajes as $mensaje)
-
     <br>
     <div class="card border-dark mb-3 text-left" style="margin-bottom:2%;border-radius:5px;">
 
@@ -21,14 +21,25 @@
             <p class="card-text">{{$mensaje->descripcion_mensaje}}</p>
         </div>
         <div class="card-footer text-muted" style="text-align: right;height:45px;">
-            <p>2 days ago</p>
+            <p>{{$mensaje->created_at}}</p>
         </div>
         @endif
         @endforeach
 
     </div>
-
     @endforeach
+    @else
+    <br>
+    <div class="card border-dark mb-3 text-left" style="margin-bottom:2%;border-radius:5px;">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <p class="card-text">No tienes mensajes asignados.</p>
+        </div>
+        <div class="card-footer text-muted" style="text-align: right;height:45px;">
+        </div>
+    </div>
+    @endif
 </div>
 
 @endsection

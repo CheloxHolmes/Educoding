@@ -171,7 +171,7 @@
                                     @if($mensaje->id_creador==$todos->id)
                                     <h4>{{$todos->name}}</h4>
                                     <p>{{$mensaje->titulo}}</p>
-                                    <p>4 hrs. ago</p>
+                                    <p>{{$mensaje->created_at}}</p>
                                     @endif
                                     @endforeach
                                     @endforeach
