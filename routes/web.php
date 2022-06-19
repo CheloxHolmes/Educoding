@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,7 @@ Route::post('/mensaje/crear', [App\Http\Controllers\MensajesController::class, '
 
 //Insignias
 
-Route::get('/insignias',[App\Http\Controllers\InsigniasController::class, 'insignias'])->middleware('auth');
+Route::get('/insignias', [App\Http\Controllers\InsigniasController::class, 'insignias'])->middleware('auth');
 
 Route::get('/EnviarInsignia', [App\Http\Controllers\InsigniasController::class, 'listaAlumnos'])->middleware('auth');
 
@@ -69,6 +70,20 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+
+Route::post('/login', function (Request $request) {
+    $user = User::where('email', $request->email)
+        ->where('password', $request->password)
+        ->first();
+    if ($user) {
+        //Auth::loginUsingId($user->id);
+        //// -- OR -- //
+        Auth::login($user);
+        return redirect()->route('welcome');
+    } else {
+        return redirect()->back()->withInput();
+    }
+})->name("login");
 
 Route::get('/logout', function (Request $request) {
     Auth::logout();
