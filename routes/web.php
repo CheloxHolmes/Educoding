@@ -31,9 +31,7 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [App\Http\Controllers\UsuarioController::class, 'pruebita']);
 
 //Profesores
 

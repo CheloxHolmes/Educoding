@@ -17,6 +17,9 @@
                     <p>Calendarizar la aplicación de los instrumentos de medición requeridos por cada establecimiento.</p>
                     <p>Aplicar los instrumentos de medición a los estudiantes de cada curso.</p>
                     <p>Obtener los más de 30 resultados estadísticos de manera inmediata, con lo cual el establecimiento educativo puede realizar, de forma muy expedita, los remediales que estime oportunos.</p>
+                    @foreach($test as $tuki)
+                    {{$tuki->nombres}}
+                    @endforeach
                 </div>
             </div>
 
