@@ -21,47 +21,7 @@
             </div>
         </div>
     </section>
-    <!-- ? services-area -->
-    <!--<div class="services-area">
-        <div class="container">
-            <div class="row justify-content-sm-center">
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-30">
-                        <div class="features-icon">
-                            <img src="assets/img/icon/icon1.svg" alt="">
-                        </div>
-                        <div class="features-caption">
-                            <h3>20+ Módulos de aprendizaje</h3>
-                            <p>Para apoyarte en tu trabajo.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-30">
-                        <div class="features-icon">
-                            <img src="assets/img/icon/icon2.svg" alt="">
-                        </div>
-                        <div class="features-caption">
-                            <h3>Feedback de profesores</h3>
-                            <p>Los profesores entregarán retroalimentación a sus estudiantes.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-30">
-                        <div class="features-icon">
-                            <img src="assets/img/icon/icon3.svg" alt="">
-                        </div>
-                        <div class="features-caption">
-                            <h3>Plataforma rápida</h3>
-                            <p>No perderás tiempo esperando.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!-- Courses area start -->
+
     <div class="courses-area section-padding40 fix">
         <div class="container">
             <div class="row justify-content-center">
