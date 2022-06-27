@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Ciudad extends Migration
+class Region extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Ciudad extends Migration
      */
     public function up()
     {
-        Schema::create('ciudad', function (Blueprint $table) {
+        Schema::create('region', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->nullable();
-            $table->integer('region_id')->unsigned()->index()->nullable();
-            $table->foreign('region_id')->references('id')->on('region')->onDelete('cascade');
+            $table->bigInteger('pais_id')->unsigned()->index()->nullable();
+            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade');
+
         });
     }
 
@@ -28,6 +29,6 @@ class Ciudad extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ciudad');
+        Schema::dropIfExists('region');
     }
 }

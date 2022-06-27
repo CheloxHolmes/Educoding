@@ -13,7 +13,7 @@ class Mensajes extends Migration
      */
     public function up()
     {
-        Schema::create('mensajes', function (Blueprint $table) {
+        /*Schema::create('mensajes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_creador')->unsigned()->index()->nullable();
             $table->foreign('id_creador')->references('id')->on('users')->onDelete('cascade');
@@ -22,7 +22,7 @@ class Mensajes extends Migration
             $table->string('titulo');
             $table->longText('descripcion_mensaje');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -32,6 +32,6 @@ class Mensajes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mensajes');
+        /*Schema::dropIfExists('mensajes');*/
     }
 }

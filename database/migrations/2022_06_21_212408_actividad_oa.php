@@ -14,9 +14,9 @@ class ActividadOa extends Migration
     public function up()
     {
         Schema::create('actividad_oa', function (Blueprint $table) {
-            $table->integer('id_oa')->unsigned()->index()->nullable();
+            $table->bigInteger('id_oa')->unsigned()->index()->nullable();
             $table->foreign('id_oa')->references('id')->on('objetivo_aprendizaje')->onDelete('cascade');
-            $table->integer('id_actividad')->unsigned()->index()->nullable();
+            $table->bigInteger('id_actividad')->unsigned()->index()->nullable();
             $table->foreign('id_actividad')->references('id')->on('actividad')->onDelete('cascade');
 
         });
