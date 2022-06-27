@@ -14,9 +14,9 @@ class Actividadxreim extends Migration
     public function up()
     {
         Schema::create('actividadxreim', function (Blueprint $table) {
-            $table->integer('id_actividad')->unsigned()->index()->nullable();
+            $table->bigInteger('id_actividad')->unsigned()->index()->nullable();
             $table->foreign('id_actividad')->references('id')->on('actividad')->onDelete('cascade');
-            $table->integer('id_reim')->unsigned()->index()->nullable();
+            $table->bigInteger('id_reim')->unsigned()->index()->nullable();
             $table->foreign('id_reim')->references('id')->on('reim')->onDelete('cascade');
 
         });

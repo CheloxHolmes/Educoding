@@ -131,7 +131,7 @@
                                                 <!-- Button -->
                                                 <li class="dropdown">
                                                     @if(Auth::user()->username==NULL)
-                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->nombres }}</a>
                                                     @else
                                                     <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
                                                     @endif

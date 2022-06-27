@@ -16,8 +16,8 @@ class Aprueba extends Migration
         Schema::create('aprueba', function (Blueprint $table) {
             $table->bigInteger('idusuario')->unsigned()->index()->nullable();
             $table->foreign('idusuario')->references('id')->on('usuario')->onDelete('cascade');
-            $table->integer('idimagen')->unsigned()->index()->nullable();
-            $table->foreign('idimagen')->references('id')->on('imagen')->onDelete('cascade');
+            $table->bigInteger('idimagen')->unsigned()->index()->nullable();
+            $table->foreign('idimagen')->references('idimagen')->on('imagen')->onDelete('cascade');
             $table->datetime('fecha_aprueba')->nullable();
             $table->string('justificacion')->nullable();
             $table->integer('esaprobado')->nullable();

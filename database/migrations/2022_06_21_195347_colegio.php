@@ -24,7 +24,7 @@ class Colegio extends Migration
             $table->integer('rut_sostenedor')->nullable();
             $table->integer('p_juridica')->nullable();
             $table->tinyInteger('rural')->nullable();
-            $table->integer('comuna_id')->unsigned()->index()->nullable();
+            $table->bigInteger('comuna_id')->unsigned()->index()->nullable();
             $table->foreign('comuna_id')->references('id')->on('comuna')->onDelete('cascade');
         });
     }

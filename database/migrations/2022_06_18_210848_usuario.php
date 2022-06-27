@@ -29,7 +29,7 @@ class Usuario extends Migration
             $table->date('last_login')->nullable();
             $table->timestamps();
             $table->string('sexo')->nullable();
-            $table->integer('tipo_usuario_id')->unsigned()->index()->nullable();
+            $table->bigInteger('tipo_usuario_id')->unsigned()->nullable();
             $table->foreign('tipo_usuario_id')->references('id')->on('tipo_usuario')->onDelete('cascade');
             $table->string('nick_name')->nullable();
         });

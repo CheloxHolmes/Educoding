@@ -7,7 +7,7 @@
     <img src="{{asset('assets/img/avatar/'.Auth::user()->avatar)}}" height="150px" width="150px">
     <div class="row" style="margin-bottom:2%;margin-top:5%;">
         @if($user->username==NULL)
-        <h2>Bienvenido {{ $user->name }} </h2>
+        <h2>Bienvenido {{ $user->nombres }} </h2>
         @else
         <h2>Bienvenido {{ $user->username }}</h2>
         @endif

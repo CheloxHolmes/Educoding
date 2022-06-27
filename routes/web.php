@@ -22,20 +22,22 @@ Route::get('/', function () {
 
 //Perfil
 
-Route::get('/perfil/{id}', [App\Http\Controllers\UsersController::class, 'profile'])->middleware('auth');
-Route::get('/perfil/{id}/{newAvatar}', [App\Http\Controllers\UsersController::class, 'editAvatar'])->middleware('auth');
-Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editProfile'])->middleware('auth');
-Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsersController::class, 'updateProfile'])->middleware('auth');
+Route::get('/perfil/{id}', [App\Http\Controllers\UsuarioController::class, 'profile'])->middleware('auth');
+Route::get('/perfil/{id}/{newAvatar}', [App\Http\Controllers\UsuarioController::class, 'editAvatar'])->middleware('auth');
+Route::get('/editar/{id}', [App\Http\Controllers\UsuarioController::class, 'editProfile'])->middleware('auth');
+Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsuarioController::class, 'updateProfile'])->middleware('auth');
 
 Route::get('/contacto', function () {
     return view('contacto');
 });
 
-Route::get('/about', [App\Http\Controllers\UsuarioController::class, 'pruebita']);
+Route::get('/about', function () {
+    return view('about');
+});
 
 //Profesores
 
-Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
+Route::get('/dashboard/{id}', [App\Http\Controllers\UsuarioController::class, 'dashboard'])->middleware('auth');
 
 //Mensajes
 
@@ -49,7 +51,7 @@ Route::get('/insignias', [App\Http\Controllers\InsigniasController::class, 'insi
 
 Route::get('/EnviarInsignia', [App\Http\Controllers\InsigniasController::class, 'listaAlumnos'])->middleware('auth');
 
-Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
+Route::get('/explorar/{id}', [App\Http\Controllers\UsuarioController::class, 'explore'])->middleware('auth');
 
 //Route::get('/actividad/{nombre}/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
 
