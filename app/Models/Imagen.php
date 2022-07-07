@@ -19,7 +19,6 @@ class Imagen extends Model
         'nombre',
         'imagen',
         'id_elemento',
-        'id_elemento',
         'descripcion',
 
     ];

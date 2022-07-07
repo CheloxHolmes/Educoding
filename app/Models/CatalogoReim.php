@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Asigna_reim_alumno extends Model
+class CatalogoReim extends Model
 {
     use HasFactory;
 
@@ -17,13 +17,12 @@ class Asigna_reim_alumno extends Model
     protected $fillable = [
         
         'sesion_id',
-        'usuario_id',
-        'periodo_id',
-        'reim_id',
-        'datetime_inicio',
-        'datetime_termino',
+        'id_elemento',
+        'cantidad',
+        'precio',
+        'datetime_realiza',
 
     ];
 
-    protected $table = 'asigna_reim_alumno';
+    protected $table = 'catalogo_reim';
 }

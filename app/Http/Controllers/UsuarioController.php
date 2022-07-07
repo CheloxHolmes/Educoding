@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Imagen;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +17,12 @@ class UsuarioController extends Controller
     {
 
         $usuario = User::where('id', $id)->get();
+        $imagen = Imagen::where('nombre', $usuario->email)->get();
 
         return view('perfil', [
 
             'usuario' => $usuario,
+            'avatar' => $imagen->descripcion,
 
         ]);
     }
