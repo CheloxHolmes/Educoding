@@ -18,8 +18,12 @@
                 <strong>Estado</strong>
             </div>
             <div class="card-body">
-                <p><i class="fa-solid fa-person" style="color: #F3AB67;"></i> <strong>Rol:</strong> {{ Auth::user()->rol }}</p>
-                <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{ Auth::user()->coins }}</p>
+                @foreach($rol as $r)
+                <p><i class="fa-solid fa-person" style="color: #F3AB67;"></i> <strong>Rol:</strong> {{ $r }}</p>
+                @endforeach
+                @foreach($coins as $coin)
+                <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{ $coin }}</p>
+                @endforeach
                 <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados: </strong>{{ Auth::user()->ModulosCompletados }}</p>
             </div>
         </div>

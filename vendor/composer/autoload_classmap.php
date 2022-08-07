@@ -41,6 +41,7 @@ return array(
     'App\\Models\\Asigna_reim' => $baseDir . '/app/Models/Asigna_reim.php',
     'App\\Models\\Asigna_reim_alumno' => $baseDir . '/app/Models/Asigna_reim_alumno.php',
     'App\\Models\\Book' => $baseDir . '/app/Models/Book.php',
+    'App\\Models\\CatalogoReim' => $baseDir . '/app/Models/CatalogoReim.php',
     'App\\Models\\Ciudad' => $baseDir . '/app/Models/Ciudad.php',
     'App\\Models\\Colegio' => $baseDir . '/app/Models/Colegio.php',
     'App\\Models\\Comuna' => $baseDir . '/app/Models/Comuna.php',

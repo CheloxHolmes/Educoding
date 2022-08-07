@@ -545,6 +545,7 @@ class ComposerStaticInita0e607e523e374418f210cd3f660b158
         'App\\Models\\Asigna_reim' => __DIR__ . '/../..' . '/app/Models/Asigna_reim.php',
         'App\\Models\\Asigna_reim_alumno' => __DIR__ . '/../..' . '/app/Models/Asigna_reim_alumno.php',
         'App\\Models\\Book' => __DIR__ . '/../..' . '/app/Models/Book.php',
+        'App\\Models\\CatalogoReim' => __DIR__ . '/../..' . '/app/Models/CatalogoReim.php',
         'App\\Models\\Ciudad' => __DIR__ . '/../..' . '/app/Models/Ciudad.php',
         'App\\Models\\Colegio' => __DIR__ . '/../..' . '/app/Models/Colegio.php',
         'App\\Models\\Comuna' => __DIR__ . '/../..' . '/app/Models/Comuna.php',

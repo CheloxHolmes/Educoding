@@ -20,11 +20,8 @@ class Item extends Model
         'dificultad',
         'imagen_idimagen',
         'reim_id',
-        'reim_id',
-        'objetivo_aprendizaje_id',
         'objetivo_aprendizaje_id',
         'elemento_id',
-        'elemento_id'
 
     ];
 
