@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Imagen extends Model
+
 {
+    public $timestamps = false; 
     use HasFactory;
 
     /**
@@ -18,7 +20,6 @@ class Imagen extends Model
         'idimagen',
         'nombre',
         'imagen',
-        'id_elemento',
         'id_elemento',
         'descripcion',
 

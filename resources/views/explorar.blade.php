@@ -57,13 +57,15 @@
     <div class="chat-popup" id="myForm">
         <form action="/action_page.php" class="form-container">
             @if(Auth::user()->username==NULL)
-            <h2 style="text-align: center;">{{ Auth::user()->name }}</h2>
+            <h2 style="text-align: center;">{{ Auth::user()->nombres }}</h2>
             <div style="margin-bottom:2%;">
-                <img src="{{asset('assets/img/avatar/'.Auth::user()->avatar)}}" style="width: 100%;height:100%;">
+                <img src="{{asset('assets/img/avatar/'.$avatar)}}" style="width: 100%;height:100%;">
             </div>
             @endif
             <button type="button" class="btn btn-lg btn-primary" disabled>Módulos: {{ Auth::user()->ModulosCompletados }}/30</button>
-            <button type="button" class="btn btn-lg btn-primary" disabled>uNearlet Coins: {{ Auth::user()->coins }}</button>
+            @foreach($coins as $coin)
+            <button type="button" class="btn btn-lg btn-primary" disabled>uNearlet Coins: {{ $coin }} </button>
+            @endforeach
             <button type="button" class="btn cancel" onclick="closeForm()">Cerrar</button>
         </form>
     </div>

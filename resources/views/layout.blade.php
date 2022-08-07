@@ -67,7 +67,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="/explorar/{id}">Explora la ciudad</a></li>
+                                                <li><a href="/explorar/{{Auth::id()}}">Explora la ciudad</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
@@ -118,7 +118,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="/explorar/{id}">Explora la ciudad</a></li>
+                                                <li><a href="/explorar/{{Auth::id()}}">Explora la ciudad</a></li>
                                                 <li><a href="/about">Nosotros</a></li>
                                                 <li><a href="#">Colegios</a>
                                                     <!--<ul class="submenu">
@@ -137,7 +137,7 @@
                                                     @endif
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a style="color:black;" class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></li>
-                                                        @if(Auth::user()->rol=="profesor")
+                                                        @if(Auth::user()->tipo_usuario_id=="2")
                                                         <li><a style="color:black;" class="dropdown-item" href="/dashboard/{{ Auth::user()->id }}">Dashboard</a></li>
                                                         @endif
                                                         <li><a style="color:black;" class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>

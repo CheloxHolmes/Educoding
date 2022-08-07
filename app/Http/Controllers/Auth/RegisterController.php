@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Asigna_reim_alumno;
+use App\Models\InventarioReim;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Imagen;
 
 class RegisterController extends Controller
 {
@@ -65,11 +68,43 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $usuario = User::create([
             'nombres' => $data['nombres'],
             'rut' => $data['rut'],
             'email' => $data['email'],
             'password' => $data['password'],
+            'tipo_usuario_id' => 3,
         ]);
+
+        Asigna_reim_alumno::create([
+
+            'sesion_id' => $usuario->id,
+            'usuario_id' => $usuario->id,
+            'periodo_id' => 1,
+            'reim_id' => 905,
+            'datetime_inicio' => $usuario->created_at,
+            'datetime_termino' => $usuario->updated_at,
+
+        ]);
+
+        InventarioReim::create([
+
+            'sesion_id' => $usuario->id,
+            'id_elemento' => 900,
+            'cantidad' => 0,
+            'datetime_creacion' => $usuario->created_at,
+
+        ]);
+
+        Imagen::create([
+
+            'idimagen' => $usuario->id,
+            'nombre' => $usuario->email,
+            'id_elemento' => 1,
+            'descripcion' => 'user-(10).png',
+
+        ]);
+
+        return $usuario;
     }
 }

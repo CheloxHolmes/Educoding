@@ -3,15 +3,14 @@
 @section('content')
 
 <div class="container" style="margin-top:8%;margin-bottom:10%">
-    @foreach($usuario as $user)
-    <img src="{{asset('assets/img/avatar/'.Auth::user()->avatar)}}" height="150px" width="150px">
+
+    <img src="{{asset('assets/img/avatar/'.$avatar)}}" height="150px" width="150px">
     <div class="row" style="margin-bottom:2%;margin-top:5%;">
-        @if($user->username==NULL)
-        <h2>Bienvenido {{ $user->nombres }} </h2>
+        @if($usuario->username==NULL)
+        <h2>Bienvenido {{ $usuario->nombres }} </h2>
         @else
-        <h2>Bienvenido {{ $user->username }}</h2>
+        <h2>Bienvenido {{ $usuario->username }}</h2>
         @endif
-        @endforeach
     </div>
     <div class="row">
         <div class="card" style="margin:1.5%;width:45%">
@@ -19,8 +18,12 @@
                 <strong>Estado</strong>
             </div>
             <div class="card-body">
-                <p><i class="fa-solid fa-person" style="color: #F3AB67;"></i> <strong>Rol:</strong> {{ Auth::user()->rol }}</p>
-                <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{ Auth::user()->coins }}</p>
+                @foreach($rol as $r)
+                <p><i class="fa-solid fa-person" style="color: #F3AB67;"></i> <strong>Rol:</strong> {{ $r }}</p>
+                @endforeach
+                @foreach($coins as $coin)
+                <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{ $coin }}</p>
+                @endforeach
                 <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados: </strong>{{ Auth::user()->ModulosCompletados }}</p>
             </div>
         </div>
@@ -65,20 +68,20 @@
     <div class="row">
         <div class="d-flex justify-content-center">
             <div>
-                <a href="/perfil/{{Auth::user()->id}}/user-(1).png"><img src="{{asset('assets/img/avatar/user-(1).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(2).png"><img src="{{asset('assets/img/avatar/user-(2).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(3).png"><img src="{{asset('assets/img/avatar/user-3.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(4).png"><img src="{{asset('assets/img/avatar/user-7.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(5).png"><img src="{{asset('assets/img/avatar/user-(5).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(6).png"><img src="{{asset('assets/img/avatar/user-(6).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(7).png"><img src="{{asset('assets/img/avatar/user-(7).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(8).png"><img src="{{asset('assets/img/avatar/user-(8).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(9).png"><img src="{{asset('assets/img/avatar/user-(9).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(10).png"><img src="{{asset('assets/img/avatar/user-(10).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(11).png"><img src="{{asset('assets/img/avatar/user-(11).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-(12).png"><img src="{{asset('assets/img/avatar/user-(12).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-13.png"><img src="{{asset('assets/img/avatar/user-13.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/{{Auth::user()->id}}/user-14.png"><img src="{{asset('assets/img/avatar/user-14.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(1).png"><img src="{{asset('assets/img/avatar/user-(1).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(2).png"><img src="{{asset('assets/img/avatar/user-(2).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(3).png"><img src="{{asset('assets/img/avatar/user-3.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(4).png"><img src="{{asset('assets/img/avatar/user-7.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(5).png"><img src="{{asset('assets/img/avatar/user-(5).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(6).png"><img src="{{asset('assets/img/avatar/user-(6).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(7).png"><img src="{{asset('assets/img/avatar/user-(7).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(8).png"><img src="{{asset('assets/img/avatar/user-(8).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(9).png"><img src="{{asset('assets/img/avatar/user-(9).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(10).png"><img src="{{asset('assets/img/avatar/user-(10).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(11).png"><img src="{{asset('assets/img/avatar/user-(11).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-(12).png"><img src="{{asset('assets/img/avatar/user-(12).png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-13.png"><img src="{{asset('assets/img/avatar/user-13.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
+                <a href="/perfil/avatar/user-14.png"><img src="{{asset('assets/img/avatar/user-14.png')}}" alt="Admin" class="rounded-circle" width="150"></a>
             </div>
             <br>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Imagen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +15,18 @@ class UsersController extends Controller
     public function profile($id)
     {
 
-        $usuario = User::where('id', $id)->get();
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0];
+        $rol = DB::select("SELECT nombre FROM tipo_usuario WHERE id = '".$usuario->tipo_usuario_id."';")[0];
+        //$imagen = Imagen::where('nombre', $usuario->email)->get();
 
         return view('perfil', [
 
             'usuario' => $usuario,
+            'avatar' => $imagen->descripcion,
+            'coins' => $coins,
+            'rol' => $rol,
 
         ]);
     }
@@ -60,12 +68,18 @@ class UsersController extends Controller
     public function explore($id)
     {
 
-        $usuario = User::where('id', $id)->get();
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0];
+        
+        //$imagen = Imagen::where('nombre', $usuario->email)->get();
 
         return view('explorar', [
 
             'usuario' => $usuario,
-
+            'avatar' => $imagen->descripcion,
+            'coins' => $coins,
+            
         ]);
     }
 
@@ -111,15 +125,9 @@ class UsersController extends Controller
         return redirect("/perfil/$usuario->id");
     }
 
-    public function editAvatar($id, $newAvatar){
-
-        $usuario = User::find(Auth::id());
-
-        $usuario->avatar = $newAvatar;
-
-        $usuario->update();
-
+    public function editAvatar($newAvatar){
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+        DB::select("UPDATE imagen SET descripcion = '".$newAvatar."' WHERE nombre = '".$usuario->email."';");
         return redirect("/perfil/$usuario->id");
-
     }
 }
