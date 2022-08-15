@@ -48,6 +48,7 @@ return array(
     'App\\Models\\Elemento' => $baseDir . '/app/Models/Elemento.php',
     'App\\Models\\Imagen' => $baseDir . '/app/Models/Imagen.php',
     'App\\Models\\Insignia' => $baseDir . '/app/Models/Insignia.php',
+    'App\\Models\\InventarioReim' => $baseDir . '/app/Models/InventarioReim.php',
     'App\\Models\\Item' => $baseDir . '/app/Models/Item.php',
     'App\\Models\\Letra' => $baseDir . '/app/Models/Letra.php',
     'App\\Models\\Mensaje' => $baseDir . '/app/Models/Mensaje.php',
