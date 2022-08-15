@@ -30,9 +30,9 @@ class UsuarioController extends Controller
     public function dashboard($id)
     {
         $usuario = User::where('id', $id)->get();
-        $alumnos = User::where('rol', 'alumno')->get();
-        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
-        $countMensajes = count($mensajes);
+        $alumnos = User::where('tipo_usuario_id', 3)->get();
+        //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
+        //$countMensajes = count($mensajes);
         $todoUsuarios = User::all();
 
         $cant = count($alumnos);
@@ -55,9 +55,9 @@ class UsuarioController extends Controller
             'sumaCoins' => $sumaCoins,
             'sumaModulos' => $sumaModulos,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
-            'mensajes' => $mensajes,
+            //'mensajes' => $mensajes,
             'todosUsuarios' => $todoUsuarios,
-            'countMensajes' => $countMensajes
+            //'countMensajes' => $countMensajes
         ]);
     }
 

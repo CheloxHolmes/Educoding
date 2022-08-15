@@ -150,12 +150,12 @@
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number">{{$countMensajes}}</span>
+                        <span class="badge bg-success badge-number"><!--{{$countMensajes}}--></span>
                     </a><!-- End Messages Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                         <li class="dropdown-header">
-                            Tienes {{$countMensajes}} mensajes
+                            Tienes <!--{{$countMensajes}}--> mensajes
                             <a href="/mensajes/{id}"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todos</span></a>
                         </li>
                         <li>
@@ -165,7 +165,7 @@
                         <li class="message-item">
                             <a href="#">
                                 <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                                <div>
+                                <!--<div>
                                     @foreach($mensajes as $mensaje)
                                     @foreach($todosUsuarios as $todos)
                                     @if($mensaje->id_creador==$todos->id)
@@ -175,7 +175,7 @@
                                     @endif
                                     @endforeach
                                     @endforeach
-                                </div>
+                                </div>-->
                             </a>
                         </li>
                         <li>

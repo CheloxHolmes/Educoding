@@ -552,6 +552,7 @@ class ComposerStaticInita0e607e523e374418f210cd3f660b158
         'App\\Models\\Elemento' => __DIR__ . '/../..' . '/app/Models/Elemento.php',
         'App\\Models\\Imagen' => __DIR__ . '/../..' . '/app/Models/Imagen.php',
         'App\\Models\\Insignia' => __DIR__ . '/../..' . '/app/Models/Insignia.php',
+        'App\\Models\\InventarioReim' => __DIR__ . '/../..' . '/app/Models/InventarioReim.php',
         'App\\Models\\Item' => __DIR__ . '/../..' . '/app/Models/Item.php',
         'App\\Models\\Letra' => __DIR__ . '/../..' . '/app/Models/Letra.php',
         'App\\Models\\Mensaje' => __DIR__ . '/../..' . '/app/Models/Mensaje.php',

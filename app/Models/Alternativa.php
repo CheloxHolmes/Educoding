@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Actividad extends Model
+class Alternativa extends Model
 {
     public $timestamps = false; 
     use HasFactory;
@@ -17,10 +17,12 @@ class Actividad extends Model
      */
     protected $fillable = [
         
-        'id',
-        'nombre',
+        'idalternativa',
+        'txt_alte',
+        'IMAGEN_idimagen',
+        'Justificacion',
 
     ];
 
-    protected $table = 'actividad';
+    protected $table = 'alternativa';
 }
