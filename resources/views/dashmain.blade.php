@@ -150,12 +150,12 @@
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number"><!--{{$countMensajes}}--></span>
+                        <span class="badge bg-success badge-number"></span>
                     </a><!-- End Messages Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                         <li class="dropdown-header">
-                            Tienes <!--{{$countMensajes}}--> mensajes
+                            Tienes VARIABLE mensajes
                             <a href="/mensajes/{id}"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todos</span></a>
                         </li>
                         <li>
@@ -165,24 +165,18 @@
                         <li class="message-item">
                             <a href="#">
                                 <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                                <!--<div>
-                                    @foreach($mensajes as $mensaje)
-                                    @foreach($todosUsuarios as $todos)
-                                    @if($mensaje->id_creador==$todos->id)
-                                    <h4>{{$todos->name}}</h4>
-                                    <p>{{$mensaje->titulo}}</p>
-                                    <p>{{$mensaje->created_at}}</p>
-                                    @endif
-                                    @endforeach
-                                    @endforeach
-                                </div>-->
+                                <div>
+                                    <h4></h4>
+                                    <p></p>
+                                    <p></p>
+                                </div>
                             </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li class="dropdown-footer">
-                            <a href="/mensajes/{id}">Ver todos los mensajes</a>
+                            <!--<a href="/mensajes/{id}">Ver todos los mensajes</a>-->
                         </li>
 
                     </ul><!-- End Messages Dropdown Items -->
@@ -192,8 +186,8 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="{{asset('assets/img/avatar/'.Auth::user()->avatar)}}" alt="Profesor(a)" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
+                        <img src="{{asset('assets/img/avatar/'.$avatar)}}" alt="Profesor(a)" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nombres }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -356,13 +350,13 @@
                 </a>
                 <ul id="mensajes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/mensajes/{id}">
+                        <!--<a href="/mensajes/{id}">
                             <i class="bi bi-circle"></i><span>Ver Mensajes</span>
                         </a>
                     </li>
                     <li>
                         <a href="/crearMensaje/{id}">
-                            <i class="bi bi-circle"></i><span>Crear Mensaje</span>
+                            <i class="bi bi-circle"></i><span>Crear Mensaje</span>-->
                         </a>
                     </li>
                 </ul>
