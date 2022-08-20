@@ -33,8 +33,9 @@ class UsersController extends Controller
 
     public function dashboard($id)
     {
-        $usuario = User::where('id', $id)->get();
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
         $alumnos = User::where('tipo_usuario_id', 3)->get();
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
         //$countMensajes = count($mensajes);
         $todoUsuarios = User::all();
@@ -56,6 +57,7 @@ class UsersController extends Controller
             'alumnos' => $alumnos,
             'cant' => $cant,
             'usuario' => $usuario,
+            'avatar' => $imagen->descripcion,
             'sumaCoins' => $sumaCoins,
             'sumaModulos' => $sumaModulos,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,

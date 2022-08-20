@@ -34,8 +34,8 @@
                   <i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>{{$sumaModulos}}</h6>
-                  <!--<span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
+                  <h6></h6>
+                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                 </div>
               </div>
@@ -56,8 +56,8 @@
                   <i class="fa-solid fa-coins" style="color: #BDB22B;"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>{{$sumaCoins}}</h6>
-                  <!--<span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
+                  <h6></h6>
+                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                 </div>
               </div>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>{{$cant}}</h6>
-                  <!--<span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>-->
+                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
                 </div>
               </div>
 
@@ -193,12 +193,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($alumnos as $alumno)
+                @foreach($alumnos as $alumno)
                   <tr>
-                    <th scope="row"><a href="#">{{$alumno->id}}</a></th>
-                    <td>{{$alumno->name}}</td>
-                    <td><a href="#" class="text-primary">{{$alumno->email}}</a></td>
-                    <td>{{$alumno->rol}}</td>
+                    <th scope="row"><a href="#"></a>{{$alumno->id}}</th>
+                    <td>{{$alumno->nombres}}</td>
+                    <td><a href="#" class="text-primary"></a>{{$alumno->email}}</td>
+                    <td>{{$alumno->tipo_usuario_id}}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -222,19 +222,13 @@
           <h5 class="card-title">Últimos mensajes</h5>
 
           <div class="activity">
-            @foreach($mensajes as $mensaje)
-            @foreach($todosUsuarios as $todos)
-            @if($mensaje->id_creador==$todos->id)
             <div class="activity-item d-flex">
-              <div class="activite-label">{{$mensaje->created_at}}</div>
+              <div class="activite-label"></div>
               <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
               <div class="activity-content">
-                {{$mensaje->descripcion_mensaje}}
+
               </div>
             </div><!-- Fin mensaje item-->
-            @endif
-            @endforeach
-            @endforeach
           </div>
 
         </div>
