@@ -56,7 +56,7 @@
                   <i class="fa-solid fa-coins" style="color: #BDB22B;"></i>
                 </div>
                 <div class="ps-3">
-                  <h6></h6>
+                  <h6>{{$sumaCoins}}</h6>
                   <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                 </div>
@@ -193,7 +193,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach($alumnos as $alumno)
+                  @foreach($alumnos as $alumno)
                   <tr>
                     <th scope="row"><a href="#"></a>{{$alumno->id}}</th>
                     <td>{{$alumno->nombres}}</td>
