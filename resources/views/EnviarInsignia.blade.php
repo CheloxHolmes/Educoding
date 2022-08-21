@@ -1,7 +1,7 @@
 @extends('dashmain')
 
 @section('dash')
-@if(Auth::user()->rol=="profesor")
+@if($usuario->tipo_usuario_id==2)
 <div class="pagetitle">
     <h1>Dashboard</h1>
     <nav>
@@ -28,12 +28,12 @@
                 @foreach($alumnos as $alumno)
                 <tr>
                     <th scope="row">{{$alumno->id}}</th>
-                    <td>{{$alumno->name}}</td>
+                    <td>{{$alumno->nombres}}</td>
                     <td>{{$alumno->email}}</td>
                     <td>
                         <select>
                             @foreach($insignia as $ing)
-                            <option>{{$ing->titulo}}</option>
+                            <option>{{$ing->nombre}}</option>
                             @endforeach
                         </select>
                     </td>
