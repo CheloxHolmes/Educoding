@@ -1,7 +1,7 @@
 @extends('dashmain')
 
 @section('dash')
-@if(Auth::user()->rol=="profesor")
+@if($usuario->tipo_usuario_id==2)
 <div class="pagetitle">
     <h1>Dashboard</h1>
     <nav>
@@ -14,15 +14,15 @@
 
 <section class="section dashboard">
     <div class="row">
-    @foreach($insignia as $ing)
+        @foreach($insignia as $insg)
         <div class="card" style="width: 18rem;margin:2%;">
-            <img src="{{asset('assets/img/insignias/'.$ing->imagen)}}" class="card-img-top" alt="...">
+            <img src="{{asset('assets/img/insignias/'.$insg->descripcion)}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{ $ing->titulo }}</h5>
-                <p class="card-text">{{ $ing->descripcion }}</p>
+                <h5 class="card-title">{{ $insg->nombre }}</h5>
+                <p class="card-text"></p>
             </div>
         </div>
-    @endforeach
+        @endforeach
     </div>
 </section>
 @endif

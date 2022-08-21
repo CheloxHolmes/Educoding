@@ -15,33 +15,33 @@ class InsigniasController extends Controller
 {
     public function insignias()
     {
-        $insignia = Insignia::all();
-        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
-        $countMensajes = count($mensajes);
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+        $insignia = DB::select("SELECT * FROM imagen WHERE id_elemento BETWEEN 301 AND 307;");
         $todoUsuarios = User::all();
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         
         return view('insignias', [
             'insignia' => $insignia,
-            'mensajes' => $mensajes,
             'todosUsuarios' => $todoUsuarios,
-            'countMensajes' => $countMensajes
+            'avatar' => $imagen->descripcion,
+            'usuario' => $usuario,
         ]);
     }
 
     public function listaAlumnos()
     {
-        $alumnos = User::where('rol', 'alumno')->get();
-        $insignia = Insignia::all();
-        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
-        $countMensajes = count($mensajes);
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $alumnos = DB::select("SELECT * FROM usuario WHERE tipo_usuario_id = 3;");
+        $insignia = DB::select("SELECT * FROM imagen WHERE id_elemento BETWEEN 301 AND 307;");
         $todoUsuarios = User::all();
 
         return view('EnviarInsignia', [
             'alumnos' => $alumnos,
             'insignia' => $insignia,
-            'mensajes' => $mensajes,
             'todosUsuarios' => $todoUsuarios,
-            'countMensajes' => $countMensajes
+            'avatar' => $imagen->descripcion,
+            'usuario' => $usuario,
         ]);
     }
 }
