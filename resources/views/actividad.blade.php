@@ -114,30 +114,7 @@
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
                 $("#finisContent").css("display", "block");
-
-                $.ajax({
-                    type: 'GET',
-                    dataType: 'json',
-                    url: '/actividad/'+libros[currentBook].id+'/sumar',
-                    data: {
-                        __id: "0"
-                    },
-                    success: function(data) {
-                        alert("PUNTOS SUMADOS");
-
-                        /*let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
-                        modulosActual = modulosActual + 1;
-                        $("#modulosValue").html("Módulos: " + modulosActual + "/30");*/
-
-                        let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
-                        coinsActual = coinsActual + 3;
-                        $("#coinsValue").html("uLearnet Coins: " + coinsActual + "/30");
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        alert("Error al sumar coins, arregla eso MARCELO, me desespero");
-                    }
-                });
-
+                sumarCoins()
             } else {
                 alert("¡Respuesta incorrecta!");
             }
@@ -153,6 +130,7 @@
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
                 $("#finisContent").css("display", "block");
+                sumarCoins()
             } else {
                 alert("¡Respuesta incorrecta!");
             }
@@ -160,6 +138,31 @@
         } else {
             alert("Debes dar una respuesta!");
         }
+    }
+
+    function sumarCoins() {
+        $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '/actividad/'+libros[currentBook].id+'/sumar',
+                    data: {
+                        __id: "0"
+                    },
+                    success: function(data) {
+                        alert("Puntos sumados");
+
+                        /*let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
+                        modulosActual = modulosActual + 1;
+                        $("#modulosValue").html("Módulos: " + modulosActual + "/30");*/
+
+                        let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
+                        coinsActual = coinsActual + 3;
+                        $("#coinsValue").html("uLearnet Coins: " + coinsActual + "/30");
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert("Error al sumar coins, arregla eso MARCELO, me desespero");
+                    }
+                });
     }
 
     function closeBook() {
@@ -240,15 +243,15 @@
 
         <div id="pageContent">
             <img id="topImageImg" src="" class="inner-image" style="display:block;position: absolute;top: 148px;right: 625px;width: 130px;" />
-            <p id="leftTextP" style="font-family: 'Brush Script MT', cursive;display: block;position: absolute;top: 305px;    right: 530px;width: 298px;font-size: 35px;"></p>
+            <p id="leftTextP" style="font-family: 'Brush Script MT', cursive;display: block;position: absolute;top: 305px;    right: 530px;width: 298px;font-size: 28px;"></p>
             <img id="arrowPagesImg" src="{{asset('arrow.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 495px;right: 213px;" onclick="nextPage()" />
             <img id="submitSimpleAnswer" src="{{asset('play.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 333px;right: 213px;" onclick="answerPage()" />
             <img id="submitAlternativesAnswer" src="{{asset('play.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 333px;right: 213px;" onclick="answerAlternativesPage()" />
             <input id="inputSimpleAnswer" class="form-control" style="display: none;position: absolute;top: 339px;right: 293px;width: 213px;font-size: 20px;height: 53px;background: url();border: 1px solid;font-family: 'Brush Script MT', cursive;" />
             
-            <!--<select id="inputAlternativesAnswer" class="form-control" style="display: none;position: absolute;top: 339px;right: 293px;width: 213px;font-size: 20px;height: 53px;background: url();border: 1px solid;font-family: 'Brush Script MT', cursive;">
+            <select id="inputAlternativesAnswer" class="form-control" style="display: none;position: absolute;top: 339px;right: 293px;width: 213px;font-size: 20px;height: 53px;background: url();border: 1px solid;font-family: 'Brush Script MT', cursive;">
                 <option value="">Seleccionar...</option>
-            </select>-->
+            </select>
         </div>
 
         <div id="finisContent" style="display:none">

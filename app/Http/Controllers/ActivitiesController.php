@@ -55,10 +55,9 @@ class ActivitiesController extends Controller
     public function sumarCoins()
     {
         $usuario = User::find(Auth::id());
-        $inventario = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";")[0];
-        $inventario->cantidad = $inventario->cantidad + 3;
-        //$usuario->ModulosCompletados = $usuario->ModulosCompletados + 1;
-        $inventario->save();
+
+        DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";");
+
         return response()->json("{'resultado':'true'}");
     }
 }
