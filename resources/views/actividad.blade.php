@@ -95,6 +95,10 @@
             return false;
         }
 
+        console.log("REPRODUCIR");
+        var audio = new Audio('./page.mp3');
+        audio.play();
+
         currentPage = 0;
         currentBook = num - 1;
         $("#pagesImg").css("display", "block");
@@ -188,7 +192,7 @@
         $("#prevScenarioImg").css("display", "none");
         $("#nextScenarioImg").css("display", "block");
         $("#booksContainer2").css("display", "none");
-        $("#background").attr("src", "https://i.imgur.com/JOPNIdE.jpg");
+        $("#background").attr("src", $("#background1").val());
     }
 
     function Scenario2() {
@@ -196,7 +200,7 @@
         $("#booksContainer1").css("display", "none");
         $("#prevScenarioImg").css("display", "block");
         $("#nextScenarioImg").css("display", "none");
-        $("#background").attr("src", "https://i.imgur.com/XRsBB5h.jpg");
+        $("#background").attr("src", $("#background2").val());
         $("#booksContainer2").css("display", "block");
     }
 
@@ -229,8 +233,9 @@
         </div>
 
         <!--CASA-->
-        <img id="background" style="border-radius:20px;" src="{{asset('casa1.jpg')}}">
-
+        <img id="background" style="border-radius:20px;width:100%" src="{{$background1}}">
+        <input type="hidden" value="{{$background1}}" id="background1">
+        <input type="hidden" value="{{$background2}}" id="background2">
         <!--
         <img id="background2" style="display: none;border-radius:20px;position: absolute;top: 0px;" src="{{asset('casa2.jpg')}}">-->
 
@@ -264,9 +269,14 @@
 
     </div>
 
-    <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
+    <div style="margin-top:3%;margin-bottom:3%;text-align:center;"></div>
         <h1>Actividad {{$actividad->id}} {{$actividad->nombre}}</h1>
     </div>
+
+    <audio controls autoplay style="border:1px solid black;">
+        <source src="{{asset('mp3/elevator.mp3')}}" type="audio/mpeg">
+    </audio>
+
 </div>
 
 

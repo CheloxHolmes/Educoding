@@ -18,6 +18,8 @@ class ActivitiesController extends Controller
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
         $ids_books = DB::select("SELECT elemento_id FROM eccloud.item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $background1 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-1';")[0];
+        $background2 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-2';")[0];
 
         $books = [];
 
@@ -49,6 +51,8 @@ class ActivitiesController extends Controller
             'booksArrayString' => json_encode($books),
             'usuario' => $usuario,
             'coins' => $coins,
+            'background1' => $background1->descripcion,
+            'background2' => $background2->descripcion,
         ]);
     }
 
