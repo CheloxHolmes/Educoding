@@ -28,10 +28,10 @@
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; margin-bottom:3%;margin-top:3%;">
 
         <!--INGLES-->
-        <img src="{{asset('assets/img/INGLES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 470px;right: -1150px" onclick="linkActividad('/actividad/ingles')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/INGLES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 470px;right: -1150px" onclick="linkActividad('/actividad/3')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
 
         <!--HISTORIA-->
-        <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 260px;right: 120px" onclick="linkActividad('/actividad/historia')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 260px;right: 120px" onclick="linkActividad('/actividad/1')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
 
         <!--MATEMATICAS-->
         <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1200px;right: 190px;" onclick="linkActividad('/actividad/2')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
