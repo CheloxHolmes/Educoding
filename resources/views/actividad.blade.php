@@ -17,6 +17,8 @@
         console.log("LIBROS:", libros);
         usuario = JSON.parse($("#userObj").val());
         console.log("USUARIOS:", usuario);
+
+        random_position()
     });
     let currentBook = -1;
     let currentPage = -1;
@@ -39,16 +41,15 @@
                     paginaEnUso.tipo = "alternativas";
 
                     let alternativas = paginaEnUso.justificacion.split("|");
-                    for (var a=0; a<alternativas.length; a++) {
-                        $("#inputAlternativesAnswer").append("<option>"+alternativas[a]+"</option>");
+                    for (var a = 0; a < alternativas.length; a++) {
+                        $("#inputAlternativesAnswer").append("<option>" + alternativas[a] + "</option>");
 
                         if (alternativas[a].includes("*")) {
                             paginaEnUso.respuesta = alternativas[a];
                             libros[currentBook].respuesta = alternativas[a];
                         }
                     }
-                }
-                else {
+                } else {
                     paginaEnUso.tipo = "pregunta";
                     paginaEnUso.respuesta = paginaEnUso.justificacion;
                     libros[currentBook].respuesta = paginaEnUso.justificacion;
@@ -110,6 +111,9 @@
     function nextPage() {
         ++currentPage;
         loadCurrentPageContent(currentPage);
+        console.log("REPRODUCIR");
+        var audio = new Audio('./page.mp3');
+        audio.play();
     }
 
     function answerPage() {
@@ -146,27 +150,27 @@
 
     function sumarCoins() {
         $.ajax({
-                    type: 'GET',
-                    dataType: 'json',
-                    url: '/actividad/'+libros[currentBook].id+'/sumar',
-                    data: {
-                        __id: "0"
-                    },
-                    success: function(data) {
-                        alert("Puntos sumados");
+            type: 'GET',
+            dataType: 'json',
+            url: '/actividad/' + libros[currentBook].id + '/sumar',
+            data: {
+                __id: "0"
+            },
+            success: function(data) {
+                alert("Puntos sumados");
 
-                        /*let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
-                        modulosActual = modulosActual + 1;
-                        $("#modulosValue").html("Módulos: " + modulosActual + "/30");*/
+                /*let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
+                modulosActual = modulosActual + 1;
+                $("#modulosValue").html("Módulos: " + modulosActual + "/30");*/
 
-                        let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
-                        coinsActual = coinsActual + 3;
-                        $("#coinsValue").html("uLearnet Coins: " + coinsActual + "/30");
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        alert("Error al sumar coins, arregla eso MARCELO, me desespero");
-                    }
-                });
+                let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
+                coinsActual = coinsActual + 3;
+                $("#coinsValue").html("uLearnet Coins: " + coinsActual + "/30");
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert("Error al sumar coins, arregla eso MARCELO, me desespero");
+            }
+        });
     }
 
     function closeBook() {
@@ -213,9 +217,43 @@
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
     }
+
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function random_position() {
+        let n_libros = 6;
+
+        let area = 0;
+
+        for (var l = 1; l <= n_libros; l++) {
+
+            console.log("AREA", area);
+
+            if (area == 0) {
+                $("#bookLink-" + l).css("right", getRndInteger(5, 300).toString() + "px");
+                ++area;
+            }
+            else if (area == 1) {
+                $("#bookLink-" + l).css("right", getRndInteger(350, 650).toString() + "px");
+                ++area;
+            }
+            else if (area == 2) {
+                $("#bookLink-" + l).css("right", getRndInteger(700, 950).toString() + "px");
+                ++area;
+            }
+
+            if (area == 3) {
+                area = 0;
+            }
+
+            $("#bookLink-" + l).css("top", getRndInteger(50, 500).toString() + "px");
+        }
+    }
 </script>
 
-<div class="container" style="margin-top:8%;margin-bottom:10%">
+<div class="container" style="margin-top:8%;margin-bottom:8%">
 
     <div style="position: relative;display: block;">
 
@@ -253,7 +291,7 @@
             <img id="submitSimpleAnswer" src="{{asset('play.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 333px;right: 213px;" onclick="answerPage()" />
             <img id="submitAlternativesAnswer" src="{{asset('play.png')}}" class="inner-image" style="cursor:pointer;display:none;position: absolute;top: 333px;right: 213px;" onclick="answerAlternativesPage()" />
             <input id="inputSimpleAnswer" class="form-control" style="display: none;position: absolute;top: 339px;right: 293px;width: 213px;font-size: 20px;height: 53px;background: url();border: 1px solid;font-family: 'Brush Script MT', cursive;" />
-            
+
             <select id="inputAlternativesAnswer" class="form-control" style="display: none;position: absolute;top: 339px;right: 293px;width: 213px;font-size: 20px;height: 53px;background: url();border: 1px solid;font-family: 'Brush Script MT', cursive;">
                 <option value="">Seleccionar...</option>
             </select>
@@ -269,16 +307,15 @@
 
     </div>
 
-    <div style="margin-top:3%;margin-bottom:3%;text-align:center;"></div>
+    <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
         <h1>Actividad {{$actividad->id}} {{$actividad->nombre}}</h1>
     </div>
 
-    <audio controls autoplay style="border:1px solid black;">
-        <source src="{{asset('mp3/elevator.mp3')}}" type="audio/mpeg">
-    </audio>
+<audio controls autoplay style="border:1px solid black;margin:2%;">
+    <source src="{{asset('mp3/aventura.mp3')}}" type="audio/mpeg">
+</audio>
 
 </div>
-
 
 <button class="open-button" onclick="openForm()">Estado</button>
 

@@ -51,6 +51,10 @@ Route::get('/insignias', [App\Http\Controllers\InsigniasController::class, 'insi
 
 Route::get('/EnviarInsignia', [App\Http\Controllers\InsigniasController::class, 'listaAlumnos'])->middleware('auth');
 
+Route::post('/insignia/asignar/alumno', [App\Http\Controllers\InsigniasController::class, 'enviarInsignia'])->middleware('auth');
+
+Route::get('/insignias/asignacion/eliminar/{idalumno}/{idinsignia}', [App\Http\Controllers\InsigniasController::class, 'eliminarInsignia'])->middleware('auth');
+
 Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
 //Route::get('/actividad/{nombre}/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);

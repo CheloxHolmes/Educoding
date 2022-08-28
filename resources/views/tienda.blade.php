@@ -53,6 +53,9 @@
     </div>
 
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; ">
+        <audio controls autoplay style="border:1px solid black;margin:3%;">
+            <source src="{{asset('mp3/elevator.mp3')}}" type="audio/mpeg">
+        </audio>
 
         <div class="row" style="margin-bottom:3%;">
             <div class="col-lg-6">
