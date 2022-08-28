@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="card" style="margin:1.5%;width:45%">
-            <div class="card-header">
+            <div class="card-header" style="color:white !important;">
                 <strong>Estado</strong>
             </div>
             <div class="card-body">
@@ -28,19 +28,26 @@
             </div>
         </div>
         <div class="card" style="margin:1.5%;width:45%">
-            <div class="card-header">
+            <div class="card-header" style="color:white !important;">
                 <strong>Insignias</strong>
             </div>
             <div class="card-body">
                 <h5 class="card-title">¡Aquí exponemos tu honor!</h5>
                 <p class="card-text">Aquí van tus insignias</p>
-                <a href="#" class="btn">Ver más</a>
+                <div class="row">
+                    @foreach($insignias as $insignia)
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{asset('assets/img/insignias/'.$insignia->descripcion)}}" class="card-img-top" style="width:50px">
+                        <p>{{$insignia->nombre}}</p>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="card" style="margin:1.5%;width:45%">
-            <div class="card-header">
+            <div class="card-header" style="color:white !important;">
                 <strong>Amigos</strong>
             </div>
             <div class="card-body">
@@ -50,7 +57,7 @@
             </div>
         </div>
         <div class="card" style="margin:1.5%;width:45%">
-            <div class="card-header">
+            <div class="card-header" style="color:white !important;">
                 <strong>Módulos completados</strong>
             </div>
             <div class="card-body">

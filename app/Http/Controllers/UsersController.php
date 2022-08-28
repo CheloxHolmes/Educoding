@@ -20,7 +20,9 @@ class UsersController extends Controller
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0];
         $rol = DB::select("SELECT nombre FROM tipo_usuario WHERE id = '".$usuario->tipo_usuario_id."';")[0];
-        //$imagen = Imagen::where('nombre', $usuario->email)->get();
+
+        $insignias = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id INNER JOIN imagen on inventario_reim.id_elemento = imagen.id_elemento WHERE sesion_id = ".$usuario->id." AND elemento.nombre LIKE 'Insignia%';");
+        $cantidadInsignias = count($insignias);
 
         return view('perfil', [
 
@@ -28,6 +30,7 @@ class UsersController extends Controller
             'avatar' => $imagen->descripcion,
             'coins' => $coins,
             'rol' => $rol,
+            'insignias' => $insignias,
 
         ]);
     }
