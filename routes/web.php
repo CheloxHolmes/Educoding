@@ -23,8 +23,11 @@ Route::get('/', function () {
 //Perfil
 
 Route::get('/perfil/{id}', [App\Http\Controllers\UsersController::class, 'profile'])->middleware('auth');
+
 Route::get('/perfil/avatar/{newAvatar}', [App\Http\Controllers\UsersController::class, 'editAvatar'])->middleware('auth');
+
 Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editProfile'])->middleware('auth');
+
 Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsersController::class, 'updateProfile'])->middleware('auth');
 
 Route::get('/contacto', function () {
@@ -42,7 +45,9 @@ Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'das
 //Mensajes
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
+
 Route::get('/crearMensaje/{id}', [App\Http\Controllers\MensajesController::class, 'crearMensaje'])->middleware('auth');
+
 Route::post('/mensaje/crear', [App\Http\Controllers\MensajesController::class, 'guardarMensaje'])->middleware('auth');
 
 //Insignias
@@ -55,17 +60,19 @@ Route::post('/insignia/asignar/alumno', [App\Http\Controllers\InsigniasControlle
 
 Route::get('/insignias/asignacion/eliminar/{idalumno}/{idinsignia}', [App\Http\Controllers\InsigniasController::class, 'eliminarInsignia'])->middleware('auth');
 
-Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
+//Tienda
 
-//Route::get('/actividad/{nombre}/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
+Route::get('/tienda', [App\Http\Controllers\TiendaController::class, 'tienda'])->middleware('auth');
+
+Route::get('/tienda/comprar/{idelemento}', [App\Http\Controllers\TiendaController::class, 'comprar'])->middleware('auth');
+
+//Actividades
+
+Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
 Route::get('/actividad/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
 
 Route::get('/actividad/{id}/sumar', [App\Http\Controllers\ActivitiesController::class, 'sumarCoins']);
-
-Route::get('/tienda/{id}', function () {
-    return view('tienda');
-});
 
 Auth::routes();
 

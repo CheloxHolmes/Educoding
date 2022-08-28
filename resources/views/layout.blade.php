@@ -162,8 +162,14 @@
     @endauth
     <main>
 
-        @yield('content')
+    @if(Session::has('error'))
+        <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error')}}</strong></p><br>
+    @endif
+    @if(Session::has('success'))
+        <p style="text-align:center;"><strong class="col-md-6" style="color:green;">{{Session::get('success')}}</strong></p><br>
+    @endif
 
+        @yield('content')
     </main>
     <footer>
         <div class="footer-wrappper footer-bg">

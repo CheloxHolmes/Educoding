@@ -37,7 +37,7 @@
         <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1200px;right: 190px;" onclick="linkActividad('/actividad/2')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--TIENDA-->
-        <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1000px;right: 10px;" onclick="linkActividad('/tienda/1')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1000px;right: 10px;" onclick="linkActividad('/tienda')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--LENGUAJE-->
         <img src="{{asset('assets/img/ARTES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1220px;right: 170px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
