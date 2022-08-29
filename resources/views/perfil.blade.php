@@ -48,12 +48,19 @@
     <div class="row">
         <div class="card" style="margin:1.5%;width:45%">
             <div class="card-header" style="color:white !important;">
-                <strong>Amigos</strong>
+                <strong>Inventario</strong>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Toma contacto con tus amigos</h5>
-                <p class="card-text">Aquí podrás ver tus amigos en la plataforma</p>
-                <a href="#" class="btn">Buscar amigos</a>
+                <h5 class="card-title">Aqui van los objetos que has comprado en la tienda</h5>
+                <p class="card-text">Aquí van los items que has comprado con tanto esfuerzo</p>
+                <div class="row">
+                    @foreach($items as $item)
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{asset('assets/img/'.$item->descripcion)}}" class="card-img-top" style="width:50px">
+                        <p>{{$item->nombre}}</p>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <div class="card" style="margin:1.5%;width:45%">
