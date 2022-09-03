@@ -96,9 +96,17 @@ class RegisterController extends Controller
 
         ]);
 
-        Imagen::create([
+        InventarioReim::create([
 
-            'idimagen' => $usuario->id,
+            'sesion_id' => $usuario->id,
+            'id_elemento' => 500,
+            'cantidad' => 0,
+            'datetime_creacion' => $usuario->created_at,
+
+        ]);
+
+        Imagen::create([
+            
             'nombre' => $usuario->email,
             'id_elemento' => 1,
             'descripcion' => 'user-(10).png',

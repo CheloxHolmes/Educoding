@@ -20,6 +20,7 @@ class ActivitiesController extends Controller
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $background1 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-1';")[0];
         $background2 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-2';")[0];
+        $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
 
         $books = [];
 
@@ -51,9 +52,16 @@ class ActivitiesController extends Controller
             'booksArrayString' => json_encode($books),
             'usuario' => $usuario,
             'coins' => $coins,
+            'modulosCompletados' => $modulosCompletados->cantidad,
             'background1' => $background1->descripcion,
             'background2' => $background2->descripcion,
         ]);
+    }
+
+    public function actividadLenguaje(){
+
+        return view('actividadLenguaje');
+
     }
 
     public function sumarCoins()
@@ -61,6 +69,7 @@ class ActivitiesController extends Controller
         $usuario = User::find(Auth::id());
 
         DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";");
+        DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 1) WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";");
 
         return response()->json("{'resultado':'true'}");
     }

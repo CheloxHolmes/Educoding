@@ -81,6 +81,7 @@ class UsersController extends Controller
         $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0];
+        $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
         
         //$imagen = Imagen::where('nombre', $usuario->email)->get();
 
@@ -89,6 +90,7 @@ class UsersController extends Controller
             'usuario' => $usuario,
             'avatar' => $imagen->descripcion,
             'coins' => $coins,
+            'modulosCompletados' => $modulosCompletados->cantidad,
             
         ]);
     }

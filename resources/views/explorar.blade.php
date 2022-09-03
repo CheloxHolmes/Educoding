@@ -40,7 +40,7 @@
         <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1000px;right: 10px;" onclick="linkActividad('/tienda')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--LENGUAJE-->
-        <img src="{{asset('assets/img/ARTES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1220px;right: 170px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/ARTES1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 300px;height: 100px;position: inherit;top: 1220px;right: 170px;" onclick="linkActividad('/actividadLenguaje')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--CAMBIO MAPA-->
         <!--<img src="{{asset('assets/img/map.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 100px;height: 100px;position: inherit;top: 600px;right: -725px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />-->
@@ -62,7 +62,7 @@
                 <img src="{{asset('assets/img/avatar/'.$avatar)}}" style="width: 100%;height:100%;">
             </div>
             @endif
-            <button type="button" class="btn btn-lg btn-primary" disabled>Módulos: {{ Auth::user()->ModulosCompletados }}/30</button>
+            <button type="button" class="btn btn-lg btn-primary" disabled>Módulos: Módulos: {{ $modulosCompletados }}</button>
             @foreach($coins as $coin)
             <button type="button" class="btn btn-lg btn-primary" disabled>uNearlet Coins: {{ $coin }} </button>
             @endforeach

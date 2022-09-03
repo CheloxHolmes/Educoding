@@ -159,13 +159,13 @@
             success: function(data) {
                 alert("Puntos sumados");
 
-                /*let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
+                let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
                 modulosActual = modulosActual + 1;
-                $("#modulosValue").html("Módulos: " + modulosActual + "/30");*/
+                $("#modulosValue").html("Módulos: " + modulosActual);
 
                 let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
                 coinsActual = coinsActual + 3;
-                $("#coinsValue").html("uLearnet Coins: " + coinsActual + "/30");
+                $("#coinsValue").html("uLearnet Coins: " + coinsActual);
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert("Error al sumar coins, arregla eso MARCELO, me desespero");
@@ -327,7 +327,7 @@
             <img src="{{asset('assets/img/avatar/'.$avatar)}}" style="width: 100%;height:100%;">
         </div>
         @endif
-        <button id="modulosValue" type="button" class="btn btn-lg btn-primary" disabled>Módulos: {{ Auth::user()->ModulosCompletados }}/30</button>
+        <button id="modulosValue" type="button" class="btn btn-lg btn-primary" disabled>Módulos: {{ $modulosCompletados }}</button>
         <button id="coinsValue" type="button" class="btn btn-lg btn-primary" disabled>uLearnet Coins: {{ $coins }}</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Cerrar</button>
     </form>

@@ -1,0 +1,110 @@
+canvas {
+    border-radius: 2.5rem;
+    margin-left: 100px;
+    background-color: white;
+    position: absolute;
+    cursor: crosshair;
+}
+
+input {
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5%;
+    position: absolute;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+input:hover {
+    opacity: .8;
+}
+
+input:focus {
+    outline: 1.5px solid grey;
+}
+
+.azul {
+    background-color: #99e6ff;
+    margin-top: 50px;
+}
+
+.lila {
+    background-color: #99b3ff;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.rosa {
+    background-color: #ff99cc;
+    margin-top: 90px;
+}
+
+.rojo {
+    background-color: #ff9999;
+    margin-top: 90px;
+    margin-left: 50px;
+}
+
+.amarillo {
+    background-color: #ffff99;
+    margin-top: 130px;
+}
+
+.verde {
+    background-color: #99ff99;
+    margin-top: 130px;
+    margin-left: 50px;
+}
+
+.tamaño1 {
+    background-color: black;
+    border: none;
+    width: 80px;
+    height: 5px;
+    margin-top: 200px;
+    position: absolute;
+    margin-left: 5px;
+}
+
+.tamaño2 {
+    background-color: black;
+    border: none;
+    width: 80px;
+    height: 10px;
+    margin-top: 225px;
+    position: absolute;
+    margin-left: 5px;
+}
+
+.tamaño3 {
+    background-color: black;
+    border: none;
+    width: 80px;
+    height: 15px;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 255px;
+}
+
+.borrar {
+    background: linear-gradient(to right, #475FBD 34%, #C45A65 35%);
+    border: none;
+    border-radius: 10px;
+    font-family: helvetica;
+    font-size: 18px;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 300px;
+    width: 70px;
+    height: 40px
+}
+
+p {
+    font-family: 'Cute Font', cursive;
+    position: absolute;
+    font-size: 25px;
+    color: #FF9447;
+    margin-left: 130px;
+    margin-top: 505px;
+}
