@@ -76,9 +76,11 @@ Route::get('/tienda/comprar/{idelemento}', [App\Http\Controllers\TiendaControlle
 
 Route::get('/explorar/{id}', [App\Http\Controllers\UsersController::class, 'explore'])->middleware('auth');
 
-Route::get('/actividad/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad']);
+Route::get('/actividad/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividad'])->middleware('auth');
 
-Route::get('/actividad/{id}/sumar', [App\Http\Controllers\ActivitiesController::class, 'sumarCoins']);
+Route::get('/actividadLenguaje', [App\Http\Controllers\ActivitiesController::class, 'actividadLenguaje'])->middleware('auth');
+
+Route::get('/actividad/{id}/sumar', [App\Http\Controllers\ActivitiesController::class, 'sumarCoins'])->middleware('auth');
 
 Auth::routes();
 
