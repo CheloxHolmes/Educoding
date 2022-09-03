@@ -140,4 +140,22 @@ class UsersController extends Controller
         DB::select("UPDATE imagen SET descripcion = '".$newAvatar."' WHERE nombre = '".$usuario->email."';");
         return redirect("/perfil/$usuario->id");
     }
+
+    public function admin($id){
+
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
+        $admin = DB::select("SELECT * FROM usuario WHERE tipo_usuario_id = 1;")[0];
+        $allUsers = DB::select("SELECT * FROM usuario INNER JOIN tipo_usuario on usuario.tipo_usuario_id = tipo_usuario.id;");
+
+        return view('admin', [
+
+            'admin' => $admin,
+            'usuario' => $usuario,
+            'allUsers' => $allUsers,
+        ]);
+
+    }
+
 }
+
+
