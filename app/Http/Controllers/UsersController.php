@@ -156,6 +156,17 @@ class UsersController extends Controller
 
     }
 
+    public function cambiarRol(Request $request){
+
+        $data = $request->all();
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+        info($data["rol"]);
+        info($data["id_usuario"]);
+        DB::update("UPDATE usuario SET tipo_usuario_id = ".$data["rol"]." WHERE id = ".$data["id_usuario"].";");
+        Session::flash('success', 'Rol cambiado con éxito');
+        return redirect("/admin/$usuario->id");
+    }
+
 }
 
 

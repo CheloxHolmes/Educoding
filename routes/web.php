@@ -46,6 +46,8 @@ Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'das
 
 Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin'])->middleware('auth');
 
+Route::post('/admin/cambiar/rol', [App\Http\Controllers\UsersController::class, 'cambiarRol'])->middleware('auth');
+
 //Mensajes
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
