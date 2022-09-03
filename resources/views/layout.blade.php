@@ -140,6 +140,9 @@
                                                         @if(Auth::user()->tipo_usuario_id=="2")
                                                         <li><a style="color:black;" class="dropdown-item" href="/dashboard/{{ Auth::user()->id }}">Dashboard</a></li>
                                                         @endif
+                                                        @if(Auth::user()->tipo_usuario_id=="1")
+                                                        <li><a style="color:black;" class="dropdown-item" href="/admin/{{ Auth::user()->id }}">Administración</a></li>
+                                                        @endif
                                                         <li><a style="color:black;" class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>
                                                     </ul>
                                                 </li>
@@ -161,13 +164,6 @@
     </header>
     @endauth
     <main>
-
-    @if(Session::has('error'))
-        <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error')}}</strong></p><br>
-    @endif
-    @if(Session::has('success'))
-        <p style="text-align:center;"><strong class="col-md-6" style="color:green;">{{Session::get('success')}}</strong></p><br>
-    @endif
 
         @yield('content')
     </main>

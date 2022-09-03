@@ -42,6 +42,10 @@ Route::get('/about', function () {
 
 Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
 
+//Admin
+
+Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin'])->middleware('auth');
+
 //Mensajes
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
