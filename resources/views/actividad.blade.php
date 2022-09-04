@@ -17,7 +17,7 @@
         console.log("LIBROS:", libros);
         usuario = JSON.parse($("#userObj").val());
         console.log("USUARIOS:", usuario);
-
+        $(".nice-select").css("display", "none");
         random_position()
     });
     let currentBook = -1;
@@ -79,6 +79,7 @@
             $("#topImageImg").attr('src', paginaEnUso.imagen);
             $("#leftTextP").html(paginaEnUso.texto);
             $("#inputAlternativesAnswer").css("display", "block");
+            $(".nice-select").css("display", "block");
             $("#submitAlternativesAnswer").css("display", "block");
         }
 
@@ -116,11 +117,20 @@
         audio.play();
     }
 
+    function sonidoAplausos() {
+        console.log("REPRODUCIR APLAUSOS");
+        var audio = new Audio('./applause.mp3');
+        audio.play();
+    }
+
     function answerPage() {
         if ($("#inputSimpleAnswer").val() != "") {
             if ($("#inputSimpleAnswer").val() == libros[currentBook].respuesta) {
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
+
+                sonidoAplausos();
+
                 $("#finisContent").css("display", "block");
                 sumarCoins()
             } else {
@@ -137,6 +147,9 @@
             if ($("#inputAlternativesAnswer").val() == libros[currentBook].respuesta) {
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
+
+                sonidoAplausos()
+
                 $("#finisContent").css("display", "block");
                 sumarCoins()
             } else {
@@ -181,6 +194,7 @@
         $("#submitAlternativesAnswer").css("display", "none");
         $("#inputSimpleAnswer").css("display", "none");
         $("#inputAlternativesAnswer").css("display", "none");
+        $(".nice-select").css("display", "none");
         $("#inputSimpleAnswer").val("");
         currentPage = -1;
         currentBook = -1;
@@ -311,7 +325,7 @@
         <h1>Actividad {{$actividad->id}} {{$actividad->nombre}}</h1>
     </div>
 
-<audio controls autoplay style="border:1px solid black;margin:2%;">
+<audio autoplay style="border:1px solid black;margin:2%;">
     <source src="{{asset('mp3/aventura.mp3')}}" type="audio/mpeg">
 </audio>
 

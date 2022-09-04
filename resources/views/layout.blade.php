@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/star.png')}}">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -66,17 +66,17 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="/explorar/{{Auth::id()}}">Explora la ciudad</a></li>
-                                                <li><a href="/about">Nosotros</a></li>
-                                                <li><a href="#">Colegios</a>
+                                                <li class="active"><a href="/"> <i class="fa fa-home"></i> Inicio</a></li>
+                                                <li><a href="/explorar/{{Auth::id()}}"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
+                                                <li><a href="/about"> <i class="fa fa-users"></i> Nosotros</a></li>
+                                                <li><a href="#"> <i class="fa fa-building"></i> Colegios</a>
                                                     <!--<ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
                                                         <li><a href="blog_details.html">Blog Details</a></li>
                                                         <li><a href="elements.html">Element</a></li>
                                                     </ul>-->
                                                 </li>
-                                                <li><a href="/contacto">Contacto</a></li>
+                                                <li><a href="/contacto"> <i class="fa fa-envelope"></i> Contacto</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="/register" class="btn">Registrarse</a></li>
                                                 <li class="button-header"><a href="/login" class="btn">Iniciar sesión</a></li>
@@ -117,23 +117,23 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li class="active"><a href="/">Inicio</a></li>
-                                                <li><a href="/explorar/{{Auth::id()}}">Explora la ciudad</a></li>
-                                                <li><a href="/about">Nosotros</a></li>
-                                                <li><a href="#">Colegios</a>
+                                                <li class="active"><a href="/"> <i class="fa fa-home"></i> Inicio</a></li>
+                                                <li><a href="/explorar/{{Auth::id()}}"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
+                                                <li><a href="/about"> <i class="fa fa-users"></i> Nosotros</a></li>
+                                                <li><a href="#"> <i class="fa fa-building"></i> Colegios</a>
                                                     <!--<ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
                                                         <li><a href="blog_details.html">Blog Details</a></li>
                                                         <li><a href="elements.html">Element</a></li>
                                                     </ul>-->
                                                 </li>
-                                                <li><a href="/contacto">Contacto</a></li>
+                                                <li><a href="/contacto"> <i class="fa fa-envelope"></i> Contacto</a></li>
                                                 <!-- Button -->
                                                 <li class="dropdown">
                                                     @if(Auth::user()->username==NULL)
-                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->nombres }}</a>
+                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> {{ Auth::user()->nombres }}</a>
                                                     @else
-                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
+                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> {{ Auth::user()->username }}</a>
                                                     @endif
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a style="color:black;" class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></li>
@@ -195,8 +195,8 @@
                                 <div class="footer-tittle">
                                     <h4>Nosotros</h4>
                                     <ul>
-                                        <li><a href="#"><i class="fa-solid fa-phone"></i> 56-2 2978 7011</a></li>
-                                        <li><a href="#"><i class="fa-solid fa-location-pin"></i> Av. Capitán Ignacio Carrera Pinto 1025, 5º piso, Ñuñoa - Santiago de Chile</a></li>
+                                        <li><a href="tel:56-2-2978-7011"><i class="fa-solid fa-phone"></i> 56-2 2978 7011</a></li>
+                                        <li><a target="_blank" href="https://goo.gl/maps/GFjnJiB7WGPWZQnQA"><i class="fa-solid fa-location-pin"></i> Av. Capitán Ignacio Carrera Pinto 1025, 5º piso, Ñuñoa - Santiago de Chile</a></li>
                                     </ul>
                                 </div>
                             </div>
