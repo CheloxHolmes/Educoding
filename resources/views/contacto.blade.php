@@ -66,17 +66,17 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="contact__map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425998.14892663143!2d-70.9100195384674!3d-33.472472762753654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1648414068137!5m2!1ses!2scl" height="450" style="border:0;"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425998.14892663143!2d-70.9100195384674!3d-33.472472762753654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1648414068137!5m2!1ses!2scl" width="100%" height="400px" style="border:0;"></iframe>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
                     <h3>Contáctenos</h3>
                     <form action="#">
-                        <input type="text" placeholder="Nombre">
-                        <input type="text" placeholder="Email">
-                        <textarea placeholder="Mensaje"></textarea>
-                        <button type="submit" class="site-btn">Enviar mensaje</button>
+                        <input required type="text" class="form-control" placeholder="Nombre"><br>
+                        <input required type="text" class="form-control" placeholder="Email"><br>
+                        <textarea required class="form-control" placeholder="Mensaje"></textarea><br>
+                        <button type="submit" class="btn btn-primary site-btn">Enviar mensaje</button>
                     </form>
                 </div>
             </div>

@@ -53,79 +53,83 @@
 
 
         <!--PELOTA-->
-        <img src="{{asset('assets/img/pelota.png')}}" id="img-tag-400" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 500px;right: -181px;" onclick="linkComprar('/tienda/comprar/400')" onpointerenter="showPreview('Pelota: $50 uLearnet coins')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/pelota.png')}}" id="img-tag-400" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 81%;" onclick="linkComprar('/tienda/comprar/400')" onpointerenter="showPreview('Pelota: $50 uLearnet coins')" onpointerout="hidePreview()" />
 
         <!--RELOJ-->
-        <img src="{{asset('assets/img/reloj.png')}}" id="img-tag-401" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 500px;right: -152px;" onclick="linkComprar('/tienda/comprar/401')" onpointerenter="showPreview('Reloj')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/reloj.png')}}" id="img-tag-401" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 71%;" onclick="linkComprar('/tienda/comprar/401')" onpointerenter="showPreview('Reloj')" onpointerout="hidePreview()" />
 
         <!--ALARMA-->
-        <img src="{{asset('assets/img/alarma.png')}}" id="img-tag-402" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 500px;right: -214px;" onclick="linkComprar('/tienda/comprar/402')" onpointerenter="showPreview('Alarma')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/alarma.png')}}" id="img-tag-402" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 60%;" onclick="linkComprar('/tienda/comprar/402')" onpointerenter="showPreview('Alarma')" onpointerout="hidePreview()" />
 
         <!--ZAPATO-->
-        <img src="{{asset('assets/img/zapato.png')}}" id="img-tag-403" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 370px;" onclick="linkComprar('/tienda/comprar/403')" onpointerenter="showPreview('Zapato')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/zapato.png')}}" id="img-tag-403" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 33%;" onclick="linkComprar('/tienda/comprar/403')" onpointerenter="showPreview('Zapato')" onpointerout="hidePreview()" />
 
         <!--wallet-->
-        <img src="{{asset('assets/img/wallet.png')}}" id="img-tag-404" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 404px;" onclick="linkComprar('/tienda/comprar/404')" onpointerenter="showPreview('Billetera')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/wallet.png')}}" id="img-tag-404" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 22%;" onclick="linkComprar('/tienda/comprar/404')" onpointerenter="showPreview('Billetera')" onpointerout="hidePreview()" />
 
         <!--RAQUETA-->
-        <img src="{{asset('assets/img/raquet.png')}}" id="img-tag-409" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 500px;right: -829px;" onclick="linkComprar('/tienda/comprar/409')" onpointerenter="showPreview('Raqueta')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/raquet.png')}}" id="img-tag-409" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 12%;" onclick="linkComprar('/tienda/comprar/409')" onpointerenter="showPreview('Raqueta')" onpointerout="hidePreview()" />
 
         <!--BOX-->
-        <img src="{{asset('assets/img/box.png')}}" id="img-tag-405" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: -130px;" onclick="linkComprar('/tienda/comprar/405')" onpointerenter="showPreview('Guantes')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/box.png')}}" id="img-tag-405" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 81%;" onclick="linkComprar('/tienda/comprar/405')" onpointerenter="showPreview('Guantes')" onpointerout="hidePreview()" />
 
         <!--BATE-->
-        <img src="{{asset('assets/img/bate.png')}}" id="img-tag-411" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 500px;right: -780px;" onclick="linkComprar('/tienda/comprar/411')" onpointerenter="showPreview('Bate')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/bate.png')}}" id="img-tag-411" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 71%;" onclick="linkComprar('/tienda/comprar/411')" onpointerenter="showPreview('Bate')" onpointerout="hidePreview()" />
 
         <!--MANCUERNA-->
-        <img src="{{asset('assets/img/mancuera.png')}}" id="img-tag-410" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 500px;right: -420px;" onclick="linkComprar('/tienda/comprar/410')" onpointerenter="showPreview('Mancuerna')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/mancuera.png')}}" id="img-tag-410" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 60%;" onclick="linkComprar('/tienda/comprar/410')" onpointerenter="showPreview('Mancuerna')" onpointerout="hidePreview()" />
 
         <!--botella-->
-        <img src="{{asset('assets/img/botellita.png')}}" id="img-tag-406" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 200px;right: 660px;" onclick="linkComprar('/tienda/comprar/406')" onpointerenter="showPreview('Botella')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/botellita.png')}}" id="img-tag-406" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 33%;" onclick="linkComprar('/tienda/comprar/406')" onpointerenter="showPreview('Botella')" onpointerout="hidePreview()" />
 
         <!--calculadora-->
-        <img src="{{asset('assets/img/calculadora.png')}}" id="img-tag-407" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 200px;right: 600px;" onclick="linkComprar('/tienda/comprar/407')" onpointerenter="showPreview('Calculadora')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/calculadora.png')}}" id="img-tag-407" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 22%;" onclick="linkComprar('/tienda/comprar/407')" onpointerenter="showPreview('Calculadora')" onpointerout="hidePreview()" />
 
         <!--ticket-->
-        <img src="{{asset('assets/img/ticket.png')}}" id="img-tag-408" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 200px;right: 540px;" onclick="linkComprar('/tienda/comprar/408')" onpointerenter="showPreview('Ticket')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/ticket.png')}}" id="img-tag-408" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 12%;" onclick="linkComprar('/tienda/comprar/408')" onpointerenter="showPreview('Ticket')" onpointerout="hidePreview()" />
 
         <!--camion-->
-        <img src="{{asset('assets/img/camion.png')}}" id="img-tag-412" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 200px;" onclick="linkComprar('/tienda/comprar/412')" onpointerenter="showPreview('Camion')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/camion.png')}}" id="img-tag-412" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 81%;" onclick="linkComprar('/tienda/comprar/412')" onpointerenter="showPreview('Camion')" onpointerout="hidePreview()" />
 
         <!--OSITO-->
-        <img src="{{asset('assets/img/osito.png')}}" id="img-tag-413" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 140px;" onclick="linkComprar('/tienda/comprar/413')" onpointerenter="showPreview('Osito')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/osito.png')}}" id="img-tag-413" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 71%;" onclick="linkComprar('/tienda/comprar/413')" onpointerenter="showPreview('Osito')" onpointerout="hidePreview()" />
 
         <!--PUPPY-->
-        <img src="{{asset('assets/img/puppy.png')}}" id="img-tag-414" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 80px;" onclick="linkComprar('/tienda/comprar/414')" onpointerenter="showPreview('Puppy')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/puppy.png')}}" id="img-tag-414" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 60%;" onclick="linkComprar('/tienda/comprar/414')" onpointerenter="showPreview('Puppy')" onpointerout="hidePreview()" />
 
         <!--TROFEO-->
-        <img src="{{asset('assets/img/trofeo.png')}}" id="img-tag-415" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 80px;" onclick="linkComprar('/tienda/comprar/415')" onpointerenter="showPreview('Trofeo')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/trofeo.png')}}" id="img-tag-415" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 33%;" onclick="linkComprar('/tienda/comprar/415')" onpointerenter="showPreview('Trofeo')" onpointerout="hidePreview()" />
 
         <!--VARITA-->
-        <img src="{{asset('assets/img/varita.png')}}" id="img-tag-416" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 80px;" onclick="linkComprar('/tienda/comprar/416')" onpointerenter="showPreview('Varita')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/varita.png')}}" id="img-tag-416" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 22%;" onclick="linkComprar('/tienda/comprar/416')" onpointerenter="showPreview('Varita')" onpointerout="hidePreview()" />
 
         <!--SOMBRERO-->
-        <img src="{{asset('assets/img/sombrero.png')}}" id="img-tag-417" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: inherit;top: 350px;right: 80px;" onclick="linkComprar('/tienda/comprar/417')" onpointerenter="showPreview('Sombrero')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/sombrero.png')}}" id="img-tag-417" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 12%;" onclick="linkComprar('/tienda/comprar/417')" onpointerenter="showPreview('Sombrero')" onpointerout="hidePreview()" />
 
         <!--ESTANTE1-->
         <img style="border-radius:20px;" src="{{asset('assets/img/FondoTienda.jpg')}}" width="100%">
 
-        <h4 id="opcionUsuarioPreview" style="text-align: center;"></h4>
+        <h4 id="opcionUsuarioPreview" style="position: absolute;
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    margin-top: 10px;"></h4>
     </div>
 
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; ">
 
-        <audio controls autoplay style="border:1px solid black;margin:3%;">
-            <source src="{{asset('mp3/elevator.mp3')}}" type="audio/mpeg">
-        </audio>
+    <audio autoplay style="border:1px solid black;margin:2%;">
+    <source src="{{asset('mp3/aventura.mp3')}}" type="audio/mpeg">
+</audio>
 
         <div class="row" style="margin-bottom:3%;">
             <div class="col-lg-6">
                 @foreach($coins as $coin)
-                <button type="button" class="btn btn-warning btn-block" style="background-color: rgb(255,193,7);pointer-events: none;">uLearnet coins disponibles: {{$coin}}</button>
+                <button type="button" class="btn btn-warning btn-block" style="background-color: rgb(255,193,7);pointer-events: none;"> <i class="fa fa-star"></i> uLearnet coins disponibles: {{$coin}}</button>
                 @endforeach
             </div>
             <div class="col-lg-6">
-                <button type="button" class="btn btn-info btn-block" style="pointer-events: none;">Módulos completados: 0/3</button>
+                <button type="button" class="btn btn-info btn-block" style="pointer-events: none;"> <i class="fa fa-certificate"></i> Módulos completados: 0/3</button>
             </div>
         </div>
 
