@@ -25,14 +25,14 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($allUsers as $usuario)
+        @foreach($allUsers as $user)
         <form method="POST" action="/admin/cambiar/rol">
         @csrf
           <tr>
-            <th scope="row">{{$usuario->id}}</th>
-            <td>{{$usuario->nombres}}</td>
-            <td>{{$usuario->email}}</td>
-            <td>{{$usuario->nombre}}</td>
+            <th>{{$user->id}}</th>
+            <td>{{$user->nombres}}</td>
+            <td>{{$user->email}}</td>
+            <td>{{$user->nombre}}</td>
             <td>
               <select id="rol" name="rol">
                 <option value="1">Administrador</option>
@@ -45,7 +45,7 @@
                 <option value="8">Apoderado</option>
               </select>
             </td>
-            <input type="hidden" name="id_usuario" value="{{$usuario->id}}">
+            <input type="hidden" name="id_usuario" value="{{$user->id}}">
             <td>
               <button type="submit" class="btn btn-success">Cambiar Rol</button>
             </td>

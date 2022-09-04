@@ -30,7 +30,7 @@
     margin-right: auto;
     width: 70%;
     margin-bottom: 3%;
-    background: url(http://educoding.test:81/assets/img/mapa4.png);
+    background: url({{asset('assets/img/mapa4.png')}});
     background-repeat: round;
     height: 1000px;
     margin-top: 8%;">
@@ -63,8 +63,8 @@
         <!--<img src="{{asset('assets/img/map.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 100px;height: 100px;position: inherit;top: 600px;right: -725px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />-->
 
         <!--CIUDAD-->
-        <!--
-        <img style="border-radius:20px; width: 100%; height: 100%;" src="{{asset('assets/img/mapa4.png')}}">-->
+        
+        <!--<img style="border-radius:20px; width: 100%; height: 100%;" src="{{asset('assets/img/mapa4.png')}}">-->
 
 
         <h4 id="opcionUsuarioPreview" style="text-align: center;"></h4>

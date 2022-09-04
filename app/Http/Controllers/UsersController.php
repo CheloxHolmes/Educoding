@@ -147,7 +147,7 @@ class UsersController extends Controller
 
         $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
         $admin = DB::select("SELECT * FROM usuario WHERE tipo_usuario_id = 1;")[0];
-        $allUsers = DB::select("SELECT * FROM usuario INNER JOIN tipo_usuario on usuario.tipo_usuario_id = tipo_usuario.id;");
+        $allUsers = DB::select("SELECT usuario.id, tipo_usuario_id, tipo_usuario.nombre, usuario.nombres, usuario.email FROM usuario INNER JOIN tipo_usuario on usuario.tipo_usuario_id = tipo_usuario.id;");
 
         return view('admin', [
 
@@ -162,8 +162,9 @@ class UsersController extends Controller
 
         $data = $request->all();
         $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
-        info($data["rol"]);
-        info($data["id_usuario"]);
+        echo($data["rol"]);
+        echo($data["id_usuario"]);
+        echo("UPDATE usuario SET tipo_usuario_id = ".$data["rol"]." WHERE id = ".$data["id_usuario"].";");
         DB::update("UPDATE usuario SET tipo_usuario_id = ".$data["rol"]." WHERE id = ".$data["id_usuario"].";");
         Session::flash('success', 'Rol cambiado con éxito');
         return redirect("/admin/$usuario->id");
