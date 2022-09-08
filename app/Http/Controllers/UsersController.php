@@ -44,6 +44,7 @@ class UsersController extends Controller
         $cAlumnos = User::where('tipo_usuario_id', 3)->get();
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$alumnos->id.";")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $sumaModulos = DB::select("SELECT SUM(cantidad) FROM inventario_reim WHERE id_elemento = 500;");
         //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
         //$countMensajes = count($mensajes);
         $todoUsuarios = User::all();
@@ -52,10 +53,6 @@ class UsersController extends Controller
         $sumaCoins = 0;
         for($i = 0; $i < $cant; ++$i) {
             $sumaCoins = $inventarioAlumno->cantidad+$sumaCoins;
-        }
-        $sumaModulos = 0;
-        for($i = 0; $i < $cant; ++$i) {
-            $sumaModulos = $cAlumnos[$i]->ModulosCompletados+$sumaModulos;
         }
 
         $cantidadesModulosCompletadosMes = [3,7,8,1,2,3,9];
