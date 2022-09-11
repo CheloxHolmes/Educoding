@@ -67,9 +67,9 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/"> <i class="fa fa-home"></i> Inicio</a></li>
-                                                <li><a href="/explorar/{{Auth::id()}}"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
+                                                <li><a href="/login"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
                                                 <li><a href="/about"> <i class="fa fa-users"></i> Nosotros</a></li>
-                                                <li><a href="#"> <i class="fa fa-building"></i> Colegios</a>
+                                                <li><a href="/colegios"> <i class="fa fa-building"></i> Colegios</a>
                                                     <!--<ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
                                                         <li><a href="blog_details.html">Blog Details</a></li>
@@ -120,7 +120,7 @@
                                                 <li class="active"><a href="/"> <i class="fa fa-home"></i> Inicio</a></li>
                                                 <li><a href="/explorar/{{Auth::id()}}"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
                                                 <li><a href="/about"> <i class="fa fa-users"></i> Nosotros</a></li>
-                                                <li><a href="#"> <i class="fa fa-building"></i> Colegios</a>
+                                                <li><a href="/colegios"> <i class="fa fa-building"></i> Colegios</a>
                                                     <!--<ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
                                                         <li><a href="blog_details.html">Blog Details</a></li>

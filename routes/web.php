@@ -30,13 +30,21 @@ Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editPr
 
 Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsersController::class, 'updateProfile'])->middleware('auth');
 
+//Contacto
+
 Route::get('/contacto', function () {
     return view('contacto');
 });
 
+//About
+
 Route::get('/about', function () {
     return view('about');
 });
+
+//Colegios
+
+Route::get('/colegios', [App\Http\Controllers\ColegiosController::class, 'colegios'])->middleware('auth');
 
 //Profesores
 
