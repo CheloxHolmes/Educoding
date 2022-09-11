@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-
+@auth
 <body>
 
     <script>
@@ -95,5 +95,5 @@
 
 
 
-
+@endauth
 @endsection
