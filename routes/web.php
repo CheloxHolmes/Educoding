@@ -50,6 +50,8 @@ Route::get('/colegios', [App\Http\Controllers\ColegiosController::class, 'colegi
 
 Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
 
+Route::get('/cursos', [App\Http\Controllers\UsersController::class, 'cursos'])->middleware('auth');
+
 //Admin
 
 Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin'])->middleware('auth');

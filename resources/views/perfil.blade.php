@@ -24,7 +24,7 @@
                 @foreach($coins as $coin)
                 <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{ $coin }}</p>
                 @endforeach
-                <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados: </strong>{{ Auth::user()->ModulosCompletados }}</p>
+                <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados: </strong> </p>
             </div>
         </div>
         <div class="card" style="margin:1.5%;width:45%">
@@ -65,12 +65,12 @@
         </div>
         <div class="card" style="margin:1.5%;width:45%">
             <div class="card-header" style="color:white !important;">
-                <strong>Módulos completados</strong>
+                <strong>Mensajes</strong>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Aquí podrás ver los módulos que has finalizado</h5>
-                <p class="card-text">Ve el progreso que has realizado por la plataforma</p>
-                <a href="#" class="btn">Ver más</a>
+                <h5 class="card-title">Aquí podrás ver todos los mensajes que has recibido o enviar un mensaje</h5>
+                <a href="/mensajes/{{$usuario->id}}" class="btn">Ver mensajes</a>
+                <a href="/crearMensaje/{{$usuario->id}}" class="btn">Crear mensaje</a>
             </div>
         </div>
     </div>

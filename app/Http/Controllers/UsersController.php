@@ -24,6 +24,7 @@ class UsersController extends Controller
         $insignias = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id INNER JOIN imagen on inventario_reim.id_elemento = imagen.id_elemento WHERE sesion_id = ".$usuario->id." AND elemento.nombre LIKE 'Insignia%';");
         $items = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id INNER JOIN imagen on inventario_reim.id_elemento = imagen.id_elemento WHERE sesion_id = ".$usuario->id." AND elemento.id BETWEEN 400 AND 417;");
         $cantidadInsignias = count($insignias);
+        $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
 
         return view('perfil', [
 
@@ -33,6 +34,7 @@ class UsersController extends Controller
             'rol' => $rol,
             'insignias' => $insignias,
             'items' => $items,
+            'modulosCompletados' => $modulosCompletados,
 
         ]);
     }
@@ -165,6 +167,18 @@ class UsersController extends Controller
         DB::update("UPDATE usuario SET tipo_usuario_id = ".$data["rol"]." WHERE id = ".$data["id_usuario"].";");
         Session::flash('success', 'Rol cambiado con éxito');
         return redirect("/admin/$usuario->id");
+    }
+
+    public function cursos(){
+
+        $cursos = DB::select("SELECT * FROM nivel;");
+
+        return view('cursos', [
+
+            'cursos' => $cursos,
+         
+        ]);
+
     }
 
 }
