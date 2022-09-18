@@ -4,7 +4,7 @@
 
 <div class="container" style="margin-top:8%;margin-bottom:10%">
     <div>
-        <h1>Mensajes</h1>
+        <h1>Crear Mensaje</h1>
     </div>
     <br>
     <div class="container">
