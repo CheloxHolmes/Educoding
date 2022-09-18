@@ -350,13 +350,13 @@
                 </a>
                 <ul id="mensajes-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <!--<a href="/mensajes/{id}">
+                        <a href="/mensajes/{{$usuario->id}}">
                             <i class="bi bi-circle"></i><span>Ver Mensajes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/crearMensaje/{id}">
-                            <i class="bi bi-circle"></i><span>Crear Mensaje</span>-->
+                        <a href="/crearMensaje/{{$usuario->id}}">
+                            <i class="bi bi-circle"></i><span>Crear Mensaje</span>
                         </a>
                     </li>
                 </ul>

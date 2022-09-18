@@ -17,11 +17,11 @@
             <h1><strong>Título: </strong>{{$mensaje->titulo}}</h1>
         </div>
         <div class="card-body">
-            <h2 class="card-title"><strong>Por: </strong> {{$todos->name}}</h2>
-            <p class="card-text">{{$mensaje->descripcion_mensaje}}</p>
+            <h2 class="card-title"><strong>Por: </strong> {{$todos->nombres}}</h2>
+            <p class="card-text">{{$mensaje->descripcion}}</p>
         </div>
         <div class="card-footer text-muted" style="text-align: right;height:45px;">
-            <p>{{$mensaje->created_at}}</p>
+            <p>{{$mensaje->fecha_mensaje}}</p>
         </div>
         @endif
         @endforeach
