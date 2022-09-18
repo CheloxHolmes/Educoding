@@ -44,7 +44,6 @@ class MensajesController extends Controller
     public function guardarMensaje(Request $request)
 
     {
-        /*
         $datosInvalidos = false;
 
         if (strlen($request->titulo)<4){
@@ -57,11 +56,11 @@ class MensajesController extends Controller
             $datosInvalidos = true;
         }
 
-        if (strlen($request->descripcion_mensaje)<5){
+        if (strlen($request->descripcion)<5){
             Session::flash('datosIncorrectosDescripcion', 'La descripción debe tener como mínimo 5 caracteres');
             $datosInvalidos = true;
         }
-        if (strlen($request->descripcion_mensaje)>10000){
+        if (strlen($request->descripcion)>10000){
             Session::flash('datosIncorrectosDescripcionMax', 'La descripción debe tener como máximo 10000 caracteres');
             $datosInvalidos = true;
         }
@@ -75,17 +74,12 @@ class MensajesController extends Controller
             'titulo' => $request->titulo,
             'id_creador' => Auth::id(),
             'id_receptor' => $request->id_receptor,
-            'descripcion_mensaje' => $request->descripcion_mensaje,
+            'descripcion' => $request->descripcion,
+            'fecha_mensaje' => Carbon::now(),
 
         ]);
 
-        Session::flash('mensajeCreado', '¡Mensaje Creado con éxito!');*/
-
-        $data = $request->all();
-                
-        DB::insert("INSERT INTO mensajes (id_creador, id_receptor, titulo, descripcion, fecha_mensaje) VALUES (".Auth::id()." , ".$data["id_receptor"].", ".$data["titulo"].", ".$data["descripcion"].", ".Carbon::now()."");
-        Session::flash('success', '¡Mensaje creado con éxito!');
-        
+        Session::flash('mensajeCreado', '¡Mensaje Creado con éxito!');
 
         return redirect("/crearMensaje" . "/". Auth::id());
     }
