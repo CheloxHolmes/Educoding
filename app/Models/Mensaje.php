@@ -14,7 +14,10 @@ class Mensaje extends Model
         'id_creador',
         'id_receptor',
         'titulo',
-        'descripcion_mensaje'
+        'descripcion',
+        'fecha_mensaje'
 
     ];
+
+    protected $table = 'mensajes';
 }

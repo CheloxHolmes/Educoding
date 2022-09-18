@@ -33,8 +33,8 @@
                                 <label id="id_receptor" for="id_receptor" class="col-md-6 col-form-label">{{ __('Receptor')}}</label>
                                 <div class="col-md-12">
                                     <select name="id_receptor">
-                                        @foreach($users as $user)
-                                        <option value="{{ $user->id }}">{{$user->name}}</option>
+                                        @foreach($usuarios as $usuario)
+                                        <option value="{{ $usuario->id }}">{{$usuario->nombres}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,9 +58,9 @@
                             @endif
 
                             <div class="form-group row">
-                                <label for="descripcion_mensaje" class="col-md-6 col-form-label">{{ __('Descripción')}}</label><br>
+                                <label for="descripcion" class="col-md-6 col-form-label">{{ __('Descripción')}}</label><br>
                                 <div class="col-md-12">
-                                    <textarea id="summernote" type="descripcion_mensaje" class="form-control @error('descripcion_mensaje') is-invalid @enderror" name="descripcion_mensaje" required value="{{ old('descripcion_mensaje') }}" required autocomplete="descripcion_mensaje" autofocus></textarea>
+                                    <textarea id="descripcion" type="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" required value="{{ old('descripcion') }}" required autocomplete="descripcion" autofocus></textarea>
                                 </div>
                             </div>
 

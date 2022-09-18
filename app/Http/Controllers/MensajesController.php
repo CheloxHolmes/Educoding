@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Carbon\Carbon;
 use App\Models\Mensaje;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -15,9 +15,9 @@ class MensajesController extends Controller
     public function VerMensajes()
     {
 
-        $usuario = User::find(Auth::id());
-        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
-        $todoUsuarios = User::all();
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+        $mensajes = DB::select("SELECT * FROM mensajes WHERE id_receptor = ".Auth::id().";");
+        $todoUsuarios = DB::select("SELECT * FROM usuario");
         $countMensajes = count($mensajes);
 
         return view('mensajes', [
@@ -33,10 +33,10 @@ class MensajesController extends Controller
     public function crearMensaje()
 
     {
-        $users =  DB::table('users')->get();
+        $usuarios =  DB::select("SELECT * FROM usuario");
 
         return view('crearMensaje', [
-            'users' => $users,
+            'usuarios' => $usuarios,
 
         ]);
     }
@@ -44,7 +44,7 @@ class MensajesController extends Controller
     public function guardarMensaje(Request $request)
 
     {
-
+        /*
         $datosInvalidos = false;
 
         if (strlen($request->titulo)<4){
@@ -67,7 +67,7 @@ class MensajesController extends Controller
         }
 
         if ($datosInvalidos) {
-            return redirect("/crearMensaje");
+            return redirect("/crearMensaje" . "/". Auth::id());
         }
 
         $post = Mensaje::create([
@@ -79,9 +79,15 @@ class MensajesController extends Controller
 
         ]);
 
-        Session::flash('mensajeCreado', '¡Mensaje Creado con éxito!');
+        Session::flash('mensajeCreado', '¡Mensaje Creado con éxito!');*/
 
-        return redirect("/crearMensaje/".Auth::id());
+        $data = $request->all();
+                
+        DB::insert("INSERT INTO mensajes (id_creador, id_receptor, titulo, descripcion, fecha_mensaje) VALUES (".Auth::id()." , ".$data["id_receptor"].", ".$data["titulo"].", ".$data["descripcion"].", ".Carbon::now()."");
+        Session::flash('success', '¡Mensaje creado con éxito!');
+        
+
+        return redirect("/crearMensaje" . "/". Auth::id());
     }
 
 }
