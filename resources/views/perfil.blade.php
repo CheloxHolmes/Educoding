@@ -12,6 +12,9 @@
         <h2>Bienvenido {{ $usuario->username }}</h2>
         @endif
     </div>
+    <div>
+        <a href="/perfil/actualizar/{{Auth::user()->id}}" class="btn">Actualizar mis datos</a>
+    </div>
     <div class="row">
         <div class="card" style="margin:1.5%;width:45%">
             <div class="card-header" style="color:white !important;">

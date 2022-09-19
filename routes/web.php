@@ -26,6 +26,8 @@ Route::get('/perfil/{id}', [App\Http\Controllers\UsersController::class, 'profil
 
 Route::get('/perfil/avatar/{newAvatar}', [App\Http\Controllers\UsersController::class, 'editAvatar'])->middleware('auth');
 
+Route::get('/perfil/actualizar/{id}', [App\Http\Controllers\UsersController::class, 'actualizarDatos'])->middleware('auth');
+
 Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editProfile'])->middleware('auth');
 
 Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsersController::class, 'updateProfile'])->middleware('auth');

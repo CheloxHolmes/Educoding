@@ -181,6 +181,11 @@ class UsersController extends Controller
 
     }
 
+    public function actualizarDatos(){
+
+        return view("actualizarDatos");
+    }
+
 }
 
 
