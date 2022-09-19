@@ -30,6 +30,15 @@
 
     <script src="https://kit.fontawesome.com/9e73cb0b8c.js" crossorigin="anonymous"></script>
 
+    <!-- JS here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{{asset('../assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{asset('../assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+
+    <link rel="stylesheet" href="{{asset('dist/drawerJs.css')}}"/>
+    <script src="{{asset('dist/drawerJs.standalone.min.js')}}"></script>
+
 </head>
 
 <body>
@@ -245,11 +254,7 @@
         </div>
     </footer>
     
-    <!-- JS here -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="{{asset('../assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    <script src="{{asset('../assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+
     <script src="{{asset('../assets/js/popper.min.js')}}"></script>
     <script src="{{asset('../assets/js/bootstrap.min.js')}}"></script>
     <!-- Jquery Mobile Menu -->

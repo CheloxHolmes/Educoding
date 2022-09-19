@@ -58,7 +58,7 @@ class ActivitiesController extends Controller
         ]);
     }
 
-    public function actividadLenguaje(){
+    public function actividadLenguaje($id){
 
         return view('actividadLenguaje');
 
