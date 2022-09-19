@@ -47,8 +47,8 @@ class UsersController extends Controller
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$alumnos->id.";")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) FROM inventario_reim WHERE id_elemento = 500;");
-        //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
-        //$countMensajes = count($mensajes);
+        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
+        $countMensajes = count($mensajes);
         $todoUsuarios = User::all();
 
         $cant = count($cAlumnos);
@@ -68,9 +68,9 @@ class UsersController extends Controller
             'sumaCoins' => $sumaCoins,
             'sumaModulos' => $sumaModulos,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
-            //'mensajes' => $mensajes,
+            'mensajes' => $mensajes,
             'todosUsuarios' => $todoUsuarios,
-            //'countMensajes' => $countMensajes
+            'countMensajes' => $countMensajes
         ]);
     }
 
@@ -183,7 +183,47 @@ class UsersController extends Controller
 
     public function actualizarDatos(){
 
-        return view("actualizarDatos");
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+
+        return view("actualizarDatos",[
+
+            'usuario' => $usuario,
+        ]);
+    }
+
+    public function actualizandoDatos(Request $request){
+
+        $datosInvalidos = false;
+
+        if (strlen($request->nombres)<4){
+            Session::flash('fail', 'El nombre no puede ser menor a 4 caracteres');
+            $datosInvalidos = true;
+        }
+
+        if (strlen($request->nombres)>30){
+            Session::flash('fail', 'El nombre debe tener como máximo 30 caracteres');
+            $datosInvalidos = true;
+        }
+
+        if ($datosInvalidos) {
+            return redirect("/perfil/actualizar" . "/". Auth::id());
+        }
+
+        $id = Auth::id();
+        $usuario = User::findOrFail($id);
+        $usuario->nombres = $request->get('nombres');
+        $usuario->apellido_paterno = $request->get('apellido_paterno');
+        $usuario->apellido_materno = $request->get('apellido_materno');
+        $usuario->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $usuario->telefono = $request->get('telefono');
+        $usuario->username = $request->get('username');
+        $usuario->sexo = $request->get('sexo');
+        
+        $usuario->update();
+
+        Session::flash('success', '¡Datos actualizados con éxito!');
+
+        return redirect("/perfil/actualizar" . "/". Auth::id());
     }
 
 }
