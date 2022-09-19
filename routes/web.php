@@ -64,6 +64,10 @@ Route::get('/registrarCurso', [App\Http\Controllers\UsersController::class, 'reg
 
 Route::post('/registrar/curso', [App\Http\Controllers\UsersController::class, 'guardarCurso'])->middleware('auth');
 
+Route::get('/registrarAlumno', [App\Http\Controllers\UsersController::class, 'registroAlumno'])->middleware('auth');
+
+Route::post('/registrar/alumno', [App\Http\Controllers\UsersController::class, 'guardarAlumno'])->middleware('auth');
+
 //Mensajes
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
