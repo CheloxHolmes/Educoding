@@ -28,9 +28,9 @@ Route::get('/perfil/avatar/{newAvatar}', [App\Http\Controllers\UsersController::
 
 Route::get('/perfil/actualizar/{id}', [App\Http\Controllers\UsersController::class, 'actualizarDatos'])->middleware('auth');
 
-Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editProfile'])->middleware('auth');
+Route::post('/perfil/actualizardatos', [App\Http\Controllers\UsersController::class, 'actualizandoDatos'])->middleware('auth');
 
-Route::post('/editar/perfil/{id}', [App\Http\Controllers\UsersController::class, 'updateProfile'])->middleware('auth');
+Route::get('/editar/{id}', [App\Http\Controllers\UsersController::class, 'editProfile'])->middleware('auth');
 
 //Contacto
 
