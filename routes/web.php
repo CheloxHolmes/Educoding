@@ -60,6 +60,10 @@ Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin']
 
 Route::post('/admin/cambiar/rol', [App\Http\Controllers\UsersController::class, 'cambiarRol'])->middleware('auth');
 
+Route::get('/registrarCurso', [App\Http\Controllers\UsersController::class, 'registroCurso'])->middleware('auth');
+
+Route::post('/registrar/curso', [App\Http\Controllers\UsersController::class, 'guardarCurso'])->middleware('auth');
+
 //Mensajes
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
