@@ -106,36 +106,6 @@ class UsersController extends Controller
         ]);
     }
 
-    public function updateProfile(Request $request, $id)
-    {
-        $datosInvalidos = false;
-
-        if (strlen($request->name)<4){
-            Session::flash('userCorto', 'El nombre del usuario debe tener como mínimo 4 caracteres');
-            $datosInvalidos = true;
-        }
-
-        if (strlen($request->name)>30){
-            Session::flash('userLargo', 'El nombre del usuario debe tener como máximo 30 caracteres');
-            $datosInvalidos = true;
-        }
-
-        if ($datosInvalidos) {
-            return redirect("/editar/perfil" ."/". "$id");
-        }
-
-        $usuario = User::findOrFail($id);
-
-        $usuario->name = $request->get('name');
-        $usuario->username = $request->get('username');
-        $usuario->telefono = $request->get('telefono');
-        $usuario->direccion = $request->get('direccion');
-
-        $usuario->update();
-
-        return redirect("/perfil/$usuario->id");
-    }
-
     public function editAvatar($newAvatar){
         $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
         DB::select("UPDATE imagen SET descripcion = '".$newAvatar."' WHERE nombre = '".$usuario->email."';");
@@ -224,6 +194,34 @@ class UsersController extends Controller
         Session::flash('success', '¡Datos actualizados con éxito!');
 
         return redirect("/perfil/actualizar" . "/". Auth::id());
+    }
+
+    public function registroCurso(){
+
+        $cursos = DB::select("SELECT * FROM nivel");
+        $letras = DB::select("SELECT * FROM letra");
+        $periodos = DB::select("SELECT * FROM periodo");
+        $colegios = DB::select("SELECT * FROM colegio");
+
+        return view("registrarCurso",[
+
+            'cursos' => $cursos,
+            'letras' => $letras,
+            'periodos' => $periodos,
+            'colegios' => $colegios,
+
+        ]);
+
+    }
+
+    public function guardarCurso(Request $request){
+
+        $data = $request->all();
+
+        DB::update("INSERT INTO asigna_reim (letra_id, periodo_id, reim_id, colegio_id, nivel_id) VALUES (".$data["letra_id"].", ".$data["periodo_id"].", 905, ".$data["colegio_id"].", ".$data["nivel_id"].")");
+        Session::flash('success', '¡Curso registrado con éxito!');
+        return redirect("/registrarCurso");
+
     }
 
 }
