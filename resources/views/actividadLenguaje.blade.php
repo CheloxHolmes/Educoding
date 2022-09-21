@@ -2,202 +2,293 @@
 
 @section('content')
 
-<script>
-    var mouse;
-    var color;
-    var tamaño = 5;
-    var cuadrito = document.getElementById("area_de_dibujo");
-    var papel = cuadrito.getContext("2d");
-    var y = 150;
-    var x = 150;
-    var teclas = {
-        MENOSTECLADO: 189,
-        MASTECLADO: 187,
-        MENOSNUMPAD: 109,
-        MASNUMPAD: 107,
-    };
-
-    var rosita = document.getElementById("rosita");
-    var azul = document.getElementById("azul");
-    var negro = document.getElementById("verde");
-    var rojo = document.getElementById("rojo");
-    var lila = document.getElementById("lila");
-    var negro = document.getElementById("amarillo");
-
-    azul.addEventListener("click", cambiarColorAzul);
-    lila.addEventListener("click", cambiarColorLila);
-    rosita.addEventListener("click", cambiarColorRosita);
-    rojo.addEventListener("click", cambiarColorRojo);
-    amarillo.addEventListener("click", cambiarColorAmarillo);
-    verde.addEventListener("click", cambiarColorVerde);
-
-    var tamaño1 = document.getElementById("tamaño1");
-    var tamaño2 = document.getElementById("tamaño2");
-    var tamaño3 = document.getElementById("tamaño3");
-
-    tamaño1.addEventListener("click", cambiarTamaño1);
-    tamaño2.addEventListener("click", cambiarTamaño2);
-    tamaño3.addEventListener("click", cambiarTamaño3);
-
-    cuadrito.addEventListener("mousedown", apretarMouse);
-    cuadrito.addEventListener("mouseup", soltarMouse);
-    cuadrito.addEventListener("mousemove", dibujarMouse);
-
-    cuadrito.addEventListener("touchstart", apretarTactil);
-    cuadrito.addEventListener("touchend", soltarTactil);
-    cuadrito.addEventListener("touchmove", dibujarTactil);
-
-    document.addEventListener("keydown", cambiarTamaño);
-
-    var borrar = document.getElementById("borrar");
-    borrar.addEventListener("click", borrarTodo);
-
-
-    function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo) {
-        lienzo.beginPath();
-        lienzo.strokeStyle = color;
-        lienzo.lineWidth = tamaño;
-        lienzo.lineCap = "round";
-        lienzo.moveTo(xinicial, yinicial);
-        lienzo.lineTo(xfinal, yfinal);
-        lienzo.stroke();
-        lienzo.closePath;
-    }
-
-    function soltarMouse(evento) {
-        mouse = 0;
-        x = evento.layerX;
-        y = evento.layerY;
-    }
-
-
-
-    function apretarMouse(evento) {
-        mouse = 1;
-        dibujarLinea(color, x, y, x - 0.1, y + 0.1, papel);
-        x = evento.layerX;
-        y = evento.layerY;
-    }
-
-    function dibujarMouse(evento) {
-        if (mouse == 1) {
-            dibujarLinea(color, x, y, evento.layerX, evento.layerY, papel);
-
-        }
-        x = evento.layerX;
-        y = evento.layerY;
-    }
-
-    function soltarTactil(evento) {
-        var tactil = evento.touches[0];
-        x = evento.offsetX;
-        y = evento.offsetY;
-    }
-
-    function apretarTactil(evento) {
-        evento.preventDefault();
-        tactil = 1;
-        x = evento.offsetX;
-        y = evento.offsetY;
-    }
-
-    function dibujarTactil(evento) {
-        console.log(e);
-        if (tactil > 0) {
-            dibujarLinea(color, x, y, X, Y, papel);
-
-        }
-        x = evento.offsetX;
-        y = evento.offsetY;
-    }
-
-    function cambiarColorAzul() {
-        color = "#99e6ff";
-    }
-
-    function cambiarColorLila() {
-        color = "#99b3ff"
-    }
-
-    function cambiarColorRosita() {
-        color = "#ff99cc";
-    }
-
-    function cambiarColorRojo() {
-        color = "#ff9999"
-    }
-
-    function cambiarColorAmarillo() {
-        color = "#ffff99"
-    }
-
-    function cambiarColorVerde() {
-        color = "#99ff99"
-    }
-
-    function cambiarTamaño1() {
-        tamaño = 5;
-    }
-
-    function cambiarTamaño2() {
-        tamaño = 10;
-    }
-
-    function cambiarTamaño3() {
-        tamaño = 15;
-    }
-
-    function borrarTodo() {
-        tamaño = 50;
-        color = "white";
-    }
-
-    function cambiarTamaño(evento) {
-        var cambio_tamaño = 2;
-        switch (evento.keyCode) {
-            case teclas.MENOSTECLADO:
-                tamaño = tamaño - cambio_tamaño;
-                break;
-
-            case teclas.MENOSNUMPAD:
-                tamaño = tamaño - cambio_tamaño;
-                break;
-
-            case teclas.MASTECLADO:
-                tamaño = tamaño + cambio_tamaño;
-                break;
-
-            case teclas.MASNUMPAD:
-                tamaño = tamaño + cambio_tamaño;
-                break;
-        }
-
-        var ancho = document.getElementById("ancho").innerHTML = ("[" + tamaño + "]")
-    }
-</script>
-
-<link rel="stylesheet" href="{{asset('../assets/css/pizarra.css')}}">
-
 <div class="container" style="margin-top:8%;margin-bottom:8%">
 
-    <input type="button" class="rosa" id="rosita"></button>
-    <input type="button" class="azul" id="azul"></button>
-    <input type="button" class="verde" id="verde"></button>
-    <input type="button" class="amarillo" id="amarillo"></button>
-    <input type="button" class="rojo" id="rojo"></button>
-    <input type="button" class="lila" id="lila"></button>
 
-    <input type="button" class="tamaño1" id="tamaño1"></button>
-    <input type="button" class="tamaño2" id="tamaño2"></button>
-    <input type="button" class="tamaño3" id="tamaño3"></button>
-    <input type="button" class="borrar" id="borrar" value="goma"></button>
-    <canvas width="500px" height="500px" id="area_de_dibujo"></canvas>
-    <p>
-        Usa + y - para cambiar el ancho
-        <span id="ancho">
-        </span>
-    </p>
+<form method="POST" action="/actividad/dibujo/respuesta/{{Auth::user()->id}}" enctype="multipart/form-data">
+@csrf
+	<div id="canvas-editor" style="margin-bottom: 50px;"></div>
 
-</div>
+
+<div style="margin-top:3%;margin-bottom:3%;text-align:center;">
+        <h1>Actividad {ID} {NOMBRE}</h1>
+    </div>
+
+    <input type="hidden" id="image_64_input" required>
+
+    <button type="submit" class="btn btn-primary btn-block" role="button" id="enviarDibujoBtn" style="background: rgb(255 162 108);display:none !important;" > <i class="fa fa-upload"></i> Enviar</button>
+
+    </div>
+    </form>
+
+<script>
+    var localization_ru =  {
+        'Add Drawer': 'Добавить холст для рисования',
+        'Insert Drawer': 'Добавить холст',
+        'Insert': 'Добавить',
+        'Free drawing mode': 'Карандаш',
+        'SimpleWhiteEraser': 'Ластик (белый)',
+        'Borrador': 'Ластик',
+        'Delete this canvas': 'Удалить полотно',
+        'Are you sure want to delete this canvas?': 'Вы уверены что хотите удалить полотно?',
+
+
+        // canvas properties popup
+        'Size (px)': 'Размер (px)',
+        'Position': 'Позиция',
+        'Inline': 'На линии',
+        'Left': 'Слева',
+        'Center': 'По центру',
+        'Right': 'Справа',
+        'Floating': 'Плавающий',
+        'Canvas properties': 'Свойства холста',
+        'Background': 'Фон',
+        'transparent': 'прозрачный',
+        'Cancel': 'Отмена',
+        'Save': 'Сохранить',
+
+        // Fullscreen plugin
+        'Enter fullscreen mode': 'Полноэкранный режим',
+        'Exit fullscreen mode': 'Выйти из полноэкранного режима',
+
+        // shape context menu plugin
+        'Bring forward': 'Переместить выше',
+        'Send backwards': 'Переместить ниже',
+        'Bring to front': 'Переместить наверх',
+        'Send to back': 'Переместить в низ',
+        'Duplicate': 'Клонировать',
+        'Remove': 'Удалить',
+
+        // brush size plugin
+        'Size:': 'Размер:',
+
+        // color plugin
+        'Fill:': 'Заливка:',
+        'Transparent': 'Прозрачный',
+        'None': 'Нет',
+
+        // shape border plugin
+        'Border:': 'Граница:',
+
+        // arrow plugin
+        'Draw an arrow': 'Стрелка',
+        'Draw a two-sided arrow': 'Двухсторонняя стрелка',
+        'Lines and arrows': 'Линии и стрелки',
+
+        // circle plugin
+        'Draw a circle': 'Круг',
+
+        // line plugin
+        'Draw a line': 'Линия',
+
+        // rectangle plugin
+        'Draw a rectangle': 'Прямоугольник',
+
+        // triangle plugin
+        'Draw a triangle': 'Треугольник',
+
+        // polygon plugin
+        'Draw a Polygon': 'Многоугольник',
+        'Stop drawing a polygon': 'Закончить рисование многоугольника (esc)',
+        'Click to start a new line': 'Кликните для начала новой линии',
+
+        // text plugin
+        'Draw a text': 'Текст',
+        'Click to place a text': 'Нажмите, чтобы расположить текст',
+        'Font:': 'Шрифт:',
+
+        // movable floating mode plugin
+        'Move canvas': 'Подвинуть холст',
+
+        // base shape
+        'Click to start drawing a ': 'Нажмите, чтобы начать рисовать ',
+
+        // image tool
+        'Insert an image'          : 'Вставить изображение',
+        'No file was selected!'    : 'Не был выбран файл!',
+        'Incorrect file type'      : 'Неверный тип файла!',
+        'File is to big!. Maximum file size is '   : 'Файл слишком большой! Максимальный размер файла - ',
+        'Image failed to create!'  : 'Не удалось создать изображение!',
+
+        // background image tool
+        'Insert a background image': 'Фоновое изображение'
+    };
+
+    $(document).ready(function () {
+        var drawerPlugins = [
+            // Drawing tools
+            'Pencil',
+            'Eraser',
+            'Text',
+            'Line',
+            'ArrowOneSide',
+            'ArrowTwoSide',
+            'Triangle',
+            'Rectangle',
+            'Circle',
+            'Image',
+            'BackgroundImage',
+            'Polygon',
+            'ImageCrop',
+
+            // Drawing options
+            //'ColorHtml5',
+            'Color',
+            'ShapeBorder',
+            'BrushSize',
+            'OpacityOption',
+
+            'LineWidth',
+            'StrokeWidth',
+
+            'Resize',
+            'ShapeContextMenu',
+            'CloseButton',
+            'OvercanvasPopup',
+            'OpenPopupButton',
+            'MinimizeButton',
+            'ToggleVisibilityButton',
+            'MovableFloatingMode',
+            'FullscreenModeButton',
+
+            'TextLineHeight',
+            'TextAlign',
+
+            'TextFontFamily',
+            'TextFontSize',
+            'TextFontWeight',
+            'TextFontStyle',
+            'TextDecoration',
+            'TextColor',
+            'TextBackgroundColor'
+        ];
+
+        // drawer is created as global property solely for debug purposes.
+        // doing  in production is considered as bad practice
+        window.drawer = new DrawerJs.Drawer(null, {
+            plugins: drawerPlugins,
+            corePlugins: [
+                'Zoom' // use null here if you want to disable Zoom completely
+            ],
+            pluginsConfig: {
+                Image: {
+                    scaleDownLargeImage: true,
+                    maxImageSizeKb: 10240, //1MB
+                    cropIsActive: true
+                },
+                BackgroundImage: {
+                    scaleDownLargeImage: true,
+                    maxImageSizeKb: 10240, //1MB
+                    //fixedBackgroundUrl: '/examples/redactor/images/vanGogh.jpg',
+                    imagePosition: 'center',  // one of  'center', 'stretch', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
+                    acceptedMIMETypes: ['image/jpeg', 'image/png', 'image/gif'] ,
+                    dynamicRepositionImage: true,
+                    dynamicRepositionImageThrottle: 100,
+                    cropIsActive: false
+                },
+                Text: {
+                    editIconMode : false,
+                    editIconSize : 'large',
+                    defaultValues : {
+                      fontSize: 72,
+                      lineHeight: 2,
+                      textFontWeight: 'bold'
+                    },
+                    predefined: {
+                      fontSize: [8, 12, 14, 16, 32, 40, 72],
+                      lineHeight: [1, 2, 3, 4, 6]
+                    }
+                },
+                Zoom: {
+                    enabled: true, 
+                    showZoomTooltip: true, 
+                    useWheelEvents: true,
+                    zoomStep: 1.05, 
+                    defaultZoom: 1, 
+                    maxZoom: 32,
+                    minZoom: 1, 
+                    smoothnessOfWheel: 0,
+                    //Moving:
+                    enableMove: true,
+                    enableWhenNoActiveTool: true,
+                    enableButton: true
+                }
+            },
+            toolbars: {
+                drawingTools: {
+                    position: 'top',         
+                    positionType: 'outside',
+                    customAnchorSelector: '#custom-toolbar-here',  
+                    compactType: 'scrollable',   
+                    hidden: false,     
+                    toggleVisibilityButton: false,
+                    fullscreenMode: {
+                        position: 'top', 
+                        hidden: false,
+                        toggleVisibilityButton: false
+                    }
+                },
+                toolOptions: {
+                    position: 'bottom', 
+                    positionType: 'inside',
+                    compactType: 'popup',
+                    hidden: false,
+                    toggleVisibilityButton: false,
+                    fullscreenMode: {
+                        position: 'bottom', 
+                        compactType: 'popup',
+                        hidden: false,
+                        toggleVisibilityButton: false
+                    }
+                },
+                settings : {
+                    position : 'right', 
+                    positionType: 'inside',					
+                    compactType : 'scrollable',
+                    hidden: false,	
+                    toggleVisibilityButton: false,
+                    fullscreenMode: {
+                        position : 'right', 
+                        hidden: false,
+                        toggleVisibilityButton: false
+                    }
+                }
+            },
+             defaultImageUrl: 'https://b-static.besthdwallpaper.com/stars-on-a-blue-sky-wallpaper-2732x768-89058_73.jpg',
+            defaultActivePlugin : { name : 'Pencil', mode : 'lastUsed'},
+            debug: true,
+            activeColor: '#a1be13',
+            transparentBackground: true,
+            align: 'floating',  //one of 'left', 'right', 'center', 'inline', 'floating'
+            lineAngleTooltip: { enabled: true, color: 'blue',  fontSize: 15}
+        }, 400, 400);
+
+        $('#canvas-editor').append(window.drawer.getHtml());
+        window.drawer.onInsert();
+
+
+        $(".editable-canvas-image").css("width", "100%");
+        $(".editable-canvas-image").css("position", "static");
+        $(".editable-canvas-image").css("margin-top", "150px");
+
+    });
+</script>
+
+<script>
+const getBase64StringFromDataURL = (dataURL) =>
+    dataURL.replace('data:', '').replace(/^.+,/, '');
+
+    setInterval(()=> { 
+        const imageBase64 = document.getElementsByClassName('editable-canvas-image')[0].src;
+
+        if (imageBase64.length > 100) {
+            $("#image_64_input").val(imageBase64);
+            $("#enviarDibujoBtn").css("display", "block")
+            //console.log(imageBase64);
+        }
+    }, 3000);
+</script>
+
+
 
 @endsection
