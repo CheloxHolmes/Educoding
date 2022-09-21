@@ -58,9 +58,15 @@ class ActivitiesController extends Controller
         ]);
     }
 
-    public function actividadLenguaje($id){
+    public function actividadLenguaje(){
 
-        return view('actividadLenguaje');
+        $actividades = DB::select("SELECT * FROM actividad WHERE id = 4;");
+
+        return view('actividadLenguaje',[
+
+            'actividades' => $actividades,
+
+        ]);
 
     }
 

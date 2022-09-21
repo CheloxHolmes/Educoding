@@ -11,7 +11,9 @@
 
 
 <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
-        <h1>Actividad {ID} {NOMBRE}</h1>
+        @foreach($actividades as $actividad)
+        <h1>Actividad {{$actividad->nombre}}</h1>
+        @endforeach
     </div>
 
     <input type="hidden" id="image_64_input" required>

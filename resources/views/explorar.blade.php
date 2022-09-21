@@ -57,7 +57,7 @@
 
         <!--LENGUAJE-->
         <img src="{{asset('assets/img/LENGUAJE1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 250px;position: absolute;    top: 68%;
-    right: 10%;" onclick="linkActividad('/actividadLenguaje')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+    right: 10%;" onclick="linkActividad('/actividadLenguaje/{{Auth::user()->id}}')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--CAMBIO MAPA-->
         <!--<img src="{{asset('assets/img/map.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 100px;height: 100px;position: inherit;top: 600px;right: -725px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />-->
