@@ -4,6 +4,9 @@
 
 <input id="actividadObj" value='{{$actividadString}}' />
 <input id="booksObjArray" value='{{$booksArrayString}}' />
+
+<input id="idActividad_input" type="hidden" value='{{$actividad->id}}' />
+
 <input id="userObj" value='{{$usuario}}' />
 
 <script>
@@ -128,13 +131,12 @@
             if ($("#inputSimpleAnswer").val() == libros[currentBook].respuesta) {
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
-
                 sonidoAplausos();
-
                 $("#finisContent").css("display", "block");
-                sumarCoins()
+                registrarRespuestaEnDB("SI", libros[currentBook].respuesta);
             } else {
                 alert("¡Respuesta incorrecta!");
+                registrarRespuestaEnDB("NO", libros[currentBook].respuesta);
             }
             closeBook();
         } else {
@@ -147,13 +149,12 @@
             if ($("#inputAlternativesAnswer").val() == libros[currentBook].respuesta) {
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
-
                 sonidoAplausos()
-
                 $("#finisContent").css("display", "block");
-                sumarCoins()
+                registrarRespuestaEnDB("SI", libros[currentBook].respuesta);
             } else {
                 alert("¡Respuesta incorrecta!");
+                registrarRespuestaEnDB("NO", libros[currentBook].respuesta);
             }
             closeBook();
         } else {
@@ -161,16 +162,17 @@
         }
     }
 
-    function sumarCoins() {
+    function registrarRespuestaEnDB(correcta, respuestaEsperada) {
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: '/actividad/' + libros[currentBook].id + '/sumar',
+            url: '/actividad/' + libros[currentBook].id + '/sumar/' + correcta,
             data: {
-                __id: "0"
+                respuestaEsperada: respuestaEsperada,
+                id_actividad: $("#idActividad_input").val(),
             },
             success: function(data) {
-                alert("Puntos sumados");
+                /*alert("Puntos sumados");*/
 
                 let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
                 modulosActual = modulosActual + 1;
@@ -181,7 +183,7 @@
                 $("#coinsValue").html("uLearnet Coins: " + coinsActual);
             },
             error: function(xhr, ajaxOptions, thrownError) {
-                alert("Error al sumar coins, arregla eso MARCELO, me desespero");
+                /*alert("Error al sumar coins, arregla eso MARCELO, me desespero");*/
             }
         });
     }

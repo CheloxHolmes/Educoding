@@ -100,7 +100,11 @@ Route::get('/actividad/{id}', [App\Http\Controllers\ActivitiesController::class,
 
 Route::get('/actividadLenguaje/{id}', [App\Http\Controllers\ActivitiesController::class, 'actividadLenguaje'])->middleware('auth');
 
-Route::get('/actividad/{id}/sumar', [App\Http\Controllers\ActivitiesController::class, 'sumarCoins'])->middleware('auth');
+Route::post('/actividad/dibujo/respuesta/{idUsuario}/{idAct}', [App\Http\Controllers\ActivitiesController::class, 'agregarRespuesta'])->middleware('auth');
+
+Route::get('/actividad/{id}/sumar/{correcta}', [App\Http\Controllers\ActivitiesController::class, 'sumarCoins'])->middleware('auth');
+
+Route::get('/actividad/respuestas/{idAct}', [App\Http\Controllers\ActivitiesController::class, 'respuestas'])->middleware('auth');
 
 Auth::routes();
 

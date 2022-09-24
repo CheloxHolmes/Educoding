@@ -46,10 +46,12 @@ class UsersController extends Controller
         $cAlumnos = User::where('tipo_usuario_id', 3)->get();
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = " . $alumnos->id . ";")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
-        $sumaModulos = DB::select("SELECT SUM(cantidad) FROM inventario_reim WHERE id_elemento = 500;");
-        $mensajes = Mensaje::where('id_receptor', Auth::id())->get();
+        $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim WHERE id_elemento = 500;")[0]->suma;
+        //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM eccloud.mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $todoUsuarios = User::all();
+        $actividades = DB::select("SELECT * FROM actividad;");
 
         $cant = count($cAlumnos);
         $sumaCoins = 0;
@@ -57,7 +59,44 @@ class UsersController extends Controller
             $sumaCoins = $inventarioAlumno->cantidad + $sumaCoins;
         }
 
-        $cantidadesModulosCompletadosMes = [3, 7, 8, 1, 2, 3, 9];
+        $cantidadesModulosCompletadosMes = array();
+        $cantidadesModulosCorrectosMes = array();
+        $cantidadesModulosIncorrectosMes = array();
+        $fechasMes = array();
+
+        $respuestas_mes = DB::select("SELECT id_per, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM eccloud.alumno_respuesta_actidad WHERE id_actividad != 4 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $diasMes = Carbon::now()->daysInMonth;
+
+        for ($i = 0; $i < $diasMes; ++$i) {
+
+            $completados = 0;
+            $correctos = 0;
+            $incorrectos = 0;
+
+            $fecha_recorrido = date_format( date_create( Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i+1)), 'Y-M-d'  );
+
+            array_push($fechasMes, strval($fecha_recorrido));
+
+            for ($k = 0; $k < count($respuestas_mes); ++$k) {
+                $fecha_res = date_format(date_create( $respuestas_mes[$k]->n_anno . '-' . $respuestas_mes[$k]->n_mes . '-' . $respuestas_mes[$k]->n_dia ), 'Y-M-d');
+
+                if ($fecha_recorrido == $fecha_res) {
+                    $completados += 1;
+
+                    if ($respuestas_mes[$k]->correcta == 1) {
+                        $correctos += 1;
+                    }
+                    else {
+                        $incorrectos += 1;
+                    }
+                }
+            }
+
+            array_push($cantidadesModulosCompletadosMes, $completados);
+            array_push($cantidadesModulosCorrectosMes, $correctos);
+            array_push($cantidadesModulosIncorrectosMes, $incorrectos);
+
+        }    
 
         return view('dashboard', [
 
@@ -68,9 +107,16 @@ class UsersController extends Controller
             'sumaCoins' => $sumaCoins,
             'sumaModulos' => $sumaModulos,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
+            'cantidadesModulosCorrectosMes' => $cantidadesModulosCorrectosMes,
+            'cantidadesModulosIncorrectosMes' => $cantidadesModulosIncorrectosMes,
+            'fechasMes' => $fechasMes,
             'mensajes' => $mensajes,
             'todosUsuarios' => $todoUsuarios,
-            'countMensajes' => $countMensajes
+            'countMensajes' => $countMensajes,
+            'actividades' => $actividades,
+            'respuestas_mes' => $respuestas_mes,
+            'diasMes' => $diasMes,
+
         ]);
     }
 

@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use App\Models\Activity;
-use App\Models\Book;
-use App\Models\Page;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ActivitiesController extends Controller
 {
@@ -58,25 +56,87 @@ class ActivitiesController extends Controller
         ]);
     }
 
-    public function actividadLenguaje(){
-
-        $actividades = DB::select("SELECT * FROM actividad WHERE id = 4;");
-
-        return view('actividadLenguaje',[
-
-            'actividades' => $actividades,
-
+    public function actividadLenguaje($id){
+        $usuario = User::find(Auth::id());
+        $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
+        $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
+        $inventario = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";")[0];
+        $coins = $inventario->cantidad;
+        $respuestaImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AL".$usuario->id."%' ORDER BY idimagen DESC;");
+        if (count($respuestaImagen)>0) {
+            $respuestaImagen = $respuestaImagen[0];
+        }
+        return view('actividadLenguaje', [
+            'actividad' => $actividad,
+            'actividadString' => json_encode($actividad),
+            'avatar' => $imagen->descripcion,
+            'usuario' => $usuario,
+            'coins' => $coins,
+            'respuestaImagen' => $respuestaImagen,
+            'modulosCompletados' => $modulosCompletados->cantidad,
         ]);
-
     }
 
-    public function sumarCoins()
+    public function agregarRespuesta($idUsuario, $idAct, Request $request)
     {
-        $usuario = User::find(Auth::id());
+        $data = $request->all();
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        //echo ($data["image_64"]);
+        DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, 4, 1, curdate(), 1, 1, 1, 1, 1, NULL);");
+        DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AL".Auth::id()."', '".$data["image_64"]."', 1, 'DIBUJO');");
+        Session::flash('success', 'Respuesta enviada con éxito');
+        return redirect("/actividadLenguaje/$idAct");
+    }
 
-        DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";");
-        DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 1) WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";");
+    public function sumarCoins($id_libro, $correcta, Request $request)
+    {
+        $data = $request->all();
+        $usuario = User::find(Auth::id());
+        if ($correcta == "SI") {
+            DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";");
+            DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 1) WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";");
+            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 1, curdate(), 1, 1, 1, 1, ".$data['respuestaEsperada'].", NULL);");
+        }
+        else {
+            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 1, curdate(), 1, 1, 1, 0, ".$data['respuestaEsperada'].", NULL);");
+        }
 
         return response()->json("{'resultado':'true'}");
     }
+
+    public function respuestas($id)
+    {
+        $usuario = User::find(Auth::id());
+        $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
+        $ids_books = DB::select("SELECT elemento_id FROM eccloud.item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
+
+        $respuestas = DB::select("SELECT id_per, datetime_touch, correcta, resultado, nombres, apellido_paterno FROM alumno_respuesta_actidad INNER JOIN usuario ON usuario.id = alumno_respuesta_actidad.id_per WHERE id_actividad = ".$id.";");
+
+        $books = [];
+
+        for($i = 0; $i < count($ids_books); ++$i) {
+            $book = DB::select("SELECT * FROM elemento WHERE id = " . $ids_books[$i]->elemento_id . ";")[0];
+            array_push($books, $book);
+        }
+        
+        $inventario = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";")[0];
+        $coins = $inventario->cantidad;
+
+        return view('respuestasActividad', [
+            'actividad' => $actividad,
+            'actividadString' => json_encode($actividad),
+            'avatar' => $imagen->descripcion,
+            'usuario' => $usuario,
+            'coins' => $coins,
+            'books' => $books,
+            'respuestas' => $respuestas,
+            'modulosCompletados' => $modulosCompletados->cantidad,
+        ]);
+    }
+
+
 }
