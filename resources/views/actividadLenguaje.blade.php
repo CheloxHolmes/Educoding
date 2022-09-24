@@ -5,23 +5,19 @@
 <div class="container" style="margin-top:8%;margin-bottom:8%">
 
 
-<form method="POST" action="/actividad/dibujo/respuesta/{{Auth::user()->id}}" enctype="multipart/form-data">
+<form method="POST" action="/actividad/dibujo/respuesta/{{Auth::user()->id}}/{{$actividad->id}}" enctype="multipart/form-data">
 @csrf
 	<div id="canvas-editor" style="margin-bottom: 50px;"></div>
-
-
-<div style="margin-top:3%;margin-bottom:3%;text-align:center;">
-        @foreach($actividades as $actividad)
-        <h1>Actividad {{$actividad->nombre}}</h1>
-        @endforeach
+        <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
+            <h1>Actividad {{$actividad->nombre}}</h1>
+        </div>
+        <input type="hidden" id="image_64_input" name="image_64" required>
+        <button type="submit" class="btn btn-primary btn-block" role="button" id="enviarDibujoBtn" style="background: rgb(255 162 108);display:none !important;" > <i class="fa fa-upload"></i> Enviar</button>
+        @if($respuestaImagen)
+        <img src="{{$respuestaImagen->imagen}}">
+        @endif
     </div>
-
-    <input type="hidden" id="image_64_input" required>
-
-    <button type="submit" class="btn btn-primary btn-block" role="button" id="enviarDibujoBtn" style="background: rgb(255 162 108);display:none !important;" > <i class="fa fa-upload"></i> Enviar</button>
-
-    </div>
-    </form>
+</form>
 
 <script>
     var localization_ru =  {
@@ -256,7 +252,7 @@
                     }
                 }
             },
-             defaultImageUrl: 'https://b-static.besthdwallpaper.com/stars-on-a-blue-sky-wallpaper-2732x768-89058_73.jpg',
+             defaultImageUrl: '../assets/img/test16.jpg',
             defaultActivePlugin : { name : 'Pencil', mode : 'lastUsed'},
             debug: true,
             activeColor: '#a1be13',
@@ -286,7 +282,7 @@ const getBase64StringFromDataURL = (dataURL) =>
         if (imageBase64.length > 100) {
             $("#image_64_input").val(imageBase64);
             $("#enviarDibujoBtn").css("display", "block")
-            //console.log(imageBase64);
+            console.log("okok");
         }
     }, 3000);
 </script>

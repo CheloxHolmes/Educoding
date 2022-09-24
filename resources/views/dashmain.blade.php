@@ -11,7 +11,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/star.png')}}">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -150,33 +150,34 @@
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-chat-left-text"></i>
-                        <span class="badge bg-success badge-number"></span>
+                        <span class="badge bg-success badge-number">{{$countMensajes}}</span>
                     </a><!-- End Messages Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                         <li class="dropdown-header">
-                            Tienes VARIABLE mensajes
-                            <a href="/mensajes/{id}"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todos</span></a>
+                            Tienes {{$countMensajes}} mensajes
+                            <a href="/mensajes/{{Auth::user()->id}}"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todos</span></a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
+                        @foreach($mensajes as $mensaje)
                         <li class="message-item">
                             <a href="#">
                                 <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
                                 <div>
-                                    <h4></h4>
-                                    <p></p>
-                                    <p></p>
+                                    <h4>{{$mensaje->nombres}} {{$mensaje->apellido_paterno}}</h4>
+                                    <h5>{{$mensaje->titulo}}</h5>
+                                    <p>{{$mensaje->fecha_mensaje}}</p>                                    
                                 </div>
                             </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        @endforeach
                         <li class="dropdown-footer">
-                            <!--<a href="/mensajes/{id}">Ver todos los mensajes</a>-->
+                            <a href="/mensajes/{{Auth::user()->id}}">Ver todos los mensajes</a>
                         </li>
 
                     </ul><!-- End Messages Dropdown Items -->
