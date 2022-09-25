@@ -41,7 +41,7 @@
     position: absolute;
     top: 34%;
     right: 4%;
-" onclick="linkActividad('/actividad/3')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
+" onclick="linkActividad('/actividad/23')" onpointerenter="showPreview('Escuela')" onpointerout="hidePreview()" />
 
         <!--HISTORIA-->
         <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 250px;position: absolute;    top: 8%;
