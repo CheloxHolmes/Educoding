@@ -110,7 +110,7 @@ class RegisterController extends Controller
         Imagen::create([
             
             'nombre' => $usuario->email,
-            'id_elemento' => 1,
+            'id_elemento' => 101,
             'descripcion' => 'user-(10).png',
 
         ]);
