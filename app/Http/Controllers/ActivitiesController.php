@@ -35,6 +35,7 @@ class ActivitiesController extends Controller
 
             for($p = 0; $p < count($books[$i]->pages); ++$p) {
                 if ($books[$i]->pages[$p]->imagen_idimagen) {
+                    echo($books[$i]->pages[$p]->imagen_idimagen);
                     $imagenEncontrada = DB::select("SELECT * FROM imagen WHERE idimagen = ".$books[$i]->pages[$p]->imagen_idimagen.";")[0];
                     if ($imagenEncontrada) {
                         $books[$i]->pages[$p]->imagen = $imagenEncontrada->descripcion;
@@ -84,8 +85,8 @@ class ActivitiesController extends Controller
         $data = $request->all();
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         //echo ($data["image_64"]);
-        DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, 4, 1, curdate(), 1, 1, 1, 1, 1, NULL);");
-        DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AL".Auth::id()."', '".$data["image_64"]."', 1, 'DIBUJO');");
+        DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, 24, 101, curdate(), 1, 1, 1, 1, 1, NULL);");
+        DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AL".Auth::id()."', '".$data["image_64"]."', 101, 'DIBUJO');");
         Session::flash('success', 'Respuesta enviada con éxito');
         return redirect("/actividadLenguaje/$idAct");
     }
@@ -97,10 +98,10 @@ class ActivitiesController extends Controller
         if ($correcta == "SI") {
             DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";");
             DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 1) WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";");
-            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 1, curdate(), 1, 1, 1, 1, ".$data['respuestaEsperada'].", NULL);");
+            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 101, curdate(), 1, 1, 1, 1, ".$data['respuestaEsperada'].", NULL);");
         }
         else {
-            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 1, curdate(), 1, 1, 1, 0, ".$data['respuestaEsperada'].", NULL);");
+            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 101, curdate(), 1, 1, 1, 0, ".$data['respuestaEsperada'].", NULL);");
         }
 
         return response()->json("{'resultado':'true'}");

@@ -13,7 +13,7 @@ class AlumnoRespuestaActividad extends Migration
      */
     public function up()
     {
-        Schema::create('alumno_respuesta_actidad', function (Blueprint $table) {
+        Schema::create('alumno_respuesta_actividad', function (Blueprint $table) {
             $table->bigInteger('id_per')->unsigned()->index()->nullable();
             $table->foreign('id_per')->references('id')->on('usuario')->onDelete('cascade');
             $table->bigInteger('id_user')->unsigned()->index()->nullable();

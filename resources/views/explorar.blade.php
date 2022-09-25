@@ -45,11 +45,11 @@
 
         <!--HISTORIA-->
         <img src="{{asset('assets/img/HISTORIA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 250px;position: absolute;    top: 8%;
-    right: 68%;" onclick="linkActividad('/actividad/1')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
+    right: 68%;" onclick="linkActividad('/actividad/21')" onpointerenter="showPreview('Circo')" onpointerout="hidePreview()" />
 
         <!--MATEMATICAS-->
         <img src="{{asset('assets/img/MATEMATICA1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 250px;position: absolute;    top: 64%;
-    right: 53%;" onclick="linkActividad('/actividad/2')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+    right: 53%;" onclick="linkActividad('/actividad/22')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--TIENDA-->
         <img src="{{asset('assets/img/TIENDA.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 250px;position: absolute;    top: 54%;
@@ -57,7 +57,7 @@
 
         <!--LENGUAJE-->
         <img src="{{asset('assets/img/LENGUAJE1.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 250px;position: absolute;    top: 68%;
-    right: 10%;" onclick="linkActividad('/actividadLenguaje/4')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
+    right: 10%;" onclick="linkActividad('/actividadLenguaje/24')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />
 
         <!--CAMBIO MAPA-->
         <!--<img src="{{asset('assets/img/map.png')}}" alt="" class="inner-image" style="cursor:pointer;width: 100px;height: 100px;position: inherit;top: 600px;right: -725px;" onclick="linkActividad('/actividad/artes')" onpointerenter="showPreview('Inicio')" onpointerout="hidePreview()" />-->
