@@ -35,7 +35,6 @@ class ActivitiesController extends Controller
 
             for($p = 0; $p < count($books[$i]->pages); ++$p) {
                 if ($books[$i]->pages[$p]->imagen_idimagen) {
-                    echo($books[$i]->pages[$p]->imagen_idimagen);
                     $imagenEncontrada = DB::select("SELECT * FROM imagen WHERE idimagen = ".$books[$i]->pages[$p]->imagen_idimagen.";")[0];
                     if ($imagenEncontrada) {
                         $books[$i]->pages[$p]->imagen = $imagenEncontrada->descripcion;
