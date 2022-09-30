@@ -312,4 +312,13 @@ class UsersController extends Controller
         return redirect("/registrarAlumno");
 
     }
+
+    public function educoding()
+    {
+
+        return view("educoding", [
+
+          
+        ]);
+    }
 }
