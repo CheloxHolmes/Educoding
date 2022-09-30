@@ -48,6 +48,10 @@ Route::get('/about', function () {
 
 Route::get('/colegios', [App\Http\Controllers\ColegiosController::class, 'colegios'])->middleware('auth');
 
+//Educoding
+
+Route::get('/educoding', [App\Http\Controllers\UsersController::class, 'educoding'])->middleware('auth');
+
 //Profesores
 
 Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'dashboard'])->middleware('auth');
