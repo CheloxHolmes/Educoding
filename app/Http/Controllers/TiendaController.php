@@ -43,6 +43,7 @@ class TiendaController extends Controller
             Session::flash('error', 'No tienes suficientes uLearnet coins. Completa más actividades para conseguir más.'); //Reemplazar por imagen de ulearnet coins
         }
         else {
+            /*
             if (count($alumnoTieneElemento) > 0) {
                 Session::flash('error', 'El alumno ya tiene este item');
             }
@@ -50,7 +51,11 @@ class TiendaController extends Controller
                 DB::insert("INSERT INTO inventario_reim (sesion_id, id_elemento, cantidad, datetime_creacion) VALUES (".$id_usuario.", ".$id_elemento.", 1, CURDATE())");
                 DB::update("UPDATE inventario_reim SET cantidad = (cantidad - ".$precio.") WHERE id_elemento = 900 AND sesion_id = '".$id_usuario."';");
                 Session::flash('success', 'Item comprado exitosamente');
-            }
+            }*/
+
+            DB::insert("INSERT INTO inventario_reim (sesion_id, id_elemento, cantidad, datetime_creacion) VALUES (".$id_usuario.", ".$id_elemento.", 1, CURDATE())");
+            DB::update("UPDATE inventario_reim SET cantidad = (cantidad - ".$precio.") WHERE id_elemento = 900 AND sesion_id = '".$id_usuario."';");
+            Session::flash('success', 'Item comprado exitosamente');
         }
 
 
