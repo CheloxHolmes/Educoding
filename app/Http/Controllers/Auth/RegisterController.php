@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'apellido_materno' => $data['apellido_materno'],
             'rut' => $data['rut'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => $data['password'],
             'tipo_usuario_id' => 3,
         ]);
