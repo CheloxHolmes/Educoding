@@ -56,7 +56,7 @@
 
 
         <!--PELOTA-->
-        <img src="{{asset('assets/img/pelota.png')}}" id="img-tag-400" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 81%;" onclick="linkComprar('/tienda/comprar/400')" onpointerenter="showPreview('Pelota: $10 uLearnet coins')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/pelota.png')}}" id="img-tag-400" class="inner-image" onclick="return confirm('¿Estás seguro que deseas compar?')" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 81%;" onclick="linkComprar('/tienda/comprar/400')" onpointerenter="showPreview('Pelota: $10 uLearnet coins')" onpointerout="hidePreview()" />
 
         <!--RELOJ-->
         <img src="{{asset('assets/img/reloj.png')}}" id="img-tag-401" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 71%;" onclick="linkComprar('/tienda/comprar/401')" onpointerenter="showPreview('Reloj: $20 uLearnet coins')" onpointerout="hidePreview()" />
@@ -140,6 +140,5 @@
 
     </div>
 </body>
-
 
 @endsection
