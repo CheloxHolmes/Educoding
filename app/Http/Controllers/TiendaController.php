@@ -18,9 +18,12 @@ class TiendaController extends Controller
 
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0];
 
+        $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = " . $usuario->id . ";")[0];
+
         return view('tienda', [
             'coins' => $coins,
             'items' => $items,
+            'modulosCompletados' => $modulosCompletados->cantidad,
         ]);
     }
     public function comprar(Request $request, $id_elemento){

@@ -28,7 +28,7 @@
                 @foreach($coins as $coin)
                 <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{ $coin }}</p>
                 @endforeach
-                <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados: </strong> </p>
+                <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados:</strong> {{ $modulosCompletados }}</p>
             </div>
         </div>
         </div>

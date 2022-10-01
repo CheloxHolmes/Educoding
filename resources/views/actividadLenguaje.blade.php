@@ -287,6 +287,4 @@ const getBase64StringFromDataURL = (dataURL) =>
     }, 3000);
 </script>
 
-
-
 @endsection
