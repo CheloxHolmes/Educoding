@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\Mensaje;
 use App\Models\Pertenece;
+use Illuminate\Http\UploadedFile;
 
 class UsersController extends Controller
 {
@@ -25,6 +26,15 @@ class UsersController extends Controller
         $cantidadInsignias = count($insignias);
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = " . $usuario->id . ";")[0];
 
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV".$usuario->id."%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen)>0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        }
+        else {
+            $avatarImagen = "";
+        }
+
         return view('perfil', [
 
             'usuario' => $usuario,
@@ -33,6 +43,7 @@ class UsersController extends Controller
             'rol' => $rol,
             'insignias' => $insignias,
             'items' => $items,
+            'avatarImagen' => $avatarImagen,
             'modulosCompletados' => $modulosCompletados->cantidad,
 
         ]);
@@ -310,6 +321,28 @@ class UsersController extends Controller
         Session::flash('success', '¡Alumno registrado con éxito!');
         return redirect("/registrarAlumno");
 
+    }
+
+    public function nuevoAvatar(Request $request) {
+
+
+        if ($request->file('avatar')) {
+            //$base64Image = explode(";base64,", $request->file('avatar'));
+            //$explodeImage = explode("image/", $base64Image[0]);
+            //$imageName = $explodeImage[1];
+            //$image_base64 = base64_decode($base64Image[1]);
+            //$file = $folderPath . uniqid() . '. '.$imageName;
+        }
+
+        //$path = $request->file('avatar')->store('avatar');
+
+        $image_base64 = base64_encode(file_get_contents($request->file('avatar')));
+
+        DB::delete("DELETE FROM imagen WHERE nombre LIKE '%AV".Auth::id()."%';");
+        DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AV".Auth::id()."', '".$image_base64."', 101, 'AVATAR');");
+
+        Session::flash('success', '¡Alumno registrado con éxito!');
+        return redirect()->back();
     }
 
     public function educoding()
