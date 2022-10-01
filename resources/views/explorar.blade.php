@@ -70,10 +70,52 @@
         <h4 id="opcionUsuarioPreview" style="text-align: center;"></h4>
     </div>
     
+    <button class="volume-button" onclick="toggleVolume()" style="
+    background-color: rgb(14 93 211);
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    left: 28px;
+    width: 230px;"> <img id="volume-img-btn" style="width: 25px;" src="{{asset('volume-low.png')}}"> Volumen</button>
+
     <button class="open-button" onclick="openForm()">Estado</button>
 
-    <audio autoplay style="border:1px solid black;margin:2%;">
+    <audio id="musica" autoplay style="border:1px solid black;margin:2%;">
     <source src="{{asset('mp3/theme3.mp3')}}" type="audio/mpeg">
+
+    <script>
+
+    window.addEventListener("load", function() {
+        var audio = document.getElementById("musica");
+        audio.volume = 0.02;
+    });
+
+    let nivelVolumen = 0.02;
+
+    function toggleVolume() {
+        var audio = document.getElementById("musica");
+        if (nivelVolumen == 0.02) {
+            audio.volume = 0;
+            nivelVolumen = 0;
+            $("#volume-img-btn").attr("src", "../volume-off.png");
+        }
+        else if (nivelVolumen == 0) {
+            audio.volume = 1;
+            nivelVolumen = 1;
+            $("#volume-img-btn").attr("src", "../volume-up.png");
+        }
+        else if (nivelVolumen == 1) {
+            audio.volume = 0.02;
+            nivelVolumen = 0.02;
+            $("#volume-img-btn").attr("src", "../volume-low.png");
+        }
+    }
+
+    </script>
 </audio>
 
     <div class="chat-popup" id="myForm">
