@@ -40,7 +40,7 @@ class TiendaController extends Controller
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0]->cantidad;
 
         if ($coins < $precio) {
-            Session::flash('error', 'No tienes suficientes uLearnet coins. Completa más actividades para conseguir más.'); //Reemplazar por imagen de ulearnet coins
+            Session::flash('error_image', 'No tienes suficientes uLearnet coins . Completa más actividades para conseguir más.'); //Reemplazar por imagen de ulearnet coins
         }
         else {
             /*

@@ -27,10 +27,13 @@
     </div>
 
     @if(Session::has('error'))
-    <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error')}}</strong></p><br>
+    <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error')}}{{Session::get('imagen')}}</strong></p><br>
     @endif
     @if(Session::has('success'))
     <p style="text-align:center;"><strong class="col-md-6" style="color:green;">{{Session::get('success')}}</strong></p><br>
+    @endif
+    @if(Session::has('error_image'))
+    <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error_image')}} <i class="fa fa-coins" style="color:darkgoldenrod"></i></strong></p><br>
     @endif
 
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; margin-bottom:3%;">
