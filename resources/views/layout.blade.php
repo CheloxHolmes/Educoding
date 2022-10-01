@@ -126,7 +126,7 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li class="active"><a href="/"> <i class="fa fa-home"></i> Inicio</a></li>
+                                                <li class="active"><a href="/educoding"> <i class="fa fa-home"></i> Educoding</a></li>
                                                 <li><a href="/explorar/{{Auth::id()}}"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
                                                 <li><a href="/about"> <i class="fa fa-users"></i> Nosotros</a></li>
                                                 <li><a href="/colegios"> <i class="fa fa-building"></i> Colegios</a>
