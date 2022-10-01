@@ -16,7 +16,8 @@
         <a href="/perfil/actualizar/{{Auth::user()->id}}" class="btn">Actualizar mis datos</a>
     </div>
     <div class="row">
-        <div class="card" style="margin:1.5%;width:45%">
+    <div class="col-lg-6" >
+        <div class="card" >
             <div class="card-header" style="color:white !important;">
                 <strong>Estado</strong>
             </div>
@@ -30,7 +31,9 @@
                 <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos Completados: </strong> </p>
             </div>
         </div>
-        <div class="card" style="margin:1.5%;width:45%">
+        </div>
+        <div class="col-lg-6" >
+        <div class="card" >
             <div class="card-header" style="color:white !important;">
                 <strong>Insignias</strong>
             </div>
@@ -47,26 +50,33 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
     <div class="row">
-        <div class="card" style="margin:1.5%;width:45%">
+        <div class="card" style="margin:1.5%;width:100%">
             <div class="card-header" style="color:white !important;">
                 <strong>Inventario</strong>
             </div>
             <div class="card-body">
                 <h5 class="card-title">Aqui van los objetos que has comprado en la tienda</h5>
                 <p class="card-text">Aquí van los items que has comprado con tanto esfuerzo</p>
-                <div class="row">
+                <div class="row" style="background-image: url({{asset('494.jpg')}});background-size: cover;
+    height: 550px;
+    padding: 20px;
+    border-radius: 20px;">
                     @foreach($items as $item)
-                    <div class="col-lg-6 col-md-6">
-                        <img src="{{asset('assets/img/'.$item->descripcion)}}" class="card-img-top" style="width:50px">
-                        <p>{{$item->nombre}}</p>
+                    <div class="col-lg-2 col-md-2" style="text-align: center;">
+                        <img src="{{asset('assets/img/'.$item->descripcion)}}" class="card-img-top" style="width: 80px;
+    background-color: white;height: 80px;
+    border-radius: 100%;
+    padding: 3%;">
+                        <p style="color:white;text-shadow: 1px 2px black;">{{$item->nombre}}</p>
                     </div>
                     @endforeach
                 </div>
             </div>
         </div>
-        <div class="card" style="margin:1.5%;width:45%">
+        <div class="card" style="margin:1.5%;width:100%">
             <div class="card-header" style="color:white !important;">
                 <strong>Mensajes</strong>
             </div>

@@ -3,26 +3,66 @@
 @section('content')
 
 <script>
-    $(function(){
-        $("a.talk").on('click',function(e){
-            e.preventDefault();
-            var text = $("input[name=text]").val();
-            text=encodeURIComponent(text);
-            var url = "https://translate.google.com/translate_tts?tl=ja-JP&q="+text;
-            $("audio").attr('src', url).get(0).play();
-        });
-    });
+
+function sintesis(texto) {
+        let voices = [];
+        const voiceschanged = () => {
+            voices = speechSynthesis.getVoices();
+            speechSynthesis.getVoices().forEach(voice => {
+                //console.log(voice.name, "/", voice.lang)
+            })
+        }
+        speechSynthesis.onvoiceschanged = voiceschanged;
+        var sampleText = texto;
+        var utterance = new SpeechSynthesisUtterance(sampleText);
+        utterance.lang = 'es-US';
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        utterance.rate = 1.1;
+        speechSynthesis.speak(utterance);
+    }
+
+    function mensajesBienenida() {
+        console.log("BIENVENIDA");
+        $("#btn_sintesis_bienvenida").css("display", "none !important");
+        $("#btn_sintesis_bienvenida_div").empty();
+
+        sintesis(`
+        ¡Hola amiguito, necesitamos tu ayuda!.
+        El pueblo de Educoding ha caído bajo hechizo en manos el mago Extrañín. Esto debido a que los habitantes de Educoding no cuidaban el medioambiente, no se educaban y no se preocupaban por su salud.
+            `);
+
+            sintesis(`
+        Necesitamos tu ayuda para restablecer el pueblo de Educoding a su normalidad, ya que los habitantes han sido convertidos en estatuas inmóviles.
+            `);
+
+
+            sintesis(`
+        ¿Cómo puedes salvar al pueblo?, muy fácil, jugando a las actividades que se encuentran en el botón, Explorar la ciudad que se encuentra en la parte superior del sitio.
+            `);
+
+            sintesis(`
+        Recuerda además que al completar módulos podrás ganar uLearnet coins, los cuales podrás canjear en la tienda que aparece en el mismo mapa del pueblo de Educoding.
+            `);
+
+            sintesis(`
+        ¿Estás listo para iniciar tu aventura en Educoding?
+            `);
+
+    };
+
+
 </script>
+
+
 
 <div class="container" style="margin-top:8%;margin-bottom:10%">
 
     <div class="section-tittle section-tittle2 mb-55">
         <div class="front-text" style="margin:5%;">
             <h2 class="">Bienvenido a Educoding</h2>
-            <div style="margin:5%;text-align:center;">
-                <input type="text" name="text">
-                <a href="#" class="talk">Escuchar en audio</a>
-                <audio src="" hidden class="speech"></audio>
+            <div id="btn_sintesis_bienvenida_div" style="margin:5%;text-align:center;">
+                <a id="btn_sintesis_bienvenida" onclick="mensajesBienenida()" class="btn btn-warning talk"> <i class="fa fa-volume"></i> Escuchar en audio</a>
             </div>
             <p>¡Hola amiguito, necesitamos tu ayuda!</p>
             <p>El pueblo de Educoding ha caído bajo hechizo en manos el mago Extrañín. Esto debido a que los habitantes de Educoding no cuidaban el medioambiente, no se educaban y no se preocupaban por su salud.</p>

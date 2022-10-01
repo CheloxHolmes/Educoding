@@ -46,7 +46,7 @@
                 for (var i=0; i<comprados.length-1; i++) {
                     console.log("#img-tag-" + comprados[i]);
 
-                    $("#img-tag-" + comprados[i]).css("display", "none");
+                    //$("#img-tag-" + comprados[i]).css("display", "none");
                 }
             });
         </script>
@@ -68,7 +68,7 @@
         <img src="{{asset('assets/img/wallet.png')}}" id="img-tag-404" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 22%;" onclick="linkComprar('/tienda/comprar/404')" onpointerenter="showPreview('Billetera')" onpointerout="hidePreview()" />
 
         <!--RAQUETA-->
-        <img src="{{asset('assets/img/raquet.png')}}" id="img-tag-409" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 12%;" onclick="linkComprar('/tienda/comprar/409')" onpointerenter="showPreview('Raqueta')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/raqueta.png')}}" id="img-tag-409" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 12%;" onclick="linkComprar('/tienda/comprar/409')" onpointerenter="showPreview('Raqueta')" onpointerout="hidePreview()" />
 
         <!--BOX-->
         <img src="{{asset('assets/img/box.png')}}" id="img-tag-405" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 81%;" onclick="linkComprar('/tienda/comprar/405')" onpointerenter="showPreview('Guantes')" onpointerout="hidePreview()" />
@@ -77,7 +77,7 @@
         <img src="{{asset('assets/img/bate.png')}}" id="img-tag-411" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 71%;" onclick="linkComprar('/tienda/comprar/411')" onpointerenter="showPreview('Bate')" onpointerout="hidePreview()" />
 
         <!--MANCUERNA-->
-        <img src="{{asset('assets/img/mancuera.png')}}" id="img-tag-410" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 60%;" onclick="linkComprar('/tienda/comprar/410')" onpointerenter="showPreview('Mancuerna')" onpointerout="hidePreview()" />
+        <img src="{{asset('assets/img/mancuerna.png')}}" id="img-tag-410" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 60%;" onclick="linkComprar('/tienda/comprar/410')" onpointerenter="showPreview('Mancuerna')" onpointerout="hidePreview()" />
 
         <!--botella-->
         <img src="{{asset('assets/img/botellita.png')}}" id="img-tag-406" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 33%;" onclick="linkComprar('/tienda/comprar/406')" onpointerenter="showPreview('Botella')" onpointerout="hidePreview()" />
