@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Asigna_reim_alumno;
 use App\Models\InventarioReim;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Imagen;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -69,6 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $usuario = User::create([
             'nombres' => $data['nombres'],
             'apellido_paterno' => $data['apellido_paterno'],
@@ -80,11 +80,14 @@ class RegisterController extends Controller
             'tipo_usuario_id' => 3,
         ]);
 
+        //DB::insert("INSERT INTO asigna_reim_alumno (sesion_id, usuario_id, periodo_id, reim_id, datetime_inicio, datetime_termino) VALUES ('".$usuario->id."','".$usuario->id."', 1, 905, '".$usuario->created_at."', '".$usuario->updated_at."');");
+
         Asigna_reim_alumno::create([
+
 
             'sesion_id' => $usuario->id,
             'usuario_id' => $usuario->id,
-            'periodo_id' => 1,
+            'periodo_id' => 202201,
             'reim_id' => 905,
             'datetime_inicio' => $usuario->created_at,
             'datetime_termino' => $usuario->updated_at,
@@ -109,9 +112,13 @@ class RegisterController extends Controller
 
         ]);
 
+        $unaimagen = DB::select("SELECT idimagen FROM imagen ORDER BY idimagen DESC LIMIT 1;")[0]->idimagen;
+
         Imagen::create([
-            
+
+            'idimagen' => intval($unaimagen)+1,
             'nombre' => $usuario->email,
+            'imagen' => 'avatar',
             'id_elemento' => 101,
             'descripcion' => 'user-(10).png',
 

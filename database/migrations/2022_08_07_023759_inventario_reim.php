@@ -14,7 +14,7 @@ class InventarioReim extends Migration
     public function up()
     {
         Schema::create('inventario_reim', function (Blueprint $table) {
-            $table->bigInteger('sesion_id')->unsigned()->index()->nullable();
+            $table->string('sesion_id')->index()->nullable();
             $table->foreign('sesion_id')->references('sesion_id')->on('asigna_reim_alumno')->onDelete('cascade');
             $table->bigInteger('id_elemento')->unsigned()->index()->nullable();
             $table->foreign('id_elemento')->references('id')->on('elemento')->onDelete('cascade');

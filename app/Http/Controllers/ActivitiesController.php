@@ -14,7 +14,7 @@ class ActivitiesController extends Controller
     {
         $usuario = User::find(Auth::id());
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
-        $ids_books = DB::select("SELECT elemento_id FROM eccloud.item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
+        $ids_books = DB::select("SELECT elemento_id FROM item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $background1 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-1';")[0];
         $background2 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-2';")[0];
@@ -34,8 +34,8 @@ class ActivitiesController extends Controller
             $books[$i]->pages = DB::select("SELECT * FROM item WHERE elemento_id = ".$books[$i]->id.";");
 
             for($p = 0; $p < count($books[$i]->pages); ++$p) {
-                if ($books[$i]->pages[$p]->imagen_idimagen) {
-                    $imagenEncontrada = DB::select("SELECT * FROM imagen WHERE idimagen = ".$books[$i]->pages[$p]->imagen_idimagen.";")[0];
+                if ($books[$i]->pages[$p]->IMAGEN_idimagen) {
+                    $imagenEncontrada = DB::select("SELECT * FROM imagen WHERE idimagen = ".$books[$i]->pages[$p]->IMAGEN_idimagen.";")[0];
                     if ($imagenEncontrada) {
                         $books[$i]->pages[$p]->imagen = $imagenEncontrada->descripcion;
                     } 
@@ -84,7 +84,7 @@ class ActivitiesController extends Controller
         $data = $request->all();
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         //echo ($data["image_64"]);
-        DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, 24, 101, curdate(), 1, 1, 1, 1, 1, NULL);");
+        DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, 1, 1, NULL);");
         DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AL".Auth::id()."', '".$data["image_64"]."', 101, 'DIBUJO');");
         Session::flash('success', 'Respuesta enviada con éxito');
         return redirect("/actividadLenguaje/$idAct");
@@ -95,12 +95,12 @@ class ActivitiesController extends Controller
         $data = $request->all();
         $usuario = User::find(Auth::id());
         if ($correcta == "SI") {
-            DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";");
-            DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 1) WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";");
-            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 101, curdate(), 1, 1, 1, 1, ".$data['respuestaEsperada'].", NULL);");
+            DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 3) WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';");
+            DB::update("UPDATE inventario_reim SET cantidad = (cantidad + 1) WHERE id_elemento = 500 AND sesion_id = '".$usuario->id."';");
+            DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, ".$data['id_actividad'].", 101, now(), 1, 1, 1, 1, '".$data['respuestaEsperada']."', 0);");
         }
         else {
-            DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (" . Auth::id() . ", " . Auth::id() . ", 905, ".$data['id_actividad'].", 101, curdate(), 1, 1, 1, 0, ".$data['respuestaEsperada'].", NULL);");
+            DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, ".$data['id_actividad'].", 101, now(), 1, 1, 1, 0, '".$data['respuestaEsperada']."', 0);");
         }
 
         return response()->json("{'resultado':'true'}");
@@ -110,7 +110,7 @@ class ActivitiesController extends Controller
     {
         $usuario = User::find(Auth::id());
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
-        $ids_books = DB::select("SELECT elemento_id FROM eccloud.item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
+        $ids_books = DB::select("SELECT elemento_id FROM item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
 

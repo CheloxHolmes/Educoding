@@ -14,7 +14,7 @@ class Imagen extends Migration
     public function up()
     {
         Schema::create('imagen', function (Blueprint $table) {
-            $table->id('idimagen');
+            $table->id('idimagen')->nullable()->autoIncrement();
             $table->string('nombre')->nullable();
             $table->binary('imagen')->nullable();
             $table->bigInteger('id_elemento')->unsigned()->index()->nullable();

@@ -37,13 +37,13 @@
 
         paginaEnUso.tipo = "texto";
 
-        if (paginaEnUso.justificacion) {
-            if (paginaEnUso.justificacion.length > 0) {
+        if (paginaEnUso.Justificacion) {
+            if (paginaEnUso.Justificacion.length > 0) {
 
-                if (paginaEnUso.justificacion.includes("|")) {
+                if (paginaEnUso.Justificacion.includes("|")) {
                     paginaEnUso.tipo = "alternativas";
 
-                    let alternativas = paginaEnUso.justificacion.split("|");
+                    let alternativas = paginaEnUso.Justificacion.split("|");
                     for (var a = 0; a < alternativas.length; a++) {
                         $("#inputAlternativesAnswer").append("<option>" + alternativas[a] + "</option>");
 
@@ -54,14 +54,14 @@
                     }
                 } else {
                     paginaEnUso.tipo = "pregunta";
-                    paginaEnUso.respuesta = paginaEnUso.justificacion;
-                    libros[currentBook].respuesta = paginaEnUso.justificacion;
+                    paginaEnUso.respuesta = paginaEnUso.Justificacion;
+                    libros[currentBook].respuesta = paginaEnUso.Justificacion;
                 }
 
             }
         }
 
-        paginaEnUso.texto = paginaEnUso.pregunta;
+        paginaEnUso.texto = paginaEnUso.Pregunta;
         //paginaEnUso.imagen = paginaEnUso.imagen_idimagen;
 
         if (paginaEnUso.tipo == "texto") {
@@ -172,7 +172,7 @@
                 id_actividad: $("#idActividad_input").val(),
             },
             success: function(data) {
-                /*alert("Puntos sumados");*/
+                alert("Puntos sumados");
 
                 let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
                 modulosActual = modulosActual + 1;
@@ -183,7 +183,7 @@
                 $("#coinsValue").html("uLearnet Coins: " + coinsActual);
             },
             error: function(xhr, ajaxOptions, thrownError) {
-                /*alert("Error al sumar coins, arregla eso MARCELO, me desespero");*/
+                alert("Error al sumar coins, arregla eso MARCELO, me desespero");
             }
         });
     }
