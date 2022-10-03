@@ -14,7 +14,7 @@ class Periodo extends Migration
     public function up()
     {
         Schema::create('periodo', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->primary();
             $table->string('nombre')->nullable();
 
         });
