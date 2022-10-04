@@ -34,7 +34,7 @@
                                 <div class="col-md-12">
                                     <select name="id_receptor">
                                         @foreach($usuarios as $usuario)
-                                        <option value="{{ $usuario->id }}">{{$usuario->nombres}}</option>
+                                        <option value="{{ $usuario->id }}">{{$usuario->nombres}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</option>
                                         @endforeach
                                     </select>
                                 </div>
