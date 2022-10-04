@@ -33,7 +33,7 @@ class MensajesController extends Controller
     public function crearMensaje()
 
     {
-        $usuarios =  DB::select("SELECT * FROM usuario");
+        $usuarios =  DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE reim_id = 905;");
 
         return view('crearMensaje', [
             'usuarios' => $usuarios,
@@ -69,15 +69,20 @@ class MensajesController extends Controller
             return redirect("/crearMensaje" . "/". Auth::id());
         }
 
-        $post = Mensaje::create([
+        $unmensaje = DB::select("SELECT id FROM mensajes ORDER BY id DESC LIMIT 1;")[0]->id;
 
+        DB::insert("INSERT INTO mensajes (id, titulo, id_creador, id_receptor, descripcion, fecha_mensaje) VALUES (".($unmensaje+1).", '".$request->titulo."', ".Auth::id().", ".$request->id_receptor.", '".$request->descripcion."', '".Carbon::now()."');");
+
+        /*$post = Mensaje::create([
+
+            'id' => $unmensaje+1,
             'titulo' => $request->titulo,
             'id_creador' => Auth::id(),
             'id_receptor' => $request->id_receptor,
             'descripcion' => $request->descripcion,
             'fecha_mensaje' => Carbon::now(),
 
-        ]);
+        ]);*/
 
         Session::flash('mensajeCreado', '¡Mensaje Creado con éxito!');
 

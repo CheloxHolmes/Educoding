@@ -52,9 +52,9 @@ class UsersController extends Controller
     public function dashboard($id)
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
-        $alumnos = DB::select("SELECT * FROM usuario WHERE tipo_usuario_id = 3;")[0];
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;")[0];
         $cAlumnos = User::where('tipo_usuario_id', 3)->get();
-        $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = " . $alumnos->id . ";")[0];
+        $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$alumnos->id."';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim WHERE id_elemento = 500;")[0]->suma;
         //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
@@ -74,7 +74,7 @@ class UsersController extends Controller
         $cantidadesModulosIncorrectosMes = array();
         $fechasMes = array();
 
-        $respuestas_mes = DB::select("SELECT id_per, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actidad WHERE id_actividad != 4 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $respuestas_mes = DB::select("SELECT id_per, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
         $diasMes = Carbon::now()->daysInMonth;
 
         for ($i = 0; $i < $diasMes; ++$i) {

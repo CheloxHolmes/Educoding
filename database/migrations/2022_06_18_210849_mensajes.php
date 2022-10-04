@@ -14,7 +14,7 @@ class Mensajes extends Migration
     public function up()
     {
         Schema::create('mensajes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->nullable()->autoIncrement();
             $table->bigInteger('id_creador')->unsigned()->index()->nullable();
             $table->foreign('id_creador')->references('id')->on('usuario')->onDelete('cascade');
             $table->bigInteger('id_receptor')->unsigned()->index()->nullable();
