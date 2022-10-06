@@ -325,6 +325,8 @@ class UsersController extends Controller
 
     public function nuevoAvatar(Request $request) {
 
+        $unaimagen = DB::select("SELECT idimagen FROM imagen ORDER BY idimagen DESC LIMIT 1;")[0]->idimagen;
+
 
         if ($request->file('avatar')) {
             //$base64Image = explode(";base64,", $request->file('avatar'));
@@ -337,9 +339,10 @@ class UsersController extends Controller
         //$path = $request->file('avatar')->store('avatar');
 
         $image_base64 = base64_encode(file_get_contents($request->file('avatar')));
+        $imagen_mas = intval($unaimagen)+1;
 
         DB::delete("DELETE FROM imagen WHERE nombre LIKE '%AV".Auth::id()."%';");
-        DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AV".Auth::id()."', '".$image_base64."', 101, 'AVATAR');");
+        DB::insert("INSERT INTO imagen (idimagen, nombre, imagen, id_elemento, descripcion) VALUES (".$imagen_mas.", 'AV".Auth::id()."', '".$image_base64."', 101, 'AVATAR');");
 
         Session::flash('success', '¡Alumno registrado con éxito!');
         return redirect()->back();
