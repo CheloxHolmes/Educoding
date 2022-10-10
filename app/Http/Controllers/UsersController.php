@@ -53,7 +53,7 @@ class UsersController extends Controller
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;")[0];
-        $cAlumnos = User::where('tipo_usuario_id', 3)->get();
+        $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$alumnos->id."';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim WHERE id_elemento = 500;")[0]->suma;
@@ -61,7 +61,7 @@ class UsersController extends Controller
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $todoUsuarios = User::all();
-        $actividades = DB::select("SELECT * FROM actividad;");
+        $actividades = DB::select("SELECT * FROM actividad WHERE id IN (21,22,23,24);");
 
         $cant = count($cAlumnos);
         $sumaCoins = 0;
