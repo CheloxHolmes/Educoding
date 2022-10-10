@@ -95,6 +95,8 @@
 
     function linkBook(num) {
 
+        num = Math.floor(Math.random() * 6) + 1;
+
         if (num > libros.length) {
             alert("Libro no encontrado");
             return false;
@@ -172,12 +174,10 @@
                 id_actividad: $("#idActividad_input").val(),
             },
             success: function(data) {
-                alert("Puntos sumados");
-
+                //alert("Puntos sumados");
                 let modulosActual = parseInt($("#modulosValue").html().split(":")[1].split("/")[0]);
                 modulosActual = modulosActual + 1;
                 $("#modulosValue").html("Módulos: " + modulosActual);
-
                 let coinsActual = parseInt($("#coinsValue").html().split(":")[1].split("/")[0]);
                 coinsActual = coinsActual + 3;
                 $("#coinsValue").html("uLearnet Coins: " + coinsActual);

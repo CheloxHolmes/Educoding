@@ -14,7 +14,9 @@
         }
 
         function linkComprar(ruta) {
-            window.location.href = ruta;
+            if (confirm('¿Estás seguro de comprar?') == true) {
+                window.location.href = ruta;
+            }
         }
     </script>
 
@@ -133,7 +135,8 @@
     position: fixed;
     bottom: 23px;
     left: 28px;
-    width: 230px;"> <img id="volume-img-btn" style="width: 25px;" src="{{asset('volume-low.png')}}"> Volumen</button>
+    width: 230px;
+    z-index: 20;"> <img id="volume-img-btn" style="width: 25px;" src="{{asset('volume-low.png')}}"> Volumen</button>
 
         <audio id="musica" autoplay style="border:1px solid black;margin:2%;">
             <source src="{{asset('mp3/aventura.mp3')}}" type="audio/mpeg">
