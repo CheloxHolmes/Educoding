@@ -5,14 +5,14 @@
 <div class="container" style="margin-top:8%;margin-bottom:10%">
 
     <form method="POST" action="/perfil/avatar" enctype="multipart/form-data">
-    @csrf
+        @csrf
         <div class="row" style="margin-bottom:2%;margin-top:5%;">
 
             <div class="col-lg-12" style="text-align: center;">
                 @if($avatarImagen=="")
-                    <img src="{{asset('assets/img/avatar/'.$avatar)}}" height="150px" width="150px">
-                    @else
-                    <img src="data:image/png;base64,{{$avatarImagen}}" height="150px" width="150px">
+                <img src="{{asset('assets/img/avatar/'.$avatar)}}" height="150px" width="150px">
+                @else
+                <img src="data:image/png;base64,{{$avatarImagen}}" height="150px" width="150px">
                 @endif
 
                 @if($usuario->username==NULL)
@@ -50,7 +50,7 @@
                     <p><i class="fa-solid fa-person" style="color: #F3AB67;"></i> <strong>Rol:</strong> {{ $r }}</p>
                     @endforeach
                     @foreach($coins as $coin)
-                    <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Ulearnet Coins:</strong> {{
+                    <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Monedas Ulearnet:</strong> {{
                         $coin }}</p>
                     @endforeach
                     <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos
@@ -69,8 +69,7 @@
                     <div class="row">
                         @foreach($insignias as $insignia)
                         <div class="col-lg-6 col-md-6">
-                            <img src="{{asset('assets/img/insignias/'.$insignia->descripcion)}}" class="card-img-top"
-                                style="width:50px">
+                            <img src="{{asset('assets/img/insignias/'.$insignia->descripcion)}}" class="card-img-top" style="width:50px">
                             <p>{{$insignia->nombre}}</p>
                         </div>
                         @endforeach
@@ -87,16 +86,10 @@
             <div class="card-body">
                 <h5 class="card-title">Aqui van los objetos que has comprado en la tienda</h5>
                 <p class="card-text">Aquí van los items que has comprado con tanto esfuerzo</p>
-                <div class="row" style="background-image: url({{asset('494.jpg')}});background-size: cover;
-    height: 550px;
-    padding: 20px;
-    border-radius: 20px;">
+                <div class="row" style="background-image: url({{asset('494.jpg')}});background-size: cover;height: 550px;padding: 20px;border-radius: 20px;">
                     @foreach($items as $item)
                     <div class="col-lg-2 col-md-2" style="text-align: center;">
-                        <img src="{{asset('assets/img/'.$item->descripcion)}}" class="card-img-top" style="width: 80px;
-    background-color: white;height: 80px;
-    border-radius: 100%;
-    padding: 3%;">
+                        <img src="{{asset('assets/img/'.$item->descripcion)}}" class="card-img-top" style="width: 80px;background-color: white;height: 80px;border-radius: 100%;padding: 3%;">
                         <p style="color:white;text-shadow: 1px 2px black;">{{$item->nombre}}</p>
                     </div>
                     @endforeach
@@ -115,7 +108,7 @@
         </div>
     </div>
     <br>
-    <div style="text-align:center;">
+    <!--<div style="text-align:center;">
         <h2>Actualizar avatar</h2>
     </div>
     <br>
@@ -150,11 +143,11 @@
                         class="rounded-circle" width="150"></a>
                 <a href="/perfil/avatar/user-14.png"><img src="{{asset('assets/img/avatar/user-14.png')}}" alt="Admin"
                         class="rounded-circle" width="150"></a>
-            </div>
-            <br>
-        </div>
-        <br>
-    </div>
+            </div>-->
+    <br>
+</div>
+<br>
+</div>
 </div>
 
 
