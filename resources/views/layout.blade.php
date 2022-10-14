@@ -36,7 +36,7 @@
     <!-- Jquery, Popper, Bootstrap -->
     <script src="{{asset('../assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 
-    <link rel="stylesheet" href="{{asset('dist/drawerJs.css')}}"/>
+    <link rel="stylesheet" href="{{asset('dist/drawerJs.css')}}" />
     <script src="{{asset('dist/drawerJs.standalone.min.js')}}"></script>
 
 </head>
@@ -59,7 +59,7 @@
     <header>
         <!-- Header Start -->
         <div class="header-area header-transparent" style="background:rgba(0, 75, 147);background: linear-gradient(to bottom, rgba(0, 75, 147) 0%, #5274ff 100%);">
-            <div class="main-header ">
+            <div class="main-header">
                 <div class="header-bottom  header-sticky">
                     <div class="container-fluid">
                         <div class="row align-items-center">
@@ -76,7 +76,7 @@
                                         <nav>
                                             <ul id="navigation">
                                                 <li class="active"><a href="/educoding"> <i class="fa fa-home"></i> Educoding</a></li>
-                                                <li><a href="/login"> <i class="fa fa-map"></i> Explora la ciudad</a></li>
+                                                <li><a href="/login"> <i class="fa fa-map"></i> Aventura</a></li>
                                                 <li><a href="/about"> <i class="fa fa-users"></i> Nosotros</a></li>
                                                 <li><a href="/colegios"> <i class="fa fa-building"></i> Colegios</a>
                                                     <!--<ul class="submenu">
@@ -253,7 +253,7 @@
             <!-- Footer End-->
         </div>
     </footer>
-    
+
 
     <script src="{{asset('../assets/js/popper.min.js')}}"></script>
     <script src="{{asset('../assets/js/bootstrap.min.js')}}"></script>
