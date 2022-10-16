@@ -6,7 +6,9 @@
 <input type="hidden" id="modulosCorrectosMes" value="@foreach($cantidadesModulosCorrectosMes as $cantidad){{$cantidad}},@endforeach" />
 <input type="hidden" id="modulosIncorrectosMes" value="@foreach($cantidadesModulosIncorrectosMes as $cantidad){{$cantidad}},@endforeach" />
 <input type="hidden" id="fechasMes" value="@foreach($fechasMes as $cantidad){{$cantidad}},@endforeach" />
-
+<input type="hidden" id="sumaMatematicas" value="{{$sumaMatematicas}}" />
+<input type="hidden" id="sumaHistoria" value="{{$sumaHistoria}}" />
+<input type="hidden" id="sumaIngles" value="{{$sumaIngles}}" />
 
 <div class="pagetitle">
   <h1>Dashboard</h1>
@@ -247,7 +249,7 @@
               </div>
             </div><!-- Fin mensaje item-->
             @endforeach
-          </div> 
+          </div>
         </div>
       </div><!-- Fin ámbito mensajes -->
 
@@ -261,6 +263,22 @@
 
           <script>
             document.addEventListener("DOMContentLoaded", () => {
+
+              //Suma actividad Hechizo matemático en dashboard
+
+              sumaMatematicas = $("#sumaMatematicas").val();
+              console.log('sumaMatematicas', sumaMatematicas);
+
+              //Suma actividad Some Kind of Spell en dashboard
+
+              sumaIngles = $("#sumaIngles").val();
+              console.log('sumaIngles', sumaIngles);
+
+              //Suma actividad Identidad del Pueblo en dashboard
+
+              sumaHistoria = $("#sumaHistoria").val();
+              console.log('sumaHistoria', sumaHistoria);
+ 
               echarts.init(document.querySelector("#trafficChart")).setOption({
                 tooltip: {
                   trigger: 'item'
@@ -288,25 +306,18 @@
                   labelLine: {
                     show: false
                   },
-                  data: [{
-                      value: 10,
-                      name: 'Compras en tienda'
+                  data: [
+                    {
+                      value: sumaMatematicas,
+                      name: 'Hechizo Matemático'
                     },
                     {
-                      value: 7,
-                      name: 'Lenguaje'
+                      value: sumaIngles,
+                      name: 'Some Kind of Spell'
                     },
                     {
-                      value: 5,
-                      name: 'Matemática'
-                    },
-                    {
-                      value: 4,
-                      name: 'Inglés'
-                    },
-                    {
-                      value: 3,
-                      name: 'Historia'
+                      value: sumaHistoria,
+                      name: 'Identidad del Pueblo'
                     }
                   ]
                 }]

@@ -55,6 +55,9 @@ class UsersController extends Controller
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$alumnos->id."';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim WHERE id_elemento = 500;")[0]->suma;
+        $sumaHistoria = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 21 AND correcta = 1;")[0]->count;
+        $sumaMatematicas = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 22 AND correcta = 1;")[0]->count;
+        $sumaIngles = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 23 AND correcta = 1;")[0]->count;
         //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
@@ -114,6 +117,9 @@ class UsersController extends Controller
             'avatar' => $imagen->descripcion,
             'sumaCoins' => $sumaCoins,
             'sumaModulos' => $sumaModulos,
+            'sumaHistoria' => $sumaHistoria,
+            'sumaMatematicas' => $sumaMatematicas,
+            'sumaIngles' => $sumaIngles,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
             'cantidadesModulosCorrectosMes' => $cantidadesModulosCorrectosMes,
             'cantidadesModulosIncorrectosMes' => $cantidadesModulosIncorrectosMes,
