@@ -28,7 +28,7 @@ function sintesis(texto) {
         $("#btn_sintesis_bienvenida_div").empty();
 
         sintesis(`
-        ¡Hola amiguito, necesitamos tu ayuda!.
+        ¡Hola, necesitamos tu ayuda!.
         El pueblo de Educóding ha caído bajo hechizo en manos el mago Extrañín. Esto debido a que los habitantes de Educóding no cuidaban el medioambiente, no se educaban y no se preocupaban por su salud.
             `);
 
@@ -60,11 +60,11 @@ function sintesis(texto) {
 
     <div class="section-tittle section-tittle2 mb-55">
         <div class="front-text" style="margin:5%;">
-            <h2 class="">Bienvenido a Educoding</h2>
+            <h2 class="">Bienvenid@ a Educoding</h2>
             <div id="btn_sintesis_bienvenida_div" style="margin:5%;text-align:center;">
                 <a id="btn_sintesis_bienvenida" onclick="mensajesBienenida()" class="btn btn-warning talk"> <i class="fa fa-volume"></i> Escuchar en audio</a>
             </div>
-            <p>¡Hola amiguito, necesitamos tu ayuda!</p>
+            <p>¡Hola, necesitamos tu ayuda!</p>
             <p>El pueblo de Educoding ha caído bajo hechizo en manos el mago Extrañín. Esto debido a que los habitantes de Educoding no cuidaban el medioambiente, no se educaban y no se preocupaban por su salud.</p>
             <div style="margin:5%;">
                 <img src="https://cdn.pixabay.com/photo/2016/06/13/14/57/wizard-1454385_960_720.png" class="rounded mx-auto d-block" width="40%" height="40%">

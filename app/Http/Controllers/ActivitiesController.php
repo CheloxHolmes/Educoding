@@ -84,7 +84,7 @@ class ActivitiesController extends Controller
         $data = $request->all();
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         //echo ($data["image_64"]);
-        DB::insert("INSERT INTO alumno_respuesta_actidad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, 1, 1, NULL);");
+        DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, 1, 1, NULL);");
         DB::insert("INSERT INTO imagen (nombre, imagen, id_elemento, descripcion) VALUES ('AL".Auth::id()."', '".$data["image_64"]."', 101, 'DIBUJO');");
         Session::flash('success', 'Respuesta enviada con éxito');
         return redirect("/actividadLenguaje/$idAct");
@@ -114,7 +114,7 @@ class ActivitiesController extends Controller
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
 
-        $respuestas = DB::select("SELECT id_per, datetime_touch, correcta, resultado, nombres, apellido_paterno FROM alumno_respuesta_actidad INNER JOIN usuario ON usuario.id = alumno_respuesta_actidad.id_per WHERE id_actividad = ".$id.";");
+        $respuestas = DB::select("SELECT id_user, datetime_touch, correcta, resultado, nombres, apellido_paterno FROM alumno_respuesta_actividad INNER JOIN usuario ON usuario.id = alumno_respuesta_actividad.id_user WHERE id_actividad = ".$id.";");
 
         $books = [];
 
