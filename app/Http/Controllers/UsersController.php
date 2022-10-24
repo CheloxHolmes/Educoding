@@ -75,7 +75,7 @@ class UsersController extends Controller
         $cantidadesModulosIncorrectosMes = array();
         $fechasMes = array();
 
-        $respuestas_mes = DB::select("SELECT id_per, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $respuestas_mes = DB::select("SELECT id_per, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
         $diasMes = Carbon::now()->daysInMonth;
 
         for ($i = 0; $i < $diasMes; ++$i) {
