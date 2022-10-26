@@ -108,43 +108,15 @@
         </div>
     </div>
     <br>
-    <!--<div style="text-align:center;">
-        <h2>Actualizar avatar</h2>
+    <div style="text-align:center;">
+        <h1>Mis dibujos</h1>
     </div>
-    <br>
-    <div class="row">
-        <div class="d-flex justify-content-center">
-            <div>
-                <a href="/perfil/avatar/user-(1).png"><img src="{{asset('assets/img/avatar/user-(1).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(2).png"><img src="{{asset('assets/img/avatar/user-(2).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(3).png"><img src="{{asset('assets/img/avatar/user-3.png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(4).png"><img src="{{asset('assets/img/avatar/user-7.png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(5).png"><img src="{{asset('assets/img/avatar/user-(5).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(6).png"><img src="{{asset('assets/img/avatar/user-(6).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(7).png"><img src="{{asset('assets/img/avatar/user-(7).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(8).png"><img src="{{asset('assets/img/avatar/user-(8).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(9).png"><img src="{{asset('assets/img/avatar/user-(9).png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(10).png"><img src="{{asset('assets/img/avatar/user-(10).png')}}"
-                        alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(11).png"><img src="{{asset('assets/img/avatar/user-(11).png')}}"
-                        alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-(12).png"><img src="{{asset('assets/img/avatar/user-(12).png')}}"
-                        alt="Admin" class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-13.png"><img src="{{asset('assets/img/avatar/user-13.png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-                <a href="/perfil/avatar/user-14.png"><img src="{{asset('assets/img/avatar/user-14.png')}}" alt="Admin"
-                        class="rounded-circle" width="150"></a>
-            </div>-->
-    <br>
+    @foreach($respuestaImagen as $midibujo)
+    <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
+        <br>
+        <img src="{{$midibujo->imagen}}" style="border: 2px solid #555;">
+    </div>
+    @endforeach
 </div>
 <br>
 </div>
