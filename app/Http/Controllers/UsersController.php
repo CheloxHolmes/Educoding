@@ -381,6 +381,31 @@ class UsersController extends Controller
         ]);
     }
 
+    public function listaCursos()
+    {
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $countMensajes = count($mensajes);
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $cursos = DB::select("SELECT * FROM nivel");
+        $letras = DB::select("SELECT * FROM letra");
+        $colegios = DB::select("SELECT * FROM colegio");
+
+        return view("ListaCursos", [
+
+            'usuario' => $usuario,
+            'alumnos' => $alumnos,
+            'mensajes' => $mensajes,
+            'countMensajes' => $countMensajes,
+            'avatar' => $imagen->descripcion,
+            'cursos' => $cursos,
+            'letras' => $letras,
+            'colegios' => $colegios,
+
+        ]);
+    }
+
     public function estadisticaAlumno($id)
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
@@ -529,6 +554,135 @@ class UsersController extends Controller
             'fechasMesIng' => $fechasMesIng,
             'countMensajes' => $countMensajes,
             'avatar' => $imagen->descripcion,
+
+        ]);
+    }
+
+    public function estadisticaGeneral(){
+
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $countMensajes = count($mensajes);
+        $cantidadesModulosCompletadosMes = array();
+        $cantidadesModulosCorrectosMes = array();
+        $cantidadesModulosIncorrectosMes = array();
+        $fechasMes = array();
+
+        $respuestas_mes = DB::select("SELECT id_per, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $diasMes = Carbon::now()->daysInMonth;
+
+        for ($i = 0; $i < $diasMes; ++$i) {
+
+            $completados = 0;
+            $correctos = 0;
+            $incorrectos = 0;
+
+            $fecha_recorrido = date_format(date_create(Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i + 1)), 'Y-M-d');
+
+            array_push($fechasMes, strval($fecha_recorrido));
+
+            for ($k = 0; $k < count($respuestas_mes); ++$k) {
+                $fecha_res = date_format(date_create($respuestas_mes[$k]->n_anno . '-' . $respuestas_mes[$k]->n_mes . '-' . $respuestas_mes[$k]->n_dia), 'Y-M-d');
+
+                if ($fecha_recorrido == $fecha_res) {
+                    $completados += 1;
+
+                    if ($respuestas_mes[$k]->correcta == 1) {
+                        $correctos += 1;
+                    } else {
+                        $incorrectos += 1;
+                    }
+                }
+            }
+
+            array_push($cantidadesModulosCompletadosMes, $completados);
+            array_push($cantidadesModulosCorrectosMes, $correctos);
+            array_push($cantidadesModulosIncorrectosMes, $incorrectos);
+        }
+
+        return view("EstadisticaGeneral", [
+
+            'usuario' => $usuario,
+            'avatar' => $imagen->descripcion,
+            'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
+            'cantidadesModulosCorrectosMes' => $cantidadesModulosCorrectosMes,
+            'cantidadesModulosIncorrectosMes' => $cantidadesModulosIncorrectosMes,
+            'fechasMes' => $fechasMes,
+            'mensajes' => $mensajes,
+            'countMensajes' => $countMensajes,
+            'respuestas_mes' => $respuestas_mes,
+            'diasMes' => $diasMes,
+
+        ]);
+    }
+
+    public function estadisticaCurso($idcolegio, $idcurso, $idletra){
+
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = $idcolegio AND nivel_id = $idcurso AND letra_id = $idletra;");
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $countMensajes = count($mensajes);
+        $cantidadesModulosCompletadosMes = array();
+        $cantidadesModulosCorrectosMes = array();
+        $cantidadesModulosIncorrectosMes = array();
+        $fechasMes = array();
+        $cursos = DB::select("SELECT * FROM nivel");
+        $letras = DB::select("SELECT * FROM letra");
+        $colegios = DB::select("SELECT * FROM colegio");
+
+        $respuestas_mes = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $diasMes = Carbon::now()->daysInMonth;
+
+        for ($i = 0; $i < $diasMes; ++$i) {
+
+            $completados = 0;
+            $correctos = 0;
+            $incorrectos = 0;
+
+            $fecha_recorrido = date_format(date_create(Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i + 1)), 'Y-M-d');
+
+            array_push($fechasMes, strval($fecha_recorrido));
+
+            for ($k = 0; $k < count($respuestas_mes); ++$k) {
+                $fecha_res = date_format(date_create($respuestas_mes[$k]->n_anno . '-' . $respuestas_mes[$k]->n_mes . '-' . $respuestas_mes[$k]->n_dia), 'Y-M-d');
+
+                if ($fecha_recorrido == $fecha_res) {
+                    $completados += 1;
+
+                    if ($respuestas_mes[$k]->correcta == 1) {
+                        $correctos += 1;
+                    } else {
+                        $incorrectos += 1;
+                    }
+                }
+            }
+
+            array_push($cantidadesModulosCompletadosMes, $completados);
+            array_push($cantidadesModulosCorrectosMes, $correctos);
+            array_push($cantidadesModulosIncorrectosMes, $incorrectos);
+        }
+
+        return view("EstadisticaCurso", [
+
+            'usuario' => $usuario,
+            'avatar' => $imagen->descripcion,
+            'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
+            'cantidadesModulosCorrectosMes' => $cantidadesModulosCorrectosMes,
+            'cantidadesModulosIncorrectosMes' => $cantidadesModulosIncorrectosMes,
+            'fechasMes' => $fechasMes,
+            'mensajes' => $mensajes,
+            'countMensajes' => $countMensajes,
+            'respuestas_mes' => $respuestas_mes,
+            'diasMes' => $diasMes,
+            'cursos' => $cursos,
+            'letras' => $letras,
+            'colegios' => $colegios,
+            'idcolegio' => $idcolegio,
+            'idcurso' => $idcurso,
+            'idletra' => $idletra,
 
         ]);
     }
