@@ -24,12 +24,11 @@ class UsersController extends Controller
         $cantidadInsignias = count($insignias);
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = " . $usuario->id . ";")[0];
 
-        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV".$usuario->id."%' ORDER BY idimagen DESC;");
-        if (count($avatarImagen)>0) {
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
             $avatarImagen = $avatarImagen[0]->imagen;
             //return $avatarImagen;
-        }
-        else {
+        } else {
             $avatarImagen = "";
         }
 
@@ -52,7 +51,7 @@ class UsersController extends Controller
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;")[0];
         $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
-        $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$alumnos->id."';")[0];
+        $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $alumnos->id . "';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim WHERE id_elemento = 500;")[0]->suma;
         $sumaHistoria = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 21 AND correcta = 1;")[0]->count;
@@ -84,20 +83,19 @@ class UsersController extends Controller
             $correctos = 0;
             $incorrectos = 0;
 
-            $fecha_recorrido = date_format( date_create( Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i+1)), 'Y-M-d'  );
+            $fecha_recorrido = date_format(date_create(Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i + 1)), 'Y-M-d');
 
             array_push($fechasMes, strval($fecha_recorrido));
 
             for ($k = 0; $k < count($respuestas_mes); ++$k) {
-                $fecha_res = date_format(date_create( $respuestas_mes[$k]->n_anno . '-' . $respuestas_mes[$k]->n_mes . '-' . $respuestas_mes[$k]->n_dia ), 'Y-M-d');
+                $fecha_res = date_format(date_create($respuestas_mes[$k]->n_anno . '-' . $respuestas_mes[$k]->n_mes . '-' . $respuestas_mes[$k]->n_dia), 'Y-M-d');
 
                 if ($fecha_recorrido == $fecha_res) {
                     $completados += 1;
 
                     if ($respuestas_mes[$k]->correcta == 1) {
                         $correctos += 1;
-                    }
-                    else {
+                    } else {
                         $incorrectos += 1;
                     }
                 }
@@ -106,8 +104,7 @@ class UsersController extends Controller
             array_push($cantidadesModulosCompletadosMes, $completados);
             array_push($cantidadesModulosCorrectosMes, $correctos);
             array_push($cantidadesModulosIncorrectosMes, $incorrectos);
-
-        }    
+        }
 
         return view('dashboard', [
 
@@ -294,7 +291,7 @@ class UsersController extends Controller
         $cursos = DB::select("SELECT * FROM nivel");
         $letras = DB::select("SELECT * FROM letra");
         $colegios = DB::select("SELECT * FROM colegio");
-        $alumnos = DB::select("SELECT * FROM usuario WHERE tipo_usuario_id = 3;");
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
         $fecha = Carbon::now();
 
         return view("registrarAlumno", [
@@ -324,10 +321,10 @@ class UsersController extends Controller
 
         Session::flash('success', '¡Alumno registrado con éxito!');
         return redirect("/registrarAlumno");
-
     }
 
-    public function nuevoAvatar(Request $request) {
+    public function nuevoAvatar(Request $request)
+    {
 
         $unaimagen = DB::select("SELECT idimagen FROM imagen ORDER BY idimagen DESC LIMIT 1;")[0]->idimagen;
 
@@ -343,10 +340,10 @@ class UsersController extends Controller
         //$path = $request->file('avatar')->store('avatar');
 
         $image_base64 = base64_encode(file_get_contents($request->file('avatar')));
-        $imagen_mas = intval($unaimagen)+1;
+        $imagen_mas = intval($unaimagen) + 1;
 
-        DB::delete("DELETE FROM imagen WHERE nombre LIKE '%AV".Auth::id()."%';");
-        DB::insert("INSERT INTO imagen (idimagen, nombre, imagen, id_elemento, descripcion) VALUES (".$imagen_mas.", 'AV".Auth::id()."', '".$image_base64."', 101, 'AVATAR');");
+        DB::delete("DELETE FROM imagen WHERE nombre LIKE '%AV" . Auth::id() . "%';");
+        DB::insert("INSERT INTO imagen (idimagen, nombre, imagen, id_elemento, descripcion) VALUES (" . $imagen_mas . ", 'AV" . Auth::id() . "', '" . $image_base64 . "', 101, 'AVATAR');");
 
         Session::flash('success', '¡Alumno registrado con éxito!');
         return redirect()->back();
@@ -355,9 +352,184 @@ class UsersController extends Controller
     public function educoding()
     {
 
-        return view("educoding", [
+        return view("educoding", []);
+    }
 
-          
+    public function listaAlumnos()
+    {
+
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $countMensajes = count($mensajes);
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $cursos = DB::select("SELECT * FROM nivel")[0];
+        $letras = DB::select("SELECT * FROM letra")[0];
+        $colegios = DB::select("SELECT * FROM colegio")[0];
+
+        return view("ListaAlumnos", [
+
+            'usuario' => $usuario,
+            'alumnos' => $alumnos,
+            'mensajes' => $mensajes,
+            'countMensajes' => $countMensajes,
+            'avatar' => $imagen->descripcion,
+            'cursos' => $cursos,
+            'letras' => $letras,
+            'colegios' => $colegios,
+
+        ]);
+    }
+
+    public function estadisticaAlumno($id)
+    {
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $countMensajes = count($mensajes);
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+
+        $cantidadesModulosCompletadosMesMat = array();
+        $cantidadesModulosCorrectosMesMat = array();
+        $cantidadesModulosIncorrectosMesMat = array();
+        $fechasMesMat = array();
+
+        //Hechizo Matemático 
+
+        $respuestas_mes_mat = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_user = $id AND id_actividad = 22 AND id_reim = 905 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $diasMes = Carbon::now()->daysInMonth;
+
+        for ($i = 0; $i < $diasMes; ++$i) {
+
+            $completadosMat = 0;
+            $correctosMat = 0;
+            $incorrectosMat = 0;
+
+            $fecha_recorridoMat = date_format(date_create(Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i + 1)), 'Y-M-d');
+
+            array_push($fechasMesMat, strval($fecha_recorridoMat));
+
+            for ($k = 0; $k < count($respuestas_mes_mat); ++$k) {
+                $fecha_res = date_format(date_create($respuestas_mes_mat[$k]->n_anno . '-' . $respuestas_mes_mat[$k]->n_mes . '-' . $respuestas_mes_mat[$k]->n_dia), 'Y-M-d');
+
+                if ($fecha_recorridoMat == $fecha_res) {
+                    $completadosMat += 1;
+
+                    if ($respuestas_mes_mat[$k]->correcta == 1) {
+                        $correctosMat += 1;
+                    } else {
+                        $incorrectosMat += 1;
+                    }
+                }
+            }
+
+            array_push($cantidadesModulosCompletadosMesMat, $completadosMat);
+            array_push($cantidadesModulosCorrectosMesMat, $correctosMat);
+            array_push($cantidadesModulosIncorrectosMesMat, $incorrectosMat);
+        
+        }
+
+        //Identidad del Pueblo
+
+        $cantidadesModulosCompletadosMesHist = array();
+        $cantidadesModulosCorrectosMesHist = array();
+        $cantidadesModulosIncorrectosMesHist = array();
+        $fechasMesHist = array();
+
+        $respuestas_mes_hist = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_user = $id AND id_actividad = 21 AND id_reim = 905 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $diasMes = Carbon::now()->daysInMonth;
+
+        for ($i = 0; $i < $diasMes; ++$i) {
+
+            $completadosHist = 0;
+            $correctosHist = 0;
+            $incorrectosHist = 0;
+
+            $fecha_recorridoHist = date_format(date_create(Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i + 1)), 'Y-M-d');
+
+            array_push($fechasMesHist, strval($fecha_recorridoHist));
+
+            for ($k = 0; $k < count($respuestas_mes_hist); ++$k) {
+                $fecha_res = date_format(date_create($respuestas_mes_hist[$k]->n_anno . '-' . $respuestas_mes_hist[$k]->n_mes . '-' . $respuestas_mes_hist[$k]->n_dia), 'Y-M-d');
+
+                if ($fecha_recorridoHist == $fecha_res) {
+                    $completadosHist += 1;
+
+                    if ($respuestas_mes_hist[$k]->correcta == 1) {
+                        $correctosHist += 1;
+                    } else {
+                        $incorrectosHist += 1;
+                    }
+                }
+            }
+
+            array_push($cantidadesModulosCompletadosMesHist, $completadosHist);
+            array_push($cantidadesModulosCorrectosMesHist, $correctosHist);
+            array_push($cantidadesModulosIncorrectosMesHist, $incorrectosHist);
+        
+        }
+
+        //Some Kind of Spell
+
+        $cantidadesModulosCompletadosMesIng = array();
+        $cantidadesModulosCorrectosMesIng = array();
+        $cantidadesModulosIncorrectosMesIng = array();
+        $fechasMesIng = array();
+
+        $respuestas_mes_ing = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_user = $id AND id_actividad = 23 AND id_reim = 905 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $diasMes = Carbon::now()->daysInMonth;
+
+        for ($i = 0; $i < $diasMes; ++$i) {
+
+            $completadosIng = 0;
+            $correctosIng = 0;
+            $incorrectosIng = 0;
+
+            $fecha_recorridoIng = date_format(date_create(Carbon::now()->year . '-' . Carbon::now()->month . '-' . strval($i + 1)), 'Y-M-d');
+
+            array_push($fechasMesIng, strval($fecha_recorridoIng));
+
+            for ($k = 0; $k < count($respuestas_mes_ing); ++$k) {
+                $fecha_res = date_format(date_create($respuestas_mes_ing[$k]->n_anno . '-' . $respuestas_mes_ing[$k]->n_mes . '-' . $respuestas_mes_ing[$k]->n_dia), 'Y-M-d');
+
+                if ($fecha_recorridoIng == $fecha_res) {
+                    $completadosIng += 1;
+
+                    if ($respuestas_mes_ing[$k]->correcta == 1) {
+                        $correctosIng += 1;
+                    } else {
+                        $incorrectosIng += 1;
+                    }
+                }
+            }
+
+            array_push($cantidadesModulosCompletadosMesIng, $completadosIng);
+            array_push($cantidadesModulosCorrectosMesIng, $correctosIng);
+            array_push($cantidadesModulosIncorrectosMesIng, $incorrectosIng);
+        
+        }
+
+
+        return view("EstadisticaAlumno", [
+
+            'usuario' => $usuario,
+            'alumnos' => $alumnos,
+            'mensajes' => $mensajes,
+            'cantidadesModulosCompletadosMesMat' => $cantidadesModulosCompletadosMesMat,
+            'cantidadesModulosCorrectosMesMat' => $cantidadesModulosCorrectosMesMat,
+            'cantidadesModulosIncorrectosMesMat' => $cantidadesModulosIncorrectosMesMat,
+            'cantidadesModulosCompletadosMesHist' => $cantidadesModulosCompletadosMesHist,
+            'cantidadesModulosCorrectosMesHist' => $cantidadesModulosCorrectosMesHist,
+            'cantidadesModulosIncorrectosMesHist' => $cantidadesModulosIncorrectosMesHist,
+            'cantidadesModulosCompletadosMesIng' => $cantidadesModulosCompletadosMesIng,
+            'cantidadesModulosCorrectosMesIng' => $cantidadesModulosCorrectosMesIng,
+            'cantidadesModulosIncorrectosMesIng' => $cantidadesModulosIncorrectosMesIng,
+            'fechasMesMat' => $fechasMesMat,
+            'fechasMesHist' => $fechasMesHist,
+            'fechasMesIng' => $fechasMesIng,
+            'countMensajes' => $countMensajes,
+            'avatar' => $imagen->descripcion,
+
         ]);
     }
 }

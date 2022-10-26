@@ -60,6 +60,10 @@ Route::get('/dashboard/{id}', [App\Http\Controllers\UsersController::class, 'das
 
 Route::get('/cursos', [App\Http\Controllers\UsersController::class, 'cursos'])->middleware('auth');
 
+Route::get('/ListaAlumnos', [App\Http\Controllers\UsersController::class, 'listaAlumnos'])->middleware('auth');
+
+Route::get('/EstadisticaAlumno/{id}', [App\Http\Controllers\UsersController::class, 'estadisticaAlumno'])->middleware('auth');
+
 //Admin
 
 Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin'])->middleware('auth');
