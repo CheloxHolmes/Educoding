@@ -305,7 +305,7 @@
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a href="/ListaCursos">
                             <i class="bi bi-circle"></i><span>Cursos</span>
                         </a>
                     </li>
@@ -315,8 +315,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="charts-echarts.html">
-                            <i class="bi bi-circle"></i><span>Progreso</span>
+                        <a href="/EstadisticaGeneral">
+                            <i class="bi bi-circle"></i><span>General Diario</span>
                         </a>
                     </li>
                 </ul>

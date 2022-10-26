@@ -62,7 +62,13 @@ Route::get('/cursos', [App\Http\Controllers\UsersController::class, 'cursos'])->
 
 Route::get('/ListaAlumnos', [App\Http\Controllers\UsersController::class, 'listaAlumnos'])->middleware('auth');
 
+Route::get('/ListaCursos', [App\Http\Controllers\UsersController::class, 'listaCursos'])->middleware('auth');
+
 Route::get('/EstadisticaAlumno/{id}', [App\Http\Controllers\UsersController::class, 'estadisticaAlumno'])->middleware('auth');
+
+Route::get('/EstadisticaCurso/{idcolegio}/{idcurso}/{idletra}', [App\Http\Controllers\UsersController::class, 'estadisticaCurso'])->middleware('auth');
+
+Route::get('/EstadisticaGeneral', [App\Http\Controllers\UsersController::class, 'estadisticaGeneral'])->middleware('auth');
 
 //Admin
 
