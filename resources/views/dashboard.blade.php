@@ -40,7 +40,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>{{$sumaModulos}}</h6>
-                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  <span class="text-success small pt-1 fw-bold">Total plataforma</span> <span class="text-muted small pt-2 ps-1"></span>
                 </div>
               </div>
             </div>
@@ -61,8 +61,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>{{$sumaCoins}}</h6>
-                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+                  <span class="text-success small pt-1 fw-bold">Total plataforma</span> <span class="text-muted small pt-2 ps-1"></span>
                 </div>
               </div>
             </div>
@@ -97,7 +96,7 @@
                 </div>
                 <div class="ps-3">
                   <h6>{{$cant}}</h6>
-                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                  <span class="text-success small pt-1 fw-bold">Total plataforma</span> <span class="text-muted small pt-2 ps-1"></span>
                 </div>
               </div>
 
@@ -191,7 +190,7 @@
           </div>
         </div><!-- End Reports -->
 
-        <!-- Recent Sales -->
+        <!-- Lista Alumnos -->
         <div class="col-12">
           <div class="card recent-sales overflow-auto">
 
@@ -222,10 +221,10 @@
             </div>
 
           </div>
-        </div><!-- End Recent Sales -->
+        </div><!-- Fin Lista Alumnos -->
 
       </div>
-    </div><!-- End Left side columns -->
+    </div>
 
     <!-- Right side columns -->
     <div class="col-lg-4">

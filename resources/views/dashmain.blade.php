@@ -202,7 +202,7 @@
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="/perfil/{{ Auth::user()->id }}">
-                                <i class="bi bi-person"></i>
+                                <i class="fa fa-user"></i>
                                 <span>Perfil</span>
                             </a>
                         </li>
@@ -210,12 +210,26 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/registrarCurso">
+                                <i class="fa fa-users"></i>
+                                <span>Registrar curso</span>
+                            </a>
+                        </li>
+                        <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
+                            <a class="dropdown-item d-flex align-items-center" href="/registrarAlumno">
+                                <i class="fa fa-person"></i>
+                                <span>Registrar alumno</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/educoding">
+                                <i class="fa fa-question-circle"></i>
                                 <span>Ayuda</span>
                             </a>
                         </li>
@@ -225,7 +239,7 @@
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
-                                <i class="bi bi-box-arrow-right"></i>
+                                <i class="fa fa-right-from-bracket"></i>
                                 <span>Cerrar sesión</span>
                             </a>
                         </li>
@@ -261,25 +275,23 @@
                         <a href="/cursos">
                             <i class="bi bi-circle"></i><span>Ver cursos</span>
                         </a>
+                        <a href="/registrarCurso">
+                            <i class="bi bi-circle"></i><span>Registrar Curso</span>
+                        </a>
                     </li>
                 </ul>
             </li>
 
-            <!-- Comunicados -->
+            <!-- Alumnos -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Comunicados</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-person"></i><span>Alumnos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="tables-general.html">
-                            <i class="bi bi-circle"></i><span>Ver comunicados</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tables-data.html">
-                            <i class="bi bi-circle"></i><span>Enviar comunicado</span>
+                        <a href="/registrarAlumno">
+                            <i class="bi bi-circle"></i><span>Registrar alumnos</span>
                         </a>
                     </li>
                 </ul>
@@ -298,7 +310,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="charts-apexcharts.html">
+                        <a href="/ListaAlumnos">
                             <i class="bi bi-circle"></i><span>Estudiante</span>
                         </a>
                     </li>
