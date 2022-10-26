@@ -14,7 +14,11 @@
         <input type="hidden" id="image_64_input" name="image_64" required>
         <button type="submit" class="btn btn-primary btn-block" role="button" id="enviarDibujoBtn" style="background: rgb(255 162 108);display:none !important;" > <i class="fa fa-upload"></i> Enviar</button>
         @if($respuestaImagen)
-        <img src="{{$respuestaImagen->imagen}}">
+        <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
+            <h1>Mi dibujo</h1>
+            <br>
+            <img src="{{$respuestaImagen->imagen}}" style="border: 2px solid #555;">
+        </div>
         @endif
     </div>
 </form>

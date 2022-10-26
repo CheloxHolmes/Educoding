@@ -23,6 +23,7 @@ class UsersController extends Controller
         $items = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id INNER JOIN imagen on inventario_reim.id_elemento = imagen.id_elemento WHERE sesion_id = " . $usuario->id . " AND elemento.id BETWEEN 400 AND 417;");
         $cantidadInsignias = count($insignias);
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = " . $usuario->id . ";")[0];
+        $respuestaImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AL".Auth::id()."%' ORDER BY idimagen DESC;");
 
         $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
         if (count($avatarImagen) > 0) {
@@ -42,6 +43,7 @@ class UsersController extends Controller
             'items' => $items,
             'avatarImagen' => $avatarImagen,
             'modulosCompletados' => $modulosCompletados->cantidad,
+            'respuestaImagen' => $respuestaImagen,
 
         ]);
     }
@@ -413,6 +415,7 @@ class UsersController extends Controller
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $respuestaImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AL".$id."%' ORDER BY idimagen DESC;");
 
         $cantidadesModulosCompletadosMesMat = array();
         $cantidadesModulosCorrectosMesMat = array();
@@ -554,6 +557,7 @@ class UsersController extends Controller
             'fechasMesIng' => $fechasMesIng,
             'countMensajes' => $countMensajes,
             'avatar' => $imagen->descripcion,
+            'respuestaImagen' => $respuestaImagen,
 
         ]);
     }
@@ -633,7 +637,7 @@ class UsersController extends Controller
         $letras = DB::select("SELECT * FROM letra");
         $colegios = DB::select("SELECT * FROM colegio");
 
-        $respuestas_mes = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $respuestas_mes = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, colegio_id, nivel_id, letra_id, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND colegio_id = $idcolegio AND nivel_id = $idcurso AND letra_id = $idletra AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE());");
         $diasMes = Carbon::now()->daysInMonth;
 
         for ($i = 0; $i < $diasMes; ++$i) {
@@ -668,6 +672,7 @@ class UsersController extends Controller
         return view("EstadisticaCurso", [
 
             'usuario' => $usuario,
+            'alumnos' => $alumnos,
             'avatar' => $imagen->descripcion,
             'cantidadesModulosCompletadosMes' => $cantidadesModulosCompletadosMes,
             'cantidadesModulosCorrectosMes' => $cantidadesModulosCorrectosMes,

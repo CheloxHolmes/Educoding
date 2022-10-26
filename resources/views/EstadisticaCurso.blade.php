@@ -27,7 +27,7 @@
             @foreach($cursos as $curso)
             @foreach($letras as $letra)
             @if($colegio->id==$idcolegio AND $curso->id==$idcurso AND $letra->id==$idletra)
-            <h5 class="card-title">Curso: {{$curso->nombre}} - {{$letra->nombre}}<span>/ {{$colegio->nombre}}</span></h5>
+            <h5 class="card-title">Curso: {{$curso->nombre}} - {{$letra->nombre}}<span> / {{$colegio->nombre}}</span></h5>
             @endif
             @endforeach
             @endforeach

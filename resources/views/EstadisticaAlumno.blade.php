@@ -284,5 +284,16 @@
         <!-- End Line Chart -->
     </div>
 </div>
+
+<!-- Imagen Lenguaje -->
+
+<div style="margin-top:3%;margin-bottom:3%;text-align:center;">
+    <h1>Dibujos del estudiante</h1>
+    <br>
+    @foreach($respuestaImagen as $imagen)
+    <img src="{{$imagen->imagen}}" style="border: 2px solid #555;">
+    @endforeach
+</div>
+
 @endif
 @endsection
