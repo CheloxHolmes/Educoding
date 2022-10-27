@@ -228,7 +228,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="/educoding">
+                            <a class="dropdown-item d-flex align-items-center" href="/ayuda">
                                 <i class="fa fa-question-circle"></i>
                                 <span>Ayuda</span>
                             </a>
