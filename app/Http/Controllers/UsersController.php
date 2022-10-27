@@ -357,6 +357,23 @@ class UsersController extends Controller
         return view("educoding", []);
     }
 
+    public function ayuda()
+    {
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $countMensajes = count($mensajes);
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+
+        return view("ayuda", [
+
+            'usuario' => $usuario,
+            'mensajes' => $mensajes,
+            'countMensajes' => $countMensajes,
+            'avatar' => $imagen->descripcion,
+
+        ]);
+    }
+
     public function listaAlumnos()
     {
 

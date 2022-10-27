@@ -70,6 +70,8 @@ Route::get('/EstadisticaCurso/{idcolegio}/{idcurso}/{idletra}', [App\Http\Contro
 
 Route::get('/EstadisticaGeneral', [App\Http\Controllers\UsersController::class, 'estadisticaGeneral'])->middleware('auth');
 
+Route::get('/ayuda', [App\Http\Controllers\UsersController::class, 'ayuda'])->middleware('auth');
+
 //Admin
 
 Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin'])->middleware('auth');

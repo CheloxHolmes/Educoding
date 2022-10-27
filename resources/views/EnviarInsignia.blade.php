@@ -1,6 +1,6 @@
 @extends('dashmain')
 @section('dash')
-@if($usuario->tipo_usuario_id==2)
+@if(Auth::user()->tipo_usuario_id==2 || Auth::user()->tipo_usuario_id==1)
 <div class="pagetitle">
     <h1>Dashboard</h1>
     <nav>
