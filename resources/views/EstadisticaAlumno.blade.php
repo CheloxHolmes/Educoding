@@ -291,7 +291,7 @@
     <h1>Dibujos del estudiante</h1>
     <br>
     @foreach($respuestaImagen as $imagen)
-    <img src="{{$imagen->imagen}}" style="border: 2px solid #555;">
+    <img src="{{$imagen->imagen}}" style="border: 2px solid #555;" width="90%" height="90%">
     @endforeach
 </div>
 
