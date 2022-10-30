@@ -16,7 +16,7 @@
     <div class="row">
         @foreach($insignia as $insg)
         <div class="card" style="width: 18rem;margin:2%;">
-            <img src="{{asset('assets/img/insignias/'.$insg->descripcion)}}" class="card-img-top" alt="...">
+            <img src="{{$insg->descripcion}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ $insg->nombre }}</h5>
                 <p class="card-text"></p>

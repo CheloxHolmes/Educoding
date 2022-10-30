@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Session;
 class TiendaController extends Controller
 {
     public function tienda(){
+        
         $id = Auth::id();
+
         $usuario = DB::select("SELECT * FROM usuario WHERE id = ".$id.";")[0];
         
-        $items = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id INNER JOIN imagen on inventario_reim.id_elemento = imagen.id_elemento WHERE sesion_id = ".$usuario->id." AND elemento.id BETWEEN 400 AND 417;");
+        $items = DB::select("SELECT * FROM imagen WHERE id_elemento BETWEEN 400 AND 417;");
 
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '".$usuario->id."';")[0];
 

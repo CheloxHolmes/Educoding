@@ -56,63 +56,80 @@
             });
         </script>
 
-
+        @foreach($items as $item)
         <!--PELOTA-->
-        <img src="{{asset('assets/img/pelota.png')}}" id="img-tag-400" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 81%;" onclick="linkComprar('/tienda/comprar/400')" onpointerenter="showPreview('Pelota: $10 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Pelota")
+        <img src="{{$item->descripcion}}" id="img-tag-400" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 81%;" onclick="linkComprar('/tienda/comprar/400')" onpointerenter="showPreview('Pelota: $10 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--RELOJ-->
-        <img src="{{asset('assets/img/reloj.png')}}" id="img-tag-401" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 71%;" onclick="linkComprar('/tienda/comprar/401')" onpointerenter="showPreview('Reloj: $20 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Reloj")
+        <img src="{{$item->descripcion}}" id="img-tag-401" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 71%;" onclick="linkComprar('/tienda/comprar/401')" onpointerenter="showPreview('Reloj: $20 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--ALARMA-->
-        <img src="{{asset('assets/img/alarma.png')}}" id="img-tag-402" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 60%;" onclick="linkComprar('/tienda/comprar/402')" onpointerenter="showPreview('Alarma: $30 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Alarma")
+        <img src="{{$item->descripcion}}" id="img-tag-402" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 60%;" onclick="linkComprar('/tienda/comprar/402')" onpointerenter="showPreview('Alarma: $30 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--ZAPATO-->
-        <img src="{{asset('assets/img/zapato.png')}}" id="img-tag-403" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 33%;" onclick="linkComprar('/tienda/comprar/403')" onpointerenter="showPreview('Zapato: $40 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Zapato")
+        <img src="{{$item->descripcion}}" id="img-tag-403" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 33%;" onclick="linkComprar('/tienda/comprar/403')" onpointerenter="showPreview('Zapato: $40 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--wallet-->
-        <img src="{{asset('assets/img/wallet.png')}}" id="img-tag-404" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 22%;" onclick="linkComprar('/tienda/comprar/404')" onpointerenter="showPreview('Billetera: $50 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Billetera")
+        <img src="{{$item->descripcion}}" id="img-tag-404" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 22%;" onclick="linkComprar('/tienda/comprar/404')" onpointerenter="showPreview('Billetera: $50 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--RAQUETA-->
-
-        <img src="{{asset('assets/img/raqueta.png')}}" id="img-tag-409" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 12%;" onclick="linkComprar('/tienda/comprar/409')" onpointerenter="showPreview('Raqueta: $100 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Raqueta")
+        <img src="{{$item->descripcion}}" id="img-tag-409" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 13%;right: 12%;" onclick="linkComprar('/tienda/comprar/409')" onpointerenter="showPreview('Raqueta: $100 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--BOX-->
-        <img src="{{asset('assets/img/box.png')}}" id="img-tag-405" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 81%;" onclick="linkComprar('/tienda/comprar/405')" onpointerenter="showPreview('Guantes: $60 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Guantes")
+        <img src="{{$item->descripcion}}" id="img-tag-405" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 81%;" onclick="linkComprar('/tienda/comprar/405')" onpointerenter="showPreview('Guantes: $60 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--BATE-->
-        <img src="{{asset('assets/img/bate.png')}}" id="img-tag-411" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 71%;" onclick="linkComprar('/tienda/comprar/411')" onpointerenter="showPreview('Bate: $120 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Bate")
+        <img src="{{$item->descripcion}}" id="img-tag-411" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 71%;" onclick="linkComprar('/tienda/comprar/411')" onpointerenter="showPreview('Bate: $120 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--MANCUERNA-->
-
-        <img src="{{asset('assets/img/mancuerna.png')}}" id="img-tag-410" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 60%;" onclick="linkComprar('/tienda/comprar/410')" onpointerenter="showPreview('Mancuerna: $110 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Mancuerna")
+        <img src="{{$item->descripcion}}" id="img-tag-410" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 60%;" onclick="linkComprar('/tienda/comprar/410')" onpointerenter="showPreview('Mancuerna: $110 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--botella-->
-        <img src="{{asset('assets/img/botellita.png')}}" id="img-tag-406" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 33%;" onclick="linkComprar('/tienda/comprar/406')" onpointerenter="showPreview('Botella: $70 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Botella")
+        <img src="{{$item->descripcion}}" id="img-tag-406" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 33%;" onclick="linkComprar('/tienda/comprar/406')" onpointerenter="showPreview('Botella: $70 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--calculadora-->
-        <img src="{{asset('assets/img/calculadora.png')}}" id="img-tag-407" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 22%;" onclick="linkComprar('/tienda/comprar/407')" onpointerenter="showPreview('Calculadora: $80 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Calculadora")
+        <img src="{{$item->descripcion}}" id="img-tag-407" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 22%;" onclick="linkComprar('/tienda/comprar/407')" onpointerenter="showPreview('Calculadora: $80 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--ticket-->
-        <img src="{{asset('assets/img/ticket.png')}}" id="img-tag-408" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 12%;" onclick="linkComprar('/tienda/comprar/408')" onpointerenter="showPreview('Ticket: $90 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Ticket")
+        <img src="{{$item->descripcion}}" id="img-tag-408" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 41%;right: 12%;" onclick="linkComprar('/tienda/comprar/408')" onpointerenter="showPreview('Ticket: $90 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--camion-->
-        <img src="{{asset('assets/img/camion.png')}}" id="img-tag-412" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 81%;" onclick="linkComprar('/tienda/comprar/412')" onpointerenter="showPreview('Camion: $130 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Camion")
+        <img src="{{$item->descripcion}}" id="img-tag-412" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 81%;" onclick="linkComprar('/tienda/comprar/412')" onpointerenter="showPreview('Camion: $130 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--OSITO-->
-        <img src="{{asset('assets/img/osito.png')}}" id="img-tag-413" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 71%;" onclick="linkComprar('/tienda/comprar/413')" onpointerenter="showPreview('Osito: $140 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Osito")
+        <img src="{{$item->descripcion}}" id="img-tag-413" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 71%;" onclick="linkComprar('/tienda/comprar/413')" onpointerenter="showPreview('Osito: $140 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--PUPPY-->
-        <img src="{{asset('assets/img/puppy.png')}}" id="img-tag-414" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 60%;" onclick="linkComprar('/tienda/comprar/414')" onpointerenter="showPreview('Puppy: $150 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Puppy")
+        <img src="{{$item->descripcion}}" id="img-tag-414" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 60%;" onclick="linkComprar('/tienda/comprar/414')" onpointerenter="showPreview('Puppy: $150 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--TROFEO-->
-        <img src="{{asset('assets/img/trofeo.png')}}" id="img-tag-415" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 33%;" onclick="linkComprar('/tienda/comprar/415')" onpointerenter="showPreview('Trofeo: $160 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Trofeo")
+        <img src="{{$item->descripcion}}" id="img-tag-415" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 33%;" onclick="linkComprar('/tienda/comprar/415')" onpointerenter="showPreview('Trofeo: $160 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--VARITA-->
-        <img src="{{asset('assets/img/varita.png')}}" id="img-tag-416" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 22%;" onclick="linkComprar('/tienda/comprar/416')" onpointerenter="showPreview('Varita: $170 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Varita")
+        <img src="{{$item->descripcion}}" id="img-tag-416" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 22%;" onclick="linkComprar('/tienda/comprar/416')" onpointerenter="showPreview('Varita: $170 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
         <!--SOMBRERO-->
-        <img src="{{asset('assets/img/sombrero.png')}}" id="img-tag-417" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 12%;" onclick="linkComprar('/tienda/comprar/417')" onpointerenter="showPreview('Sombrero: $180 uLearnet coins')" onpointerout="hidePreview()" />
-
+        @if($item->nombre=="Sombrero")
+        <img src="{{$item->descripcion}}" id="img-tag-417" class="inner-image" style="cursor:pointer;width: 90px;height: 90px;position: absolute;top: 67%;right: 12%;" onclick="linkComprar('/tienda/comprar/417')" onpointerenter="showPreview('Sombrero: $180 uLearnet coins')" onpointerout="hidePreview()" />
+        @endif
+        @endforeach
         <!--ESTANTE1-->
         <img style="border-radius:20px;" src="{{asset('assets/img/FondoTienda.jpg')}}" width="100%">
 
