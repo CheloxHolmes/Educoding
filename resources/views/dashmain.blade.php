@@ -188,13 +188,19 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="{{asset('assets/img/avatar/'.$avatar)}}" alt="Profesor(a)" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nombres }}</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nombres }} {{ Auth::user()->apellido_paterno }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>{{ Auth::user()->name }}</h6>
-                            <span>{{ Auth::user()->rol }}</span>
+                            <h6>{{ Auth::user()->nombres }} {{ Auth::user()->apellido_paterno }}</h6>
+                            @if(Auth::user()->tipo_usuario_id==2)
+                            <span>Profesor(a)</span>
+                            @elseif(Auth::user()->tipo_usuario_id==1)
+                            <span>Administrador(a)</span>
+                            @else
+                            <span>Rol General</span>
+                            @endif
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -209,6 +215,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        @if(Auth::user()->tipo_usuario_id==1)
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="/registrarCurso">
                                 <i class="fa fa-users"></i>
@@ -218,6 +225,8 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        @endif
+                        @if(Auth::user()->tipo_usuario_id==1)
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="/registrarAlumno">
                                 <i class="fa fa-person"></i>
@@ -227,6 +236,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        @endif
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="/ayuda">
                                 <i class="fa fa-question-circle"></i>
@@ -275,13 +285,15 @@
                         <a href="/cursos">
                             <i class="bi bi-circle"></i><span>Ver cursos</span>
                         </a>
+                        @if(Auth::user()->tipo_usuario_id==1)
                         <a href="/registrarCurso">
                             <i class="bi bi-circle"></i><span>Registrar Curso</span>
                         </a>
+                        @endif
                     </li>
                 </ul>
             </li>
-
+            @if(Auth::user()->tipo_usuario_id==1)
             <!-- Alumnos -->
 
             <li class="nav-item">
@@ -296,7 +308,7 @@
                     </li>
                 </ul>
             </li>
-
+            @endif
             <!-- Estadísticas -->
 
             <li class="nav-item">

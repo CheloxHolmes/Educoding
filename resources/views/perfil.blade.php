@@ -69,7 +69,7 @@
                     <div class="row">
                         @foreach($insignias as $insignia)
                         <div class="col-lg-6 col-md-6">
-                            <img src="{{asset('assets/img/insignias/'.$insignia->descripcion)}}" class="card-img-top" style="width:50px">
+                            <img src="{{$insignia->descripcion}}" class="card-img-top" style="width:50px">
                             <p>{{$insignia->nombre}}</p>
                         </div>
                         @endforeach
@@ -89,7 +89,7 @@
                 <div class="row" style="background-image: url({{asset('494.jpg')}});background-size: cover;height: 550px;padding: 20px;border-radius: 20px;">
                     @foreach($items as $item)
                     <div class="col-lg-2 col-md-2" style="text-align: center;">
-                        <img src="{{asset('assets/img/'.$item->descripcion)}}" class="card-img-top" style="width: 80px;background-color: white;height: 80px;border-radius: 100%;padding: 3%;">
+                        <img src="{{$item->descripcion}}" class="card-img-top" style="width: 80px;background-color: white;height: 80px;border-radius: 100%;padding: 3%;">
                         <p style="color:white;text-shadow: 1px 2px black;">{{$item->nombre}}</p>
                     </div>
                     @endforeach

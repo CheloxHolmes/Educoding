@@ -148,8 +148,6 @@
                                                         <li><a style="color:black;" class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></li>
                                                         @if(Auth::user()->tipo_usuario_id=="2")
                                                         <li><a style="color:black;" class="dropdown-item" href="/dashboard/{{ Auth::user()->id }}">Dashboard</a></li>
-                                                        <li><a style="color:black;" class="dropdown-item" href="/registrarCurso">Registrar Curso</a></li>
-                                                        <li><a style="color:black;" class="dropdown-item" href="/registrarAlumno">Registrar Alumno</a></li>
                                                         @endif
                                                         @if(Auth::user()->tipo_usuario_id=="1")
                                                         <li><a style="color:black;" class="dropdown-item" href="/admin/{{ Auth::user()->id }}">Administración</a></li>
