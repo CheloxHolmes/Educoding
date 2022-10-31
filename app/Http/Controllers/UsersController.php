@@ -177,7 +177,7 @@ class UsersController extends Controller
 
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
         $admin = DB::select("SELECT * FROM usuario WHERE tipo_usuario_id = 1;")[0];
-        $allUsers = DB::select("SELECT usuario.id, tipo_usuario_id, tipo_usuario.nombre, usuario.nombres, usuario.email FROM usuario INNER JOIN tipo_usuario on usuario.tipo_usuario_id = tipo_usuario.id;");
+        $allUsers = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE reim_id = 905;");
 
         return view('admin', [
 
@@ -403,6 +403,7 @@ class UsersController extends Controller
     public function listaCursos()
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
+        $cursosProfe = DB::select("SELECT colegio_id, nivel_id, letra_id FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905;");
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
@@ -421,6 +422,7 @@ class UsersController extends Controller
             'cursos' => $cursos,
             'letras' => $letras,
             'colegios' => $colegios,
+            'cursosProfe' => $cursosProfe,
 
         ]);
     }
@@ -653,8 +655,7 @@ class UsersController extends Controller
         $cursos = DB::select("SELECT * FROM nivel");
         $letras = DB::select("SELECT * FROM letra");
         $colegios = DB::select("SELECT * FROM colegio");
-
-        $respuestas_mes = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, colegio_id, nivel_id, letra_id, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND colegio_id = $idcolegio AND nivel_id = $idcurso AND letra_id = $idletra AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE());");
+        $respuestas_mes = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, colegio_id, nivel_id, letra_id, tipo_usuario_id, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id INNER JOIN usuario ON alumno_respuesta_actividad.id_user = usuario.id WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND tipo_usuario_id = 3 AND colegio_id = $idcolegio AND nivel_id = $idcurso AND letra_id = $idletra AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE());");
         $diasMes = Carbon::now()->daysInMonth;
 
         for ($i = 0; $i < $diasMes; ++$i) {
