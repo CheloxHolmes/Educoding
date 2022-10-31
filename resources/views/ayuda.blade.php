@@ -15,7 +15,7 @@
 <section class="section dashboard">
     <div class="accordion" id="accordionExample">
         <!-- 1 -->
-        <div class="accordion-item">
+        <!--<div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     Registrar alumno en un curso
@@ -34,7 +34,7 @@
                     <img src="https://i.imgur.com/gTpkzrX.png" class="rounded mx-auto d-block">
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- 2 -->
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
@@ -158,7 +158,7 @@
             </div>
         </div>
         <!-- 8 -->
-        <div class="accordion-item">
+        <!--<div class="accordion-item">
             <h2 class="accordion-header" id="headingEight">
                 <button class="accordion-button collapsed bg-primary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                     Registrar curso en la plataforma
@@ -177,7 +177,7 @@
                     <p>Luego podrá registrar un curso con los datos solicitados por el formulario.</p>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- 9 -->
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingNine">

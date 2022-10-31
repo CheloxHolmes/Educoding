@@ -32,32 +32,28 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($cursosProfe as $profecurso)
                             <tr>
+                                @foreach($colegios as $colegio)
+                                @if($profecurso->colegio_id==$colegio->id)
+                                <td>{{$colegio->nombre}}</td>
+                                @endif
+                                @endforeach
+                                @foreach($cursos as $curso)
+                                @if($profecurso->nivel_id==$curso->id)
+                                <td>{{$curso->nombre}}</td>
+                                @endif
+                                @endforeach
+                                @foreach($letras as $letra)
+                                @if($profecurso->letra_id==$letra->id)
+                                <td>{{$letra->nombre}}</td>
+                                @endif
+                                @endforeach
                                 <td>
-                                    <select id="colegio_id" name="colegio_id">
-                                        @foreach($colegios as $colegio)
-                                        <option value="{{$colegio->id}}">{{$colegio->nombre}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <select id="curso_id" name="curso_id">
-                                        @foreach($cursos as $curso)
-                                        <option value="{{$curso->id}}">{{$curso->nombre}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <select id="letra_id" name="letra_id">
-                                        @foreach($letras as $letra)
-                                        <option value="{{$letra->id}}">{{$letra->nombre}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <a href="/EstadisticaCurso/{{$colegio->id}}/{{$curso->id}}/{{$letra->id}}" class="btn btn-success" style="padding: 20px 20px !important; background:green;">Ver Estadísticas</a>
+                                    <a href="/EstadisticaCurso/{{$profecurso->colegio_id}}/{{$profecurso->nivel_id}}/{{$profecurso->letra_id}}" class="btn btn-success" style="padding: 20px 20px !important; background:green;">Ver Estadísticas</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

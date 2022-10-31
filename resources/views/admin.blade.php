@@ -32,7 +32,25 @@
             <th>{{$user->id}}</th>
             <td>{{$user->nombres}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->nombre}}</td>
+            @if($user->tipo_usuario_id==1)
+            <td>Administrador</td>
+            @elseif($user->tipo_usuario_id==2)
+            <td>Profesor</td>
+            @elseif($user->tipo_usuario_id==3)
+            <td>Alumno</td>
+            @elseif($user->tipo_usuario_id==4)
+            <td>Demo</td>
+            @elseif($user->tipo_usuario_id==5)
+            <td>Coordinador</td>
+            @elseif($user->tipo_usuario_id==6)
+            <td>UTP</td>
+            @elseif($user->tipo_usuario_id==7)
+            <td>Director</td>
+            @elseif($user->tipo_usuario_id==8)
+            <td>Apoderado</td>
+            @else
+            <td>Rol desconocido</td>
+            @endif
             <td>
               <select id="rol" name="rol">
                 <option value="1">Administrador</option>
