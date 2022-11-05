@@ -38,15 +38,21 @@
                             <tr>
                                 <th scope="row"><a href="#"></a>{{$alumno->id}}</th>
                                 <td>{{$alumno->nombres}} {{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</td>
-                                @if($alumno->colegio_id==$colegios->id)
-                                <td><a href="#" class="text-primary"></a>{{$colegios->nombre}}</td>
+                                @foreach($colegios as $colegio)
+                                @if($alumno->colegio_id==$colegio->id)
+                                <td><a href="#" class="text-primary"></a>{{$colegio->nombre}}</td>
                                 @endif
-                                @if($alumno->nivel_id==$cursos->id)
-                                <td><a href="#" class="text-primary"></a>{{$cursos->nombre}}</td>
+                                @endforeach
+                                @foreach($cursos as $curso)
+                                @if($alumno->nivel_id==$curso->id)
+                                <td><a href="#" class="text-primary"></a>{{$curso->nombre}}</td>
                                 @endif
-                                @if($alumno->letra_id==$letras->id)
-                                <td><a href="#" class="text-primary"></a>{{$letras->nombre}}</td>
+                                @endforeach
+                                @foreach($letras as $letra)
+                                @if($alumno->letra_id==$letra->id)
+                                <td><a href="#" class="text-primary"></a>{{$letra->nombre}}</td>
                                 @endif
+                                @endforeach
                                 <td>
                                     <a href="/EstadisticaAlumno/{{$alumno->id}}" class="btn btn-success" style="padding: 20px 20px !important; background:green;">Ver Estadísticas</a>
                                 </td>
