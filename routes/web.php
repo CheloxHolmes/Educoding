@@ -52,7 +52,7 @@ Route::get('/colegios', [App\Http\Controllers\ColegiosController::class, 'colegi
 
 //Educoding
 
-Route::get('/educoding', [App\Http\Controllers\UsersController::class, 'educoding'])->middleware('auth');
+Route::get('/educoding', [App\Http\Controllers\UsersController::class, 'educoding'])->middleware('auth')->name('educoding');
 
 //Profesores
 
@@ -140,7 +140,11 @@ Route::post('/login', function (Request $request) {
         //Auth::loginUsingId($user->id);
         //// -- OR -- //
         Auth::login($user);
-        return redirect()->route('welcome');
+        if ($user->tipo_usuario_id == 3) {
+            return redirect()->route('educoding');
+        } else {
+            return redirect()->route('welcome');
+        }
     } else {
         return redirect()->back()->withInput();
     }
