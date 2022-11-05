@@ -110,7 +110,11 @@
           <div class="card">
 
             <div class="card-body">
-              <h5 class="card-title">Alumnos <span>/General Diario</span></h5>
+              @foreach($colegios as $colegio)
+              @if($colegioProfe==$colegio->id)
+              <h5 class="card-title">General Diario Alumnos <span>/ {{$colegio->nombre}}</span></h5>
+              @endif
+              @endforeach
 
               <!-- Line Chart -->
               <div id="reportsChart"></div>

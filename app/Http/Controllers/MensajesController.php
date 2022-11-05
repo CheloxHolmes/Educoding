@@ -40,11 +40,13 @@ class MensajesController extends Controller
 
     public function crearMensaje()
 
-    {
-        $usuarios =  DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE reim_id = 905;");
+    {   
+        $colegioProfe = DB::select("SELECT colegio_id  AS 'colegioProfe' FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905 LIMIT 1;")[0]->colegioProfe;
+        $usuarios =  DB::select("SELECT DISTINCT id, nombres, apellido_paterno, apellido_materno, colegio_id, email, rut, tipo_usuario_id FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE reim_id = 905 AND colegio_id = ".$colegioProfe.";");
 
         return view('crearMensaje', [
             'usuarios' => $usuarios,
+            'colegioProfe' => $colegioProfe,
 
         ]);
     }
