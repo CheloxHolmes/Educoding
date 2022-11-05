@@ -19,13 +19,21 @@ class MensajesController extends Controller
         $mensajes = DB::select("SELECT * FROM mensajes WHERE id_receptor = ".Auth::id().";");
         $todoUsuarios = DB::select("SELECT * FROM usuario");
         $countMensajes = count($mensajes);
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         return view('mensajes', [
 
             'usuario' => $usuario,
             'mensajes' => $mensajes,
             'todoUsuarios' => $todoUsuarios,
-            'countMensajes' => $countMensajes
+            'countMensajes' => $countMensajes,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }

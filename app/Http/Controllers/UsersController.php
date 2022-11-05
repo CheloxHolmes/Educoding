@@ -51,19 +51,27 @@ class UsersController extends Controller
     public function dashboard($id)
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
-        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;")[0];
-        $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
+        $colegioProfe = DB::select("SELECT colegio_id  AS 'colegioProfe' FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905 LIMIT 1;")[0]->colegioProfe;
+        $cursosProfe = DB::select("SELECT colegio_id, nivel_id, letra_id FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905;");
+        $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";")[0];
+        $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";");
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $alumnos->id . "';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
-        $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim WHERE id_elemento = 500;")[0]->suma;
+        $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim INNER JOIN asigna_reim_alumno ON inventario_reim.sesion_id = asigna_reim_alumno.sesion_id INNER JOIN pertenece ON asigna_reim_alumno.usuario_id = pertenece.usuario_id INNER JOIN usuario ON asigna_reim_alumno.usuario_id = usuario.id WHERE id_elemento = 500 AND reim_id = 905 AND colegio_id = ".$colegioProfe." AND tipo_usuario_id = 3;")[0]->suma;
         $sumaHistoria = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 21 AND correcta = 1;")[0]->count;
         $sumaMatematicas = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 22 AND correcta = 1;")[0]->count;
         $sumaIngles = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 23 AND correcta = 1;")[0]->count;
-        //$mensajes = Mensaje::where('id_receptor', Auth::id())->get();
-        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
+        $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $todoUsuarios = User::all();
         $actividades = DB::select("SELECT * FROM actividad WHERE id IN (21,22,23,24);");
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         $cant = count($cAlumnos);
         $sumaCoins = 0;
@@ -129,6 +137,9 @@ class UsersController extends Controller
             'actividades' => $actividades,
             'respuestas_mes' => $respuestas_mes,
             'diasMes' => $diasMes,
+            'avatarImagen' => $avatarImagen,
+            'cursosProfe' => $cursosProfe,
+            'colegioProfe' => $colegioProfe,
 
         ]);
     }
@@ -385,6 +396,13 @@ class UsersController extends Controller
         $cursos = DB::select("SELECT * FROM nivel")[0];
         $letras = DB::select("SELECT * FROM letra")[0];
         $colegios = DB::select("SELECT * FROM colegio")[0];
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         return view("ListaAlumnos", [
 
@@ -396,6 +414,7 @@ class UsersController extends Controller
             'cursos' => $cursos,
             'letras' => $letras,
             'colegios' => $colegios,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }
@@ -411,6 +430,13 @@ class UsersController extends Controller
         $cursos = DB::select("SELECT * FROM nivel");
         $letras = DB::select("SELECT * FROM letra");
         $colegios = DB::select("SELECT * FROM colegio");
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         return view("ListaCursos", [
 
@@ -423,6 +449,7 @@ class UsersController extends Controller
             'letras' => $letras,
             'colegios' => $colegios,
             'cursosProfe' => $cursosProfe,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }
@@ -435,6 +462,13 @@ class UsersController extends Controller
         $countMensajes = count($mensajes);
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $respuestaImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AL".$id."%' ORDER BY idimagen DESC;");
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         $cantidadesModulosCompletadosMesMat = array();
         $cantidadesModulosCorrectosMesMat = array();
@@ -577,6 +611,7 @@ class UsersController extends Controller
             'countMensajes' => $countMensajes,
             'avatar' => $imagen->descripcion,
             'respuestaImagen' => $respuestaImagen,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }
@@ -592,6 +627,13 @@ class UsersController extends Controller
         $cantidadesModulosCorrectosMes = array();
         $cantidadesModulosIncorrectosMes = array();
         $fechasMes = array();
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         $respuestas_mes = DB::select("SELECT id_per, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
         $diasMes = Carbon::now()->daysInMonth;
@@ -637,6 +679,7 @@ class UsersController extends Controller
             'countMensajes' => $countMensajes,
             'respuestas_mes' => $respuestas_mes,
             'diasMes' => $diasMes,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }
@@ -657,6 +700,13 @@ class UsersController extends Controller
         $colegios = DB::select("SELECT * FROM colegio");
         $respuestas_mes = DB::select("SELECT id_per, id_user, id_reim, id_actividad, datetime_touch, colegio_id, nivel_id, letra_id, tipo_usuario_id, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id INNER JOIN usuario ON alumno_respuesta_actividad.id_user = usuario.id WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND tipo_usuario_id = 3 AND colegio_id = $idcolegio AND nivel_id = $idcurso AND letra_id = $idletra AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE());");
         $diasMes = Carbon::now()->daysInMonth;
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         for ($i = 0; $i < $diasMes; ++$i) {
 
@@ -706,6 +756,7 @@ class UsersController extends Controller
             'idcolegio' => $idcolegio,
             'idcurso' => $idcurso,
             'idletra' => $idletra,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }

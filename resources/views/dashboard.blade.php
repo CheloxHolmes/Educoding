@@ -214,7 +214,7 @@
                     <td><a href="#" class="text-primary"></a>{{$alumno->email}}</td>
                     <td>{{$alumno->tipo_usuario_id}}</td>
                   </tr>
-                  @endforeach
+                  @endforeach 
                 </tbody>
               </table>
 
@@ -236,6 +236,7 @@
           <h5 class="card-title">Últimos mensajes</h5>
 
           <div class="activity">
+            @if($countMensajes>0)
             @foreach($mensajes as $mensaje)
             <div class="activity-item d-flex">
               <div class="activite-label"></div>
@@ -248,6 +249,15 @@
               </div>
             </div><!-- Fin mensaje item-->
             @endforeach
+            @else
+            <div class="activity-item d-flex">
+              <div class="activite-label"></div>
+              <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+              <div class="activity-content">
+                <p>Aún no tienes mensajes asignados</p>
+              </div>
+            </div><!-- Fin mensaje item-->
+            @endif
           </div>
         </div>
       </div><!-- Fin ámbito mensajes -->
@@ -277,7 +287,7 @@
 
               sumaHistoria = $("#sumaHistoria").val();
               console.log('sumaHistoria', sumaHistoria);
- 
+
               echarts.init(document.querySelector("#trafficChart")).setOption({
                 tooltip: {
                   trigger: 'item'
@@ -305,8 +315,7 @@
                   labelLine: {
                     show: false
                   },
-                  data: [
-                    {
+                  data: [{
                       value: sumaMatematicas,
                       name: 'Hechizo Matemático'
                     },
