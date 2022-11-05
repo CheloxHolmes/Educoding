@@ -130,9 +130,9 @@
                 @endif
             </div>
             @endif
-            <button type="button" class="btn btn-lg btn-primary" disabled>Módulos: Módulos: {{ $modulosCompletados }}</button>
+            <button type="button" class="btn btn-lg btn-primary" disabled>Módulos completados: {{ $modulosCompletados }}</button>
             @foreach($coins as $coin)
-            <button type="button" class="btn btn-lg btn-primary" disabled>uNearlet Coins: {{ $coin }} </button>
+            <button type="button" class="btn btn-lg btn-primary" disabled><img src="https://i.imgur.com/18eyVtY.png" width="25px" height="25px"> Monedas uLearnet: {{ $coin }} </button>
             @endforeach
             <button type="button" class="btn cancel" onclick="closeForm()">Cerrar</button>
         </form>
