@@ -205,9 +205,10 @@
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Rol</th>
+                    <th scope="col">Tipo Usuario</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -215,8 +216,13 @@
                   <tr>
                     <th scope="row"><a href="#"></a>{{$alumno->id}}</th>
                     <td>{{$alumno->nombres}}</td>
+                    <td>{{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</td>
                     <td><a href="#" class="text-primary"></a>{{$alumno->email}}</td>
-                    <td>{{$alumno->tipo_usuario_id}}</td>
+                    @if($alumno->tipo_usuario_id==3)
+                    <td>Alumno</td>
+                    @else
+                    <td>No identificado</td>
+                    @endif
                   </tr>
                   @endforeach 
                 </tbody>
