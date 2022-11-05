@@ -204,9 +204,8 @@
 <!-- Reporte Some Kind of Spell -->
 <div class="col-12">
     <div class="card">
-
+        @foreach($alumnos as $alumno)
         <div class="card-body">
-            @foreach($alumnos as $alumno)
             <h5 class="card-title"><span>{{$alumno->nombres}} {{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</span> / Some Kind of Spell</h5>
             @endforeach
         </div>

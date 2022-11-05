@@ -20,6 +20,13 @@ class InsigniasController extends Controller
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
         
         return view('insignias', [
             'insignia' => $insignia,
@@ -28,6 +35,7 @@ class InsigniasController extends Controller
             'usuario' => $usuario,
             'mensajes' => $mensajes,
             'countMensajes' => $countMensajes,
+            'avatarImagen' => $avatarImagen,
         ]);
     }
 
@@ -38,6 +46,14 @@ class InsigniasController extends Controller
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
+        
 
         for ($i = 0; $i<count($alumnos); $i++) {
             $alumnos[$i]->insignias = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id WHERE sesion_id = ".$alumnos[$i]->id." AND nombre LIKE 'Insignia%';");
@@ -55,6 +71,7 @@ class InsigniasController extends Controller
             'usuario' => $usuario,
             'mensajes' => $mensajes,
             'countMensajes' => $countMensajes,
+            'avatarImagen' => $avatarImagen,
         ]);
     }
 

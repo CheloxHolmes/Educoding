@@ -76,9 +76,10 @@
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-bell"></i>
                         <span class="badge bg-primary badge-number">4</span>
-                    </a>--><!-- End Notification Icon -->
+                    </a>-->
+                <!-- End Notification Icon -->
 
-                    <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                <!--<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                         <li class="dropdown-header">
                             You have 4 new notifications
                             <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
@@ -142,7 +143,8 @@
                             <a href="#">Show all notifications</a>
                         </li>
 
-                    </ul>--><!-- End Notification Dropdown Items -->
+                    </ul>-->
+                <!-- End Notification Dropdown Items -->
 
                 </li><!-- End Notification Nav -->
 
@@ -168,7 +170,7 @@
                                 <div>
                                     <h4>{{$mensaje->nombres}} {{$mensaje->apellido_paterno}}</h4>
                                     <h5>{{$mensaje->titulo}}</h5>
-                                    <p>{{$mensaje->fecha_mensaje}}</p>                                    
+                                    <p>{{$mensaje->fecha_mensaje}}</p>
                                 </div>
                             </a>
                         </li>
@@ -187,7 +189,11 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        @if($avatarImagen=="")
                         <img src="{{asset('assets/img/avatar/'.$avatar)}}" alt="Profesor(a)" class="rounded-circle">
+                        @else
+                        <img src="data:image/png;base64,{{$avatarImagen}}" alt="Profesor(a)" class="rounded-circle">
+                        @endif
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->nombres }} {{ Auth::user()->apellido_paterno }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -326,11 +332,11 @@
                             <i class="bi bi-circle"></i><span>Estudiante</span>
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="/EstadisticaGeneral">
                             <i class="bi bi-circle"></i><span>General Diario</span>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
 
