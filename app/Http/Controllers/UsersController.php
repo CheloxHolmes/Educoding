@@ -53,8 +53,16 @@ class UsersController extends Controller
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
         $colegioProfe = DB::select("SELECT colegio_id  AS 'colegioProfe' FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905 LIMIT 1;")[0]->colegioProfe;
         $cursosProfe = DB::select("SELECT colegio_id, nivel_id, letra_id FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905;");
+        
+        $arrayIdsCursosProf = "";
+        $cursosProfesor = DB::select("SELECT nivel_id FROM ulearnet_reim_pilotaje.pertenece WHERE usuario_id = " . Auth::id() . " AND colegio_id = " . $colegioProfe . ";");
+        for ($i = 0; $i < count($cursosProfesor); ++$i) {
+            $arrayIdsCursosProf = $arrayIdsCursosProf . $cursosProfesor[$i]->nivel_id . ",";
+        }
+        $arrayIdsCursosProf = $arrayIdsCursosProf . "-1";
+        
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";")[0];
-        $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";");
+        $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe." AND nivel_id IN (" . $arrayIdsCursosProf . ");");
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $alumnos->id . "';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim INNER JOIN asigna_reim_alumno ON inventario_reim.sesion_id = asigna_reim_alumno.sesion_id INNER JOIN pertenece ON asigna_reim_alumno.usuario_id = pertenece.usuario_id INNER JOIN usuario ON asigna_reim_alumno.usuario_id = usuario.id WHERE id_elemento = 500 AND reim_id = 905 AND colegio_id = ".$colegioProfe." AND tipo_usuario_id = 3;")[0]->suma;
@@ -64,6 +72,7 @@ class UsersController extends Controller
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $colegios = DB::select("SELECT * FROM colegio");
+        $cursos = DB::select("SELECT * FROM nivel");
         $todoUsuarios = User::all();
         $actividades = DB::select("SELECT * FROM actividad WHERE id IN (21,22,23,24);");
         $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
@@ -142,6 +151,7 @@ class UsersController extends Controller
             'cursosProfe' => $cursosProfe,
             'colegioProfe' => $colegioProfe,
             'colegios' => $colegios,
+            'cursos' => $cursos,
 
         ]);
     }

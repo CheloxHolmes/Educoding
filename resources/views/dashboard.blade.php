@@ -208,7 +208,8 @@
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Tipo Usuario</th>
+                    <!--<th scope="col">Colegio</th>-->
+                    <th scope="col">Curso</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -218,11 +219,16 @@
                     <td>{{$alumno->nombres}}</td>
                     <td>{{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</td>
                     <td><a href="#" class="text-primary"></a>{{$alumno->email}}</td>
-                    @if($alumno->tipo_usuario_id==3)
-                    <td>Alumno</td>
-                    @else
-                    <td>No identificado</td>
+                    <!--@foreach($colegios as $colegio)
+                    @if($alumno->colegio_id==$colegio->id)
+                    <td>{{$colegio->nombre}}</td>
                     @endif
+                    @endforeach-->
+                    @foreach($cursos as $curso)
+                    @if($alumno->nivel_id==$curso->id)
+                    <td>{{$curso->nombre}}</td>
+                    @endif
+                    @endforeach
                   </tr>
                   @endforeach 
                 </tbody>

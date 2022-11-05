@@ -20,12 +20,45 @@
             <br>
             <div class="row">
                 <!-- 1 -->
-                <div class="col-sm">
+                <div class="col-lg-3">
                     <p>
-                        <a class="btn bg-primary text-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <a class="btn btn-block bg-primary text-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size: 12px;">
                             ¿Cómo empezar a dibujar?
                         </a>
                     </p>
+
+                </div>
+                <!-- 2 -->
+                <div class="col-lg-3">
+                    <p>
+                        <a class="btn btn-block bg-primary text-light" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size: 12px;">
+                            ¿Como enviar mi dibujo?
+                        </a>
+                    </p>
+
+                </div>
+                <!-- 3 -->
+                <div class="col-lg-3">
+                    <p>
+                        <a class="btn btn-block bg-primary text-light" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size: 12px;">
+                            ¿Como cambiar el color del lapiz?
+                        </a>
+                    </p>
+
+                </div>
+                <!-- 4 -->
+                <div class="col-lg-3">
+                    <p>
+                        <a class="btn btn-block bg-primary text-light" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" style="font-size: 12px;">
+                            ¿Donde está la goma de borrar?
+                        </a>
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <div class="col-lg-12">
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             <p>Para comenzar a dibujar, debes hacer click en la pantalla que dice "Haz click para comenzar a dibujar".</p>
@@ -33,14 +66,7 @@
                             <img src="https://i.imgur.com/OW8YsSs.png" width="100%" height="100%">
                         </div>
                     </div>
-                </div>
-                <!-- 2 -->
-                <div class="col-sm">
-                    <p>
-                        <a class="btn bg-primary text-light" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            ¿Como enviar mi dibujo?
-                        </a>
-                    </p>
+
                     <div class="collapse" id="collapseExample2">
                         <div class="card card-body">
                             <p>Para enviar el dibujo realizado, debes hacer click fuera del cuadro de dibujo. Luego se habilitará un botón que dice "Enviar". Cuando se presione el botón "Enviar", ¡ya estará publicado tu dibujo!</p>
@@ -48,14 +74,7 @@
                             <img src="https://i.imgur.com/NyoY0DV.png" width="100%" height="100%">
                         </div>
                     </div>
-                </div>
-                <!-- 3 -->
-                <div class="col-sm">
-                    <p>
-                        <a class="btn bg-primary text-light" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            ¿Como cambiar el color del lapiz?
-                        </a>
-                    </p>
+
                     <div class="collapse" id="collapseExample3">
                         <div class="card card-body">
                             <p>Para cambiar el color del lapiz, debes hacer click en el ícono de configuración que está justo debajo del lapiz.</p>
@@ -65,20 +84,15 @@
                             <p>Luego debes hacer click en el color actual que está a la derecha de "Fill:". Una vez seleccionado el nuevo color, se puede comenzar a utilizar.</p>
                         </div>
                     </div>
-                </div>
-                <!-- 4 -->
-                <div class="col-sm">
-                    <p>
-                        <a class="btn bg-primary text-light" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            ¿Donde está la goma de borrar?
-                        </a>
-                    </p>
+
                     <div class="collapse" id="collapseExample4">
                         <div class="card card-body">
                             <p>La goma de borrar se puede encontrar en el ícono al costado derecho del lápiz.</p>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
         <!-- dibujos-->
