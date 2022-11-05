@@ -50,8 +50,8 @@
                     <p><i class="fa-solid fa-person" style="color: #F3AB67;"></i> <strong>Rol:</strong> {{ $r }}</p>
                     @endforeach
                     @foreach($coins as $coin)
-                    <p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Monedas Ulearnet:</strong> {{
-                        $coin }}</p>
+                    <!--<p><i class="fa-solid fa-coins" style="color: #BDB22B;"></i> <strong>Monedas Ulearnet:</strong> {{ $coin }}</p>-->
+                    <p><img src="https://i.imgur.com/18eyVtY.png" width="25px" height="25px"> <strong>Monedas Ulearnet:</strong> {{ $coin }}</p>
                     @endforeach
                     <p><i class="fa-solid fa-bars-progress" style="color: #7AC035;"></i> <strong>Módulos
                             Completados:</strong> {{ $modulosCompletados }}</p>
@@ -114,7 +114,7 @@
     @foreach($respuestaImagen as $midibujo)
     <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
         <br>
-        <img src="{{$midibujo->imagen}}" style="border: 2px solid #555;">
+        <img src="{{$midibujo->imagen}}" style="border: 2px solid #555;" width="100%" height="100%">
     </div>
     @endforeach
 </div>

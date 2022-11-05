@@ -35,7 +35,7 @@
     <p style="text-align:center;"><strong class="col-md-6" style="color:green;">{{Session::get('success')}}</strong></p><br>
     @endif
     @if(Session::has('error_image'))
-    <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error_image')}} <i class="fa fa-coins" style="color:darkgoldenrod"></i></strong></p><br>
+    <p style="text-align:center;"><strong class="col-md-6" style="color:red;">{{Session::get('error_image')}} <img src="https://i.imgur.com/18eyVtY.png" width="25px" height="25px"></strong></p><br>
     @endif
 
     <div style="position: relative;display: block;margin-left: auto;margin-right: auto;width: 80%; margin-bottom:3%;">
@@ -187,7 +187,7 @@
         <div class="row" style="margin-bottom:3%;">
             <div class="col-lg-6">
                 @foreach($coins as $coin)
-                <button type="button" class="btn btn-warning btn-block" style="background-color: rgb(255,193,7);pointer-events: none;"> <i class="fa fa-star"></i> uLearnet coins disponibles: {{$coin}}</button>
+                <button type="button" class="btn btn-warning btn-block" style="background-color: rgb(255,193,7);pointer-events: none;"> <img src="https://i.imgur.com/18eyVtY.png" width="25px" height="25px"> Monedas uLearnet disponibles: {{$coin}}</button>
                 @endforeach
             </div>
             <div class="col-lg-6">

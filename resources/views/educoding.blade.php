@@ -74,7 +74,7 @@ function sintesis(texto) {
                 <img src="{{asset('assets/img/mapa4.png')}}" class="rounded mx-auto d-block" width="40%" height="40%">
             </div>
             <p><strong>¿Cómo puedes salvar al pueblo?</strong>, muy fácil, jugando a las actividades que se encuentran en el botón "<strong>Explorar la ciudad</strong>", que se encuentra en la parte superior del sitio.</p>
-            <p>Recuerda además que al completar módulos podrás ganar uLearnet coins, los cuales podrás canjear en la <a href="/tienda" style="color:blue" target="blank">tienda</a> que aparece en el mismo mapa del pueblo de Educoding.</p>
+            <p>Recuerda además que al completar módulos podrás ganar monedas uLearnet <img src="https://i.imgur.com/18eyVtY.png" width="25px" height="25px">, las cuales podrás canjear en la <a href="/tienda" style="color:blue" target="blank">tienda</a> que aparece en el mismo mapa del pueblo de Educoding.</p>
             <div style="margin:5%;">
                 <img src="{{asset('assets/img/coin.png')}}" class="rounded mx-auto d-block" width="40%" height="40%">
             </div>
