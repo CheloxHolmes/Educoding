@@ -58,11 +58,12 @@ class UsersController extends Controller
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $alumnos->id . "';")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim INNER JOIN asigna_reim_alumno ON inventario_reim.sesion_id = asigna_reim_alumno.sesion_id INNER JOIN pertenece ON asigna_reim_alumno.usuario_id = pertenece.usuario_id INNER JOIN usuario ON asigna_reim_alumno.usuario_id = usuario.id WHERE id_elemento = 500 AND reim_id = 905 AND colegio_id = ".$colegioProfe." AND tipo_usuario_id = 3;")[0]->suma;
-        $sumaHistoria = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 21 AND correcta = 1;")[0]->count;
-        $sumaMatematicas = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 22 AND correcta = 1;")[0]->count;
-        $sumaIngles = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad WHERE id_actividad = 23 AND correcta = 1;")[0]->count;
+        $sumaHistoria = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad = 21 AND correcta = 1 AND colegio_id = ".$colegioProfe." AND id_reim = 905;")[0]->count;
+        $sumaMatematicas = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad = 22 AND correcta = 1 AND colegio_id = ".$colegioProfe." AND id_reim = 905;")[0]->count;
+        $sumaIngles = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad = 23 AND correcta = 1 AND colegio_id = ".$colegioProfe." AND id_reim = 905;")[0]->count;
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
+        $colegios = DB::select("SELECT * FROM colegio");
         $todoUsuarios = User::all();
         $actividades = DB::select("SELECT * FROM actividad WHERE id IN (21,22,23,24);");
         $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
@@ -84,7 +85,7 @@ class UsersController extends Controller
         $cantidadesModulosIncorrectosMes = array();
         $fechasMes = array();
 
-        $respuestas_mes = DB::select("SELECT id_per, id_reim, id_actividad, datetime_touch, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE())");
+        $respuestas_mes = DB::select("SELECT id_per, id_reim, id_actividad, datetime_touch, colegio_id, DAY(datetime_touch) AS 'n_dia', MONTH(datetime_touch) AS 'n_mes', YEAR(datetime_touch) AS 'n_anno', correcta FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad != 4 AND id_reim = 905 AND id_actividad != 24 AND MONTH(datetime_touch) = MONTH(CURRENT_DATE()) AND YEAR(datetime_touch) = YEAR(CURRENT_DATE()) AND colegio_id = ".$colegioProfe.";");
         $diasMes = Carbon::now()->daysInMonth;
 
         for ($i = 0; $i < $diasMes; ++$i) {
@@ -140,6 +141,7 @@ class UsersController extends Controller
             'avatarImagen' => $avatarImagen,
             'cursosProfe' => $cursosProfe,
             'colegioProfe' => $colegioProfe,
+            'colegios' => $colegios,
 
         ]);
     }

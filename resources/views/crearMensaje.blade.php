@@ -115,7 +115,7 @@
                                     <select name="id_receptor">
                                         @foreach($usuarios as $usuario)
                                         @if($usuario->tipo_usuario_id==2)
-                                        <option value="{{ $usuario->id }}">{{$usuario->nombres}}</option>
+                                        <option value="{{ $usuario->id }}">{{$usuario->nombres}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</option>
                                         @endif
                                         @endforeach
                                     </select>

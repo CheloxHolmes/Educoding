@@ -111,12 +111,21 @@ class ActivitiesController extends Controller
     public function respuestas($id)
     {
         $usuario = User::find(Auth::id());
+        $colegioProfe = DB::select("SELECT colegio_id  AS 'colegioProfe' FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905 LIMIT 1;")[0]->colegioProfe;
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
         $ids_books = DB::select("SELECT elemento_id FROM item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
-
-        $respuestas = DB::select("SELECT id_user, datetime_touch, correcta, resultado, nombres, apellido_paterno FROM alumno_respuesta_actividad INNER JOIN usuario ON usuario.id = alumno_respuesta_actividad.id_user WHERE id_actividad = ".$id.";");
+        $cursos = DB::select("SELECT * FROM nivel");
+        $colegios = DB::select("SELECT * FROM colegio");
+        $respuestas = DB::select("SELECT id_user, datetime_touch, correcta, resultado, nombres, apellido_paterno, colegio_id, nivel_id FROM alumno_respuesta_actividad INNER JOIN usuario ON usuario.id = alumno_respuesta_actividad.id_user INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad = ".$id." AND colegio_id = ".$colegioProfe." AND tipo_usuario_id = 3;");
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         $books = [];
 
@@ -137,6 +146,10 @@ class ActivitiesController extends Controller
             'books' => $books,
             'respuestas' => $respuestas,
             'modulosCompletados' => $modulosCompletados->cantidad,
+            'avatarImagen' => $avatarImagen,
+            'colegioProfe' => $colegioProfe,
+            'cursos' => $cursos,
+            'colegios' => $colegios,
         ]);
     }
 
