@@ -479,6 +479,7 @@ class UsersController extends Controller
     public function estadisticaAlumno($id)
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
+        $idAlumno = $id;
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;");
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
@@ -634,6 +635,7 @@ class UsersController extends Controller
             'avatar' => $imagen->descripcion,
             'respuestaImagen' => $respuestaImagen,
             'avatarImagen' => $avatarImagen,
+            'idAlumno' => $idAlumno,
 
         ]);
     }

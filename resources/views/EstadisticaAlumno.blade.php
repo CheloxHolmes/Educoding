@@ -38,7 +38,9 @@
 
         <div class="card-body">
             @foreach($alumnos as $alumno)
+            @if($alumno->id==$idAlumno)
             <h5 class="card-title"><span>{{$alumno->nombres}} {{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</span> / Hechizo Matemático</h5>
+            @endif
             @endforeach
         </div>
         <!-- Line Chart -->
@@ -122,7 +124,9 @@
 
         <div class="card-body">
             @foreach($alumnos as $alumno)
+            @if($alumno->id==$idAlumno)
             <h5 class="card-title"><span>{{$alumno->nombres}} {{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</span> / Identidad del Pueblo</h5>
+            @endif
             @endforeach
         </div>
 
@@ -204,9 +208,11 @@
 <!-- Reporte Some Kind of Spell -->
 <div class="col-12">
     <div class="card">
-        @foreach($alumnos as $alumno)
         <div class="card-body">
+            @foreach($alumnos as $alumno)
+            @if($alumno->id==$idAlumno)
             <h5 class="card-title"><span>{{$alumno->nombres}} {{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</span> / Some Kind of Spell</h5>
+            @endif
             @endforeach
         </div>
         <!-- Line Chart -->
