@@ -153,6 +153,13 @@ class UsersController extends Controller
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $usuario->id . "';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = " . $usuario->id . ";")[0];
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+            //return $avatarImagen;
+        } else {
+            $avatarImagen = "";
+        }
 
         //$imagen = Imagen::where('nombre', $usuario->email)->get();
 
@@ -162,6 +169,7 @@ class UsersController extends Controller
             'avatar' => $imagen->descripcion,
             'coins' => $coins,
             'modulosCompletados' => $modulosCompletados->cantidad,
+            'avatarImagen' => $avatarImagen,
 
         ]);
     }

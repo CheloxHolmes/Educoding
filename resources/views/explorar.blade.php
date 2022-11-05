@@ -123,7 +123,11 @@
             @if(Auth::user()->username==NULL)
             <h2 style="text-align: center;">{{ Auth::user()->nombres }}</h2>
             <div style="margin-bottom:2%;">
+                @if($avatarImagen=="")
                 <img src="{{asset('assets/img/avatar/'.$avatar)}}" style="width: 100%;height:100%;">
+                @else
+                <img src="data:image/png;base64,{{$avatarImagen}}" style="width: 100%;height:100%;">
+                @endif
             </div>
             @endif
             <button type="button" class="btn btn-lg btn-primary" disabled>Módulos: Módulos: {{ $modulosCompletados }}</button>
