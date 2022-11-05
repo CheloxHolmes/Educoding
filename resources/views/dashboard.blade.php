@@ -354,11 +354,13 @@
 
           <div class="news" style="margin-bottom:10px">
             @foreach($actividades as $actividad)
+            @if($actividad->id==21 || $actividad->id==22 || $actividad->id==23)
             <div class="post-item clearfix">
               <img src="assets/img/news-1.jpg" alt="">
               <h4 style="margin-left:0px"><a href="/actividad/respuestas/{{$actividad->id}}">{{$actividad->id}} - {{$actividad->nombre}}</a></h4>
               <a href="/actividad/respuestas/{{$actividad->id}}" class="btn btn-primary" style="padding:3px !important"> <i class="fa fa-list"></i> Ver respuestas</a>
             </div>
+            @endif
             @endforeach
 
           </div><!-- End sidebar recent posts-->
