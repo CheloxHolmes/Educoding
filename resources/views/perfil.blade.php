@@ -15,12 +15,11 @@
                 <img src="data:image/png;base64,{{$avatarImagen}}" height="150px" width="150px">
                 @endif
 
-                @if($usuario->username==NULL)
-                <h2>Bienvenido {{ $usuario->nombres }} </h2>
-                @else
-                <h2>Bienvenido {{ $usuario->username }}</h2>
-                @endif
+
+                <h2>Bienvenido {{ $usuario->nombres }} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</h2>
             </div>
+
+            <br>
 
 
             <div class="col-lg-12" style="text-align: center;">

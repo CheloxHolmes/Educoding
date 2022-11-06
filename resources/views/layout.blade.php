@@ -139,11 +139,7 @@
                                                 <li><a href="/contacto"> <i class="fa fa-envelope"></i> Contacto</a></li>
                                                 <!-- Button -->
                                                 <li class="dropdown">
-                                                    @if(Auth::user()->username==NULL)
-                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> {{ Auth::user()->nombres }}</a>
-                                                    @else
-                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> {{ Auth::user()->username }}</a>
-                                                    @endif
+                                                    <a class="btn dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> {{ Auth::user()->nombres }} {{ Auth::user()->apellido_paterno }}</a>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a style="color:black;" class="dropdown-item" href="/perfil/{{ Auth::user()->id }}">Perfil</a></li>
                                                         @if(Auth::user()->tipo_usuario_id=="2")

@@ -133,7 +133,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
 Route::post('/login', function (Request $request) {
-    $user = User::where('email', $request->email)
+    $user = User::where('username', $request->username)
         ->where('password', $request->password)
         ->first();
     if ($user) {
