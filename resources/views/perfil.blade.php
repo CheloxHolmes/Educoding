@@ -30,9 +30,9 @@
             </div>
 
 
-            <div class="col-lg-12" style="text-align: center;margin-top:20px">
+            <!--<div class="col-lg-12" style="text-align: center;margin-top:20px">
                 <a href="/perfil/actualizar/{{Auth::user()->id}}" class="btn">Actualizar mis datos</a>
-            </div>
+            </div>-->
 
         </div>
 

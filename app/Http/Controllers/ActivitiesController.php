@@ -61,7 +61,7 @@ class ActivitiesController extends Controller
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
         $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
-        $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
+        $pauta = DB::select("SELECT Pregunta AS 'pauta' FROM item WHERE reim_id = 905 AND objetivo_aprendizaje_id = 24 ORDER BY RAND() LIMIT 1;")[0]->pauta;
         $inventario = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";")[0];
         $coins = $inventario->cantidad;
         $respuestaImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AL".$usuario->id."%' ORDER BY idimagen DESC;");
@@ -76,6 +76,7 @@ class ActivitiesController extends Controller
             'coins' => $coins,
             'respuestaImagen' => $respuestaImagen,
             'modulosCompletados' => $modulosCompletados->cantidad,
+            'pauta' => $pauta,
         ]);
     }
 
@@ -84,9 +85,11 @@ class ActivitiesController extends Controller
         $data = $request->all();
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         //echo ($data["image_64"]);
-        DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, 1, 1, 0);");
+        $pauta1 = $data["pauta"];
+        $pauta2 = substr($pauta1, -224);
         $unaimagen = DB::select("SELECT idimagen FROM imagen ORDER BY idimagen DESC LIMIT 1;")[0]->idimagen;
         $idimg = intval($unaimagen)+1;
+        DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, ".$idimg.", '".$pauta2."', 0);");
         DB::insert("INSERT INTO imagen (idimagen, nombre, imagen, id_elemento, descripcion) VALUES (".$idimg.",'AL".Auth::id()."', '".$data["image_64"]."', 101, 'DIBUJO');");
         Session::flash('success', 'Respuesta enviada con éxito');
         return redirect("/actividadLenguaje/$idAct");
