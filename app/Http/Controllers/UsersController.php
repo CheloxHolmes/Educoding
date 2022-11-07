@@ -16,7 +16,7 @@ class UsersController extends Controller
     {
 
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $usuario->id . "';")[0];
         $rol = DB::select("SELECT nombre FROM tipo_usuario WHERE id = '" . $usuario->tipo_usuario_id . "';")[0];
         $insignias = DB::select("SELECT * FROM inventario_reim INNER JOIN elemento on inventario_reim.id_elemento = elemento.id INNER JOIN imagen on inventario_reim.id_elemento = imagen.id_elemento WHERE sesion_id = " . $usuario->id . " AND elemento.nombre LIKE 'Insignia%';");
@@ -64,7 +64,7 @@ class UsersController extends Controller
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";")[0];
         $cAlumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe." AND nivel_id IN (" . $arrayIdsCursosProf . ");");
         $inventarioAlumno = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $alumnos->id . "';")[0];
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $sumaModulos = DB::select("SELECT SUM(cantidad) AS 'suma' FROM inventario_reim INNER JOIN asigna_reim_alumno ON inventario_reim.sesion_id = asigna_reim_alumno.sesion_id INNER JOIN pertenece ON asigna_reim_alumno.usuario_id = pertenece.usuario_id INNER JOIN usuario ON asigna_reim_alumno.usuario_id = usuario.id WHERE id_elemento = 500 AND reim_id = 905 AND colegio_id = ".$colegioProfe." AND tipo_usuario_id = 3;")[0]->suma;
         $sumaHistoria = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad = 21 AND correcta = 1 AND colegio_id = ".$colegioProfe." AND id_reim = 905;")[0]->count;
         $sumaMatematicas = DB::select("SELECT COUNT(*) AS count FROM alumno_respuesta_actividad INNER JOIN pertenece ON alumno_respuesta_actividad.id_user = pertenece.usuario_id WHERE id_actividad = 22 AND correcta = 1 AND colegio_id = ".$colegioProfe." AND id_reim = 905;")[0]->count;
@@ -160,7 +160,7 @@ class UsersController extends Controller
     {
 
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . $id . ";")[0];
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $coins = DB::select("SELECT cantidad FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = '" . $usuario->id . "';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = " . $usuario->id . ";")[0];
         $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
@@ -170,8 +170,6 @@ class UsersController extends Controller
         } else {
             $avatarImagen = "";
         }
-
-        //$imagen = Imagen::where('nombre', $usuario->email)->get();
 
         return view('explorar', [
 
@@ -199,7 +197,7 @@ class UsersController extends Controller
     public function editAvatar($newAvatar)
     {
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
-        DB::select("UPDATE imagen SET descripcion = '" . $newAvatar . "' WHERE nombre = '" . $usuario->email . "';");
+        DB::select("UPDATE imagen SET descripcion = '" . $newAvatar . "' WHERE nombre = 'AV" . $usuario->id . "';");
         return redirect("/perfil/$usuario->id");
     }
 
@@ -393,7 +391,7 @@ class UsersController extends Controller
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
         if (count($avatarImagen) > 0) {
             $avatarImagen = $avatarImagen[0]->imagen;
@@ -421,7 +419,7 @@ class UsersController extends Controller
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";");
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $cursos = DB::select("SELECT * FROM nivel");
         $letras = DB::select("SELECT * FROM letra");
         $colegios = DB::select("SELECT * FROM colegio");
@@ -457,7 +455,7 @@ class UsersController extends Controller
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = ".$colegioProfe.";");
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $cursos = DB::select("SELECT * FROM nivel");
         $letras = DB::select("SELECT * FROM letra");
         $colegios = DB::select("SELECT * FROM colegio");
@@ -494,7 +492,7 @@ class UsersController extends Controller
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $pautas = DB::select("SELECT * FROM alumno_respuesta_actividad WHERE id_actividad = 24 AND id_reim = 905;");
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $respuestaImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AL".$id."%' ORDER BY idimagen DESC;");
         $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
         if (count($avatarImagen) > 0) {
@@ -656,7 +654,7 @@ class UsersController extends Controller
 
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905;")[0];
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $cantidadesModulosCompletadosMes = array();
@@ -724,7 +722,7 @@ class UsersController extends Controller
 
         $usuario = DB::select("SELECT * FROM usuario WHERE id = " . Auth::id() . ";")[0];
         $alumnos = DB::select("SELECT * FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE tipo_usuario_id = 3 AND reim_id = 905 AND colegio_id = $idcolegio AND nivel_id = $idcurso AND letra_id = $idletra;");
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '" . $usuario->email . "';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $mensajes = DB::select("SELECT mensajes.id AS 'id_mensaje', titulo, descripcion, fecha_mensaje, id_creador, id_receptor, nombres, apellido_paterno FROM mensajes INNER JOIN usuario ON usuario.id = mensajes.id_creador WHERE id_receptor = ".Auth::id()." ORDER BY fecha_mensaje DESC LIMIT 4;");
         $countMensajes = count($mensajes);
         $cantidadesModulosCompletadosMes = array();

@@ -15,7 +15,7 @@ class ActivitiesController extends Controller
         $usuario = User::find(Auth::id());
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
         $ids_books = DB::select("SELECT elemento_id FROM item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $background1 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-1';")[0];
         $background2 = DB::select("SELECT * FROM imagen WHERE nombre LIKE 'AA".$actividad->id."-2';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
@@ -59,7 +59,7 @@ class ActivitiesController extends Controller
     public function actividadLenguaje($id){
         $usuario = User::find(Auth::id());
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
         $pauta = DB::select("SELECT Pregunta AS 'pauta' FROM item WHERE reim_id = 905 AND objetivo_aprendizaje_id = 24 ORDER BY RAND() LIMIT 1;")[0]->pauta;
         $inventario = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 900 AND sesion_id = ".$usuario->id.";")[0];
@@ -117,7 +117,7 @@ class ActivitiesController extends Controller
         $colegioProfe = DB::select("SELECT colegio_id  AS 'colegioProfe' FROM usuario INNER JOIN asigna_reim_alumno ON usuario.id = asigna_reim_alumno.usuario_id INNER JOIN pertenece ON usuario.id = pertenece.usuario_id WHERE usuario.id = " . Auth::id() . " AND reim_id = 905 LIMIT 1;")[0]->colegioProfe;
         $actividad = DB::select("SELECT * FROM actividad WHERE id = " . $id . ";")[0];
         $ids_books = DB::select("SELECT elemento_id FROM item WHERE objetivo_aprendizaje_id = ".$id." GROUP BY elemento_id;");
-        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = '".$usuario->email."';")[0];
+        $imagen = DB::select("SELECT * FROM imagen WHERE nombre = 'AV" . $usuario->id . "';")[0];
         $modulosCompletados = DB::select("SELECT * FROM inventario_reim WHERE id_elemento = 500 AND sesion_id = ".$usuario->id.";")[0];
         $cursos = DB::select("SELECT * FROM nivel");
         $colegios = DB::select("SELECT * FROM colegio");

@@ -55,7 +55,7 @@ class HomeController extends Controller
                 $unaimagen = DB::select("SELECT idimagen FROM imagen ORDER BY idimagen DESC LIMIT 1;")[0]->idimagen;
                 Imagen::create([
                     'idimagen' => intval($unaimagen)+1,
-                    'nombre' => $usuario->email,
+                    'nombre' => 'AV'.$usuario->id,
                     'imagen' => 'avatar',
                     'id_elemento' => 101,
                     'descripcion' => 'user-(10).png',
