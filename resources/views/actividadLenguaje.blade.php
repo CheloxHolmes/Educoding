@@ -12,6 +12,15 @@
         <div style="margin-top:3%;margin-bottom:3%;text-align:center;">
             <h1>Actividad {{$actividad->nombre}}</h1>
         </div>
+        <div class="card">
+            <div class="card-header" style="color:aliceblue;">
+                Ejercicio: 
+            </div>
+            <div class="card-body">
+                <p class="card-text">{!! $pauta !!}</p>
+                <input type="hidden" name="pauta" value="{{$pauta}}">
+            </div>
+        </div>
         <hr>
         <div>
             <div style="text-align:center">

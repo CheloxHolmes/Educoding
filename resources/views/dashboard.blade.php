@@ -207,7 +207,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Colegio</th>
                     <!--<th scope="col">Colegio</th>-->
                     <th scope="col">Curso</th>
                   </tr>
@@ -218,12 +218,11 @@
                     <th scope="row"><a href="#"></a>{{$alumno->id}}</th>
                     <td>{{$alumno->nombres}}</td>
                     <td>{{$alumno->apellido_paterno}} {{$alumno->apellido_materno}}</td>
-                    <td><a href="#" class="text-primary"></a>{{$alumno->email}}</td>
-                    <!--@foreach($colegios as $colegio)
+                    @foreach($colegios as $colegio)
                     @if($alumno->colegio_id==$colegio->id)
                     <td>{{$colegio->nombre}}</td>
                     @endif
-                    @endforeach-->
+                    @endforeach
                     @foreach($cursos as $curso)
                     @if($alumno->nivel_id==$curso->id)
                     <td>{{$curso->nombre}}</td>

@@ -296,8 +296,17 @@
     <h1>Dibujos del estudiante</h1>
     <br>
     @foreach($respuestaImagen as $imagen)
-    <img src="{{$imagen->imagen}}" style="border: 2px solid #555;" width="90%" height="90%">
+    <div class="container">
+        @foreach($pautas as $pauta)
+        @if($imagen->idimagen==$pauta->correcta)
+        <p>{!! $pauta->resultado !!}</p>
+        <br>
+        @endif
+        @endforeach
+        <img src="{{$imagen->imagen}}" style="border: 2px solid #555;" width="90%" height="90%">
+    </div>
     @endforeach
+    <br>
 </div>
 
 @endif
