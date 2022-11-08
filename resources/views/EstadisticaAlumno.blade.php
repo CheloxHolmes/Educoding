@@ -296,14 +296,32 @@
     <h1>Dibujos del estudiante</h1>
     <br>
     @foreach($respuestaImagen as $imagen)
-    <div class="container">
+    <div class="card">
         @foreach($pautas as $pauta)
         @if($imagen->idimagen==$pauta->correcta)
-        <p>{!! $pauta->resultado !!}</p>
+        <div class="card-header">
+            <p>{!! $pauta->resultado !!}</p>
+        </div>
         <br>
-        @endif
-        @endforeach
-        <img src="{{$imagen->imagen}}" style="border: 2px solid #555;" width="90%" height="90%">
+        <div class="card-body">
+            @if($pauta->Tipo_Registro==1)
+            <p>Estado de ánimo del estudiante al realizar actividad: <strong>Alegre</strong> <i class="fa fa-smile" style="color: #FAB92F;font-size:2rem;"></i></p>
+            @elseif($pauta->Tipo_Registro==2)
+            <p>Estado de ánimo del estudiante al realizar actividad: <strong>Triste</strong> <i class="fa fa-frown" style="color: #FAB92F;font-size:2rem;"></i></p>
+            @elseif($pauta->Tipo_Registro==3)
+            <p>Estado de ánimo del estudiante al realizar actividad: <strong>Molesto</strong> <i class="fa fa-angry" style="color: #FAB92F;font-size:2rem;"></i></p>
+            @elseif($pauta->Tipo_Registro==4)
+            <p>Estado de ánimo del estudiante al realizar actividad: <strong>Con asco</strong> <i class="fa fa-grin-tongue-squint" style="color: #FAB92F;font-size:2rem;"></i></p>
+            @elseif($pauta->Tipo_Registro==5)
+            <p>Estado de ánimo del estudiante al realizar actividad: <strong>Sorprendido</strong> <i class="fa fa-surprise" style="color: #FAB92F;font-size:2rem;"></i></p>
+            @elseif($pauta->Tipo_Registro==6)
+            <p>Estado de ánimo del estudiante al realizar actividad: <strong>Con miedo</strong> <i class="fa fa-frown-open" style="color: #FAB92F;font-size:2rem;"></i></p>
+            @endif
+            <br>
+            @endif
+            @endforeach
+            <img src="{{$imagen->imagen}}" style="border: 2px solid #555;" width="90%" height="90%">
+        </div>
     </div>
     @endforeach
     <br>

@@ -89,7 +89,7 @@ class ActivitiesController extends Controller
         $pauta2 = substr($pauta1, -224);
         $unaimagen = DB::select("SELECT idimagen FROM imagen ORDER BY idimagen DESC LIMIT 1;")[0]->idimagen;
         $idimg = intval($unaimagen)+1;
-        DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, ".$idimg.", '".$pauta2."', 0);");
+        DB::insert("INSERT INTO alumno_respuesta_actividad VALUES (202201, " . Auth::id() . ", 905, 24, 101, now(), 1, 1, 1, ".$idimg.", '".$pauta2."', ".$data["estado"].");");
         DB::insert("INSERT INTO imagen (idimagen, nombre, imagen, id_elemento, descripcion) VALUES (".$idimg.",'AL".Auth::id()."', '".$data["image_64"]."', 101, 'DIBUJO');");
         Session::flash('success', 'Respuesta enviada con éxito');
         return redirect("/actividadLenguaje/$idAct");
