@@ -2917,6 +2917,18 @@ hr {
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .main-header .main-menu ul li {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 468px) {
+    .main-header .main-menu ul li {
+        font-size: 6px;
+    }
+}
+
 .main-header .main-menu ul li a {
     color: #fff;
     font-weight: 600;

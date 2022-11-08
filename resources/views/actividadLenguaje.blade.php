@@ -14,11 +14,42 @@
         </div>
         <div class="card">
             <div class="card-header" style="color:aliceblue;">
-                Ejercicio: 
+                Ejercicio:
             </div>
+            <!-- Pauta del ejercicio -->
             <div class="card-body">
                 <p class="card-text">{!! $pauta !!}</p>
                 <input type="hidden" name="pauta" value="{{$pauta}}">
+            </div>
+            <!-- Selección de emoción -->
+        </div>
+        <br>
+        <div style="text-align:center">
+            <h2>¿Cómo te has sentido al realizar esta actividad?</h2>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estado" id="estado" value="1" required>
+                <label class="form-check-label" for="estado">Alegre <i class="fa fa-smile" style="color: #FAB92F;font-size:2rem;"></i></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estado" id="iestado" value="2" required>
+                <label class="form-check-label" for="estado">Triste <i class="fa fa-frown" style="color: #FAB92F;font-size:2rem;"></i></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estado" id="estado" value="3" required>
+                <label class="form-check-label" for="estado">Molesto <i class="fa fa-angry" style="color: #FAB92F;font-size:2rem;"></i></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estado" id="estado" value="4" required>
+                <label class="form-check-label" for="estado">Con asco <i class="fa fa-grin-tongue-squint" style="color: #FAB92F;font-size:2rem;"></i></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estado" id="estado" value="5" required>
+                <label class="form-check-label" for="estado">Sorprendido <i class="fa fa-surprise" style="color: #FAB92F;font-size:2rem;"></i></label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estado" id="estado" value="6" required>
+                <label class="form-check-label" for="estado">Con miedo <i class="fa fa-frown-open" style="color: #FAB92F;font-size:2rem;"></i></label>
             </div>
         </div>
         <hr>

@@ -95,6 +95,7 @@
                 </div>
             </div>
         </div>
+        @if($usuario->tipo_usuario_id!=3)
         <div class="card" style="margin:1.5%;width:100%">
             <div class="card-header" style="color:white !important;">
                 <strong>Mensajes</strong>
@@ -105,6 +106,7 @@
                 <a href="/crearMensaje/{{$usuario->id}}" class="btn">Crear mensaje</a>
             </div>
         </div>
+        @endif
     </div>
     <br>
     <div style="text-align:center;">
