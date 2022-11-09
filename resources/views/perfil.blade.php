@@ -106,6 +106,17 @@
                 <a href="/crearMensaje/{{$usuario->id}}" class="btn">Crear mensaje</a>
             </div>
         </div>
+        @elseif($usuario->tipo_usuario_id==3)
+        <div class="card" style="margin:1.5%;width:100%">
+            <div class="card-header" style="color:white !important;">
+                <strong>Mensajes</strong>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Aquí podrás ver todos los mensajes que has recibido o enviar un mensaje</h5>
+                <br>
+                <a href="/mismensajes/{{$usuario->id}}" class="btn">Ver mensajes recibidos</a>
+            </div>
+        </div>
         @endif
     </div>
     <br>
