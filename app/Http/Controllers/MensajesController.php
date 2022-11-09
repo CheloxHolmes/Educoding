@@ -99,4 +99,28 @@ class MensajesController extends Controller
         return redirect("/crearMensaje" . "/". Auth::id());
     }
 
+    public function MensajesAlumno(){
+
+        $usuario = DB::select("SELECT * FROM usuario WHERE id = ".Auth::id().";")[0];
+        $mensajes = DB::select("SELECT * FROM mensajes WHERE id_receptor = ".Auth::id().";");
+        $todoUsuarios = DB::select("SELECT * FROM usuario");
+        $countMensajes = count($mensajes);
+        $avatarImagen = DB::select("SELECT idimagen, nombre, descripcion, CONVERT(imagen using utf8) AS imagen FROM imagen WHERE nombre LIKE 'AV" . $usuario->id . "%' ORDER BY idimagen DESC;");
+        if (count($avatarImagen) > 0) {
+            $avatarImagen = $avatarImagen[0]->imagen;
+        } else {
+            $avatarImagen = "";
+        }
+
+        return view('mismensajes', [
+
+            'usuario' => $usuario,
+            'mensajes' => $mensajes,
+            'todoUsuarios' => $todoUsuarios,
+            'countMensajes' => $countMensajes,
+            'avatarImagen' => $avatarImagen,
+
+        ]);
+    }
+
 }

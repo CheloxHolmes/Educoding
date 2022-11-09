@@ -90,6 +90,8 @@ Route::post('/registrar/alumno', [App\Http\Controllers\UsersController::class, '
 
 Route::get('/mensajes/{id}', [App\Http\Controllers\MensajesController::class, 'VerMensajes'])->middleware('auth');
 
+Route::get('/mismensajes/{id}', [App\Http\Controllers\MensajesController::class, 'MensajesAlumno'])->middleware('auth');
+
 Route::get('/crearMensaje/{id}', [App\Http\Controllers\MensajesController::class, 'crearMensaje'])->middleware('auth');
 
 Route::post('/mensaje/crear', [App\Http\Controllers\MensajesController::class, 'guardarMensaje'])->middleware('auth');
