@@ -130,7 +130,7 @@
 
     function answerPage() {
         if ($("#inputSimpleAnswer").val() != "") {
-            if ($("#inputSimpleAnswer").val() == libros[currentBook].respuesta) {
+            if ($("#inputSimpleAnswer").val().toLowerCase() == libros[currentBook].respuesta) {
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
                 sonidoAplausos();
@@ -148,7 +148,7 @@
     }
 
     function answerAlternativesPage() {
-        if ($("#inputAlternativesAnswer").val() != "") {
+        if ($("#inputAlternativesAnswer").val().toLowerCase() != "") {
             if ($("#inputAlternativesAnswer").val() == libros[currentBook].respuesta) {
                 /*sumar puntos estudiante*/
                 alert("¡Respuesta correcta!");
